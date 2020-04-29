@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/White"
+    tools:context=".UserHomeFragment">
+
+
+    <ScrollView
+        android:id="@+id/login_form"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/textViewUserHomeWelcome"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat"
+                android:textAlignment="center"
+                android:text="Welcome User"
+                android:textColor="@color/Red"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="0dp"/>
+
+
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/textViewMarketerHomeDashboardTag"-->
+            <!--                android:layout_width="fill_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:fontFamily="@font/montserrat"-->
+            <!--                android:textAlignment="center"-->
+            <!--                android:text="Dashboard"-->
+            <!--                android:textColor="@color/Red"-->
+            <!--                android:textSize="25dp"-->
+            <!--                android:textStyle="normal"-->
+            <!--                android:layout_marginTop="10dp"-->
+            <!--                android:layout_marginBottom="0dp"/>-->
+
+            <!--            <ImageView-->
+            <!--                android:id="@+id/imageView3"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:src="@drawable/canadatrip" />-->
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@color/LightGrey"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="20dp"
+                    android:layout_height="60dp"
+                    android:background="@color/Red">
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:paddingTop="10dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/textView22"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
+                        android:layout_marginLeft="20dp"
+                        android:text="Your date of sign up:"
+                        android:textColor="@color/Black"
+                        android:textSize="14dp"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:id="@+id/textViewUserHomeDateSignedUp"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
+                        android:layout_marginLeft="20dp"
+                        android:text="Not Available"
+                        android:textColor="@color/Red"
+                        android:textSize="14dp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@color/LightGrey"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="20dp"
+                    android:layout_height="100dp"
+                    android:background="@color/Green">
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:paddingTop="10dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/textView26"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
+                        android:layout_marginLeft="20dp"
+                        android:text="Your EWallet balance:"
+                        android:textColor="@color/Black"
+                        android:textSize="14dp"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:id="@+id/textViewUserHomeEWalletBalance"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
+                        android:layout_marginLeft="20dp"
+                        android:text="N0.00"
+                        android:textColor="@color/Red"
+                        android:textSize="14dp"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/buttonUserHomeFundEwallet"
+                        android:layout_width="150dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/red_button"
+                        android:textColor="@color/White"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginLeft="10dp"
+                        android:fontFamily="@font/montserrat"
+                        android:layout_alignParentBottom="true"
+                        android:text="Fund EWallet" />
+
+                </LinearLayout>
+
+
+
+
+
+
+            </LinearLayout>
+
+
+            <!--            <LinearLayout-->
+            <!--                android:layout_width="fill_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginTop="30dp"-->
+            <!--                android:background="@color/LightGrey"-->
+            <!--                android:orientation="horizontal">-->
+
+            <!--                <LinearLayout-->
+            <!--                    android:layout_width="20dp"-->
+            <!--                    android:layout_height="60dp"-->
+            <!--                    android:background="@color/Blue">-->
+
+            <!--                </LinearLayout>-->
+            <!--                <LinearLayout-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="60dp"-->
+            <!--                    android:paddingTop="10dp"-->
+            <!--                    android:orientation="vertical">-->
+            <!--                    <TextView-->
+            <!--                        android:id="@+id/textView12"-->
+            <!--                        android:layout_width="fill_parent"-->
+            <!--                        android:layout_height="wrap_content"-->
+            <!--                        android:fontFamily="@font/montserrat"-->
+            <!--                        android:layout_marginLeft="20dp"-->
+            <!--                        android:text="My Current Position:"-->
+            <!--                        android:textColor="@color/Black"-->
+            <!--                        android:textSize="14dp"-->
+            <!--                        android:textStyle="bold" />-->
+
+
+            <!--                    <TextView-->
+            <!--                        android:id="@+id/textViewMarketerHomeCurrentPosition"-->
+            <!--                        android:layout_width="fill_parent"-->
+            <!--                        android:layout_height="wrap_content"-->
+            <!--                        android:fontFamily="@font/montserrat"-->
+            <!--                        android:layout_marginLeft="20dp"-->
+            <!--                        android:text="Not Available"-->
+            <!--                        android:textColor="@color/Red"-->
+            <!--                        android:textSize="14dp"-->
+            <!--                        android:textStyle="bold" />-->
+
+            <!--                </LinearLayout>-->
+
+            <!--            </LinearLayout>-->
+
+
+
+
+            <!--            <LinearLayout-->
+            <!--                android:layout_width="fill_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginTop="30dp"-->
+            <!--                android:background="@color/LightGrey"-->
+            <!--                android:orientation="horizontal">-->
+
+            <!--                <LinearLayout-->
+            <!--                    android:layout_width="20dp"-->
+            <!--                    android:layout_height="60dp"-->
+            <!--                    android:background="@color/Yellow">-->
+
+            <!--                </LinearLayout>-->
+            <!--                <LinearLayout-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="60dp"-->
+            <!--                    android:paddingTop="10dp"-->
+            <!--                    android:orientation="vertical">-->
+            <!--                    <TextView-->
+            <!--                        android:id="@+id/textView13"-->
+            <!--                        android:layout_width="fill_parent"-->
+            <!--                        android:layout_height="wrap_content"-->
+            <!--                        android:fontFamily="@font/montserrat"-->
+            <!--                        android:layout_marginLeft="20dp"-->
+            <!--                        android:text="My Total Number of Registered Marketer:"-->
+            <!--                        android:textColor="@color/Black"-->
+            <!--                        android:textSize="14dp"-->
+            <!--                        android:textStyle="bold" />-->
+
+
+            <!--                    <TextView-->
+            <!--                        android:id="@+id/textViewUserHomeTotalNumberOfRegisteredMarketers"-->
+            <!--                        android:layout_width="fill_parent"-->
+            <!--                        android:layout_height="wrap_content"-->
+            <!--                        android:fontFamily="@font/montserrat"-->
+            <!--                        android:layout_marginLeft="20dp"-->
+            <!--                        android:text="Not Available"-->
+            <!--                        android:textColor="@color/Red"-->
+            <!--                        android:textSize="14dp"-->
+            <!--                        android:textStyle="bold" />-->
+
+            <!--                </LinearLayout>-->
+
+            <!--            </LinearLayout>-->
+
+
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="60"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:paddingRight="20dp">
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="0dp"
+                    android:layout_height="20dp"
+                    android:layout_weight="10"
+                    android:layout_marginLeft="25dp"
+                    app:srcCompat="@drawable/info_red" />
+
+
+                <TextView
+                    android:id="@+id/lbl556"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="80"
+                    android:width="0dp"
+                    android:text="Topic Game gives you topics you would share with your friends and get their responses anonymously."
+                    android:textColor="@color/Red"
+                    android:textSize="10dp" />
+
+
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="60"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:paddingRight="20dp">
+
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="0dp"
+                    android:layout_height="20dp"
+                    android:layout_weight="10"
+                    android:layout_marginLeft="25dp"
+                    app:srcCompat="@drawable/info_red" />
+
+
+                <TextView
+                    android:id="@+id/lbl557"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="80"
+                    android:width="0dp"
+                    android:text="View Topic Responses shows you your friend's responses to your shared topic."
+                    android:textColor="@color/Red"
+                    android:textSize="10dp" />
+
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="60"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:paddingRight="20dp">
+
+                <ImageView
+                    android:id="@+id/imageView6"
+                    android:layout_width="0dp"
+                    android:layout_height="20dp"
+                    android:layout_weight="10"
+                    android:layout_marginLeft="25dp"
+                    app:srcCompat="@drawable/info_red" />
+
+
+                <TextView
+                    android:id="@+id/lbl558"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="80"
+                    android:width="0dp"
+                    android:text="Reward Game pays you money as you answer questions on any field you think you know, you sign up for a game and make payment from your EWallet, as you answers the questions correctly and on time, you win cash which is sent to your bank account."
+                    android:textColor="@color/Red"
+                    android:textSize="10dp" />
+
+
+
+            </LinearLayout>
+
+
+
+
+
+
+
+            <TextView
+                android:id="@+id/textView29"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat"
+                android:layout_marginLeft="20dp"
+                android:text="What would you like to do?"
+                android:textColor="@color/Black"
+                android:textSize="14dp"
+                android:gravity="center"
+                android:layout_marginTop="20dp"
+                android:textStyle="bold" />
+
+
+
+
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:orientation="horizontal">
+
+
+                <Button
+                    android:id="@+id/buttonUserHomeTopicGame"
+                    android:layout_width="0dp"
+                    android:layout_weight=".48"
+                    android:background="@drawable/red_button"
+                    android:textColor="@color/White"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/montserrat"
+                    android:layout_alignParentBottom="true"
+                    android:text="Topic Game" />
+
+                <Button
+                    android:id="@+id/buttonUserHomeViewTopicResponses"
+                    android:layout_width="0dp"
+                    android:layout_weight=".48"
+                    android:background="@drawable/steel_blue_button"
+                    android:textColor="@color/White"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="10dp"
+                    android:fontFamily="@font/montserrat"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="10dp"
+                    android:text="View Topic Responses" />
+
+
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/buttonUserHomeRewardGame"
+                android:layout_width="fill_parent"
+                android:background="@drawable/dark_red_button"
+                android:textColor="@color/White"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="@font/montserrat"
+                android:layout_alignParentBottom="true"
+                android:text="Reward Game" />
+
+
+
+            <!--            <com.google.android.gms.ads.AdView-->
+            <!--                xmlns:ads="http://schemas.android.com/apk/res-auto"-->
+            <!--                android:id="@+id/adViewMarketerHome"-->
+            <!--                android:layout_width="fill_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_centerHorizontal="true"-->
+            <!--                android:layout_alignParentBottom="true"-->
+            <!--                android:layout_gravity="center"-->
+            <!--                android:layout_marginTop="40dp"-->
+            <!--                ads:adSize="BANNER"-->
+            <!--                ads:adUnitId="ca-app-pub-7685206016806225/2700055424" />-->
+
+
+
+        </LinearLayout>
+
+
+
+    </ScrollView>
+
+
+
+</FrameLayout>

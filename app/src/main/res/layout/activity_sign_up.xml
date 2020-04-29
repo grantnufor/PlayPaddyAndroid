@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="fill_parent"
+android:layout_height="fill_parent"
+tools:context=".SignUpActivity"
+android:background="@color/White"
+android:focusableInTouchMode="true"
+tools:layout_editor_absoluteY="8dp"
+tools:layout_editor_absoluteX="8dp">
+
+
+<!--<ImageView-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="match_parent"-->
+<!--android:src="@drawable/shirley4"-->
+<!--android:scaleType="centerCrop"/>-->
+
+
+<ScrollView
+    android:id="@+id/login_form"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:layout_alignParentTop="true">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        tools:context=".SignUpActivity">
+
+
+        <LinearLayout
+            android:id="@+id/llayout4"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_below="@+id/layout1"
+            android:orientation="vertical"
+            android:paddingTop="10dp"
+            android:paddingBottom="20dp"
+            android:background="@color/DarkBlue"
+            android:layout_centerHorizontal="true">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/logomainwhite" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/schoolSignUplayout2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+
+
+<!--            <ImageView-->
+<!--                android:layout_width="fill_parent"-->
+<!--                android:layout_height="300dp"-->
+<!--                android:src="@drawable/playpaddyimage" />-->
+
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp"
+                android:text="Sign Up"
+                android:textColor="@color/Black"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_gravity="center"
+                app:fontFamily="@font/montserrat"/>
+
+
+
+
+            <!--                <TextView-->
+            <!--                    android:id="@+id/textView5"-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_marginLeft="10dp"-->
+            <!--                    android:layout_marginRight="10dp"-->
+            <!--                    android:layout_marginTop="11dp"-->
+            <!--                    android:text="Your Category:"-->
+            <!--                    android:textColor="@color/Red"-->
+            <!--                    android:textSize="14dp"-->
+            <!--                    android:visibility="visible"-->
+            <!--                    app:fontFamily="@font/montserrat"/>-->
+
+
+            <!--                <Spinner-->
+            <!--                    android:id="@+id/spinnerSignUpUserCategory"-->
+            <!--                    android:layout_width="300dp"-->
+            <!--                    android:layout_height="40dp"-->
+            <!--                    android:layout_alignParentLeft="true"-->
+            <!--                    android:layout_alignParentStart="true"-->
+            <!--                    android:layout_marginLeft="10dp"-->
+            <!--                    android:layout_marginRight="10dp"-->
+            <!--                    android:background="@drawable/spinner_bg"-->
+            <!--                    android:layout_marginTop="3dp"-->
+            <!--                    android:textColor="@color/Black"-->
+            <!--                    android:visibility="visible"-->
+            <!--                    android:textSize="13dp" />-->
+
+
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <EditText
+                    android:id="@+id/editTextSignUpUserName"
+                    android:layout_width="fill_parent"
+                    android:layout_height="50dp"
+                    android:layout_below="@+id/textView4"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="11dp"
+                    android:cursorVisible="true"
+                    android:ems="10"
+                    android:hint="Enter your username"
+                    android:inputType="textLongMessage"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textColor="@color/Black"
+                    android:textCursorDrawable="@null"
+                    android:textSize="14dp"
+                    app:fontFamily="@font/montserrat"/>
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <EditText
+                    android:id="@+id/editTextSignUpPassword"
+                    android:layout_width="fill_parent"
+                    android:layout_height="50dp"
+                    android:layout_below="@+id/textView4"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="11dp"
+                    android:cursorVisible="true"
+                    android:ems="10"
+                    android:hint="Enter your password"
+                    android:inputType="textPassword"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textColor="@color/Black"
+                    android:textCursorDrawable="@null"
+                    android:textSize="14dp"
+                    app:fontFamily="@font/montserrat"/>
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+
+            <Button
+                android:id="@+id/buttonSignUpSignUp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/red_button"
+                android:text="Sign Up"
+                android:textColor="@color/White"
+                app:fontFamily="@font/montserrat"/>
+
+
+            <Button
+                android:id="@+id/buttonSignUpBackToHome"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/dark_blue_button"
+                android:text="Back to Home"
+                android:textColor="@color/White"
+                app:fontFamily="@font/montserrat"/>
+
+
+<!--            <com.google.android.gms.ads.AdView-->
+<!--                xmlns:ads="http://schemas.android.com/apk/res-auto"-->
+<!--                android:id="@+id/adViewUserSignUp"-->
+<!--                android:layout_width="fill_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:layout_alignParentBottom="true"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                ads:adSize="BANNER"-->
+<!--                ads:adUnitId="ca-app-pub-2954191210352297/6499414227" />-->
+
+
+
+<!--            <WebView-->
+<!--                android:id="@+id/webviewSmsSignUp"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:visibility="invisible">-->
+
+<!--                <com.google.android.material.textfield.TextInputLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_x="160dp"-->
+<!--                    android:layout_y="7dp">-->
+
+<!--                    <com.google.android.material.textfield.TextInputEditText-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:hint="hint" />-->
+<!--                </com.google.android.material.textfield.TextInputLayout>-->
+<!--            </WebView>-->
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
+
+</RelativeLayout>

@@ -262,14 +262,17 @@ public class RewardGameViewGamesActivity extends AppCompatActivity {
                     if (rewardGameJsonList.size() > 0) {//if there are game category to load
 
                         final String gameId = "" + rewardGameJsonList.get(position).get("GameId");
-                        String categoryName = ""+ rewardGameJsonList.get(position).get("CategoryName");
-                        String categoryHighestWorth = ""+ rewardGameJsonList.get(position).get("CategoryHighestWorth");
+                        String dateAndTimeToPlay = ""+ rewardGameJsonList.get(position).get("DateToPlay")+" "+rewardGameJsonList.get(position).get("TimeToPlay");
+                        String amountToWin = ""+ rewardGameJsonList.get(position).get("AmountToWin");
+                        String amountToPlay = ""+ rewardGameJsonList.get(position).get("PlayPrice");
 
 
-                        textViewGameCategoryIdList.setText(categoryId);
-                        textViewCategoryName.setText(categoryName + " GAME (Win up to N"+categoryHighestWorth+")");
-                        buttonOpenGames.setText("Open "+categoryName+ " Games");
-                        buttonOpenGames.setOnClickListener(new View.OnClickListener() {
+                        textViewGameIdList.setText(gameId);
+                        textViewGameLayoutDateAndTimeToPlay.setText(dateAndTimeToPlay);
+                        textViewGameLayoutAmountToWin.setText(amountToWin);
+                        textViewGameLayoutAmountToPay.setText(amountToPlay);
+
+                        buttonEnrolToPlay.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
 
@@ -295,31 +298,37 @@ public class RewardGameViewGamesActivity extends AppCompatActivity {
 
 
                     //get the search text views
-                    final TextView textViewGameCategoryIdList = (TextView) itemView.findViewById(R.id.textViewGameCategoryIdList);
-                    TextView textViewCategoryName = (TextView) itemView.findViewById(R.id.textViewCategoryName);
-                    Button buttonOpenGames = (Button)itemView.findViewById(R.id.buttonOpenGames);
+                    final TextView textViewGameIdList = (TextView) itemView.findViewById(R.id.textViewGameIdList);
+                    TextView textViewGameLayoutDateAndTimeToPlay = (TextView) itemView.findViewById(R.id.textViewGameLayoutDateAndTimeToPlay);
+                    TextView textViewGameLayoutAmountToWin = (TextView)itemView.findViewById(R.id.textViewGameLayoutAmountToWin);
+                    TextView textViewGameLayoutAmountToPay = (TextView)itemView.findViewById(R.id.textViewGameLayoutAmountToPay);
+                    TextView textViewGameLayoutNoOfQuestion = (TextView) itemView.findViewById(R.id.textViewGameLayoutNoOfQuestion);
+                    Button buttonEnrolToPlay = (Button)itemView.findViewById(R.id.buttonEnrolToPlay);
 
 
                     if (rewardGameJsonList.size() > 0) {//if there are grades to load
 
-                        final String categoryId = "" + rewardGameJsonList.get(position).get("GameCategoryId");
-                        String categoryName = ""+ rewardGameJsonList.get(position).get("CategoryName");
-                        String categoryHighestWorth = ""+ rewardGameJsonList.get(position).get("CategoryHighestWorth");
+                        final String gameId = "" + rewardGameJsonList.get(position).get("GameId");
+                        String dateAndTimeToPlay = ""+ rewardGameJsonList.get(position).get("DateToPlay")+" "+rewardGameJsonList.get(position).get("TimeToPlay");
+                        String amountToWin = ""+ rewardGameJsonList.get(position).get("AmountToWin");
+                        String amountToPlay = ""+ rewardGameJsonList.get(position).get("PlayPrice");
 
 
-                        textViewGameCategoryIdList.setText(categoryId);
-                        textViewCategoryName.setText(categoryName + " GAME (Win up to N"+categoryHighestWorth+")");
-                        buttonOpenGames.setText("Open "+categoryName+ " Games");
-                        buttonOpenGames.setOnClickListener(new View.OnClickListener() {
+                        textViewGameIdList.setText(gameId);
+                        textViewGameLayoutDateAndTimeToPlay.setText(dateAndTimeToPlay);
+                        textViewGameLayoutAmountToWin.setText(amountToWin);
+                        textViewGameLayoutAmountToPay.setText(amountToPlay);
+
+                        buttonEnrolToPlay.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
 
 //                                Intent intent = new Intent(RewardGameViewGamesActivity.this, RewardGameViewGamesActivity.class);
 //                                intent.putExtra("categoryId", categoryId);
 //                                startActivity(intent);
-
                             }
                         });
+
 
 
                     } else {

@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".HomeActivity"
+    android:background="@color/White"
+    android:focusableInTouchMode="true"
+    tools:layout_editor_absoluteY="8dp"
+    tools:layout_editor_absoluteX="8dp">
+
+
+    <!--<ImageView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:src="@drawable/shirley4"-->
+    <!--android:scaleType="centerCrop"/>-->
+
+
+    <ScrollView
+        android:id="@+id/login_form"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/Black"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            tools:context=".SplashScreenActivity">
+
+
+            <LinearLayout
+                android:id="@+id/layout1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:orientation="horizontal"
+                android:layout_centerHorizontal="true">
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:id="@+id/llayout2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/layout1"
+                android:orientation="vertical"
+                android:layout_centerHorizontal="true">
+
+
+
+            <LinearLayout
+                android:id="@+id/llayout4"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_below="@+id/layout1"
+                android:orientation="vertical"
+                android:paddingTop="10dp"
+                android:paddingBottom="20dp"
+                android:background="@color/DarkBlue"
+                android:layout_centerHorizontal="true">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/logomainwhite" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/llayout3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layout1"
+                android:orientation="vertical"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:background="@color/Maroon"
+                android:layout_centerHorizontal="true">
+
+
+
+
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="#Send Personal and Intelligent questions to your friends and get anonymous response for free"
+                    app:fontFamily="@font/montserrat"
+                    android:layout_marginBottom="10dp"
+                    android:paddingRight="20dp"
+                    android:paddingLeft="20dp"
+                    android:textStyle="bold"
+                    android:textSize="16dp"
+                    android:textColor="@color/White"
+                    android:gravity="center"
+
+                    />
+
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="#Answer questions in your desired field accurately and on time to win."
+                    app:fontFamily="@font/montserrat"
+                    android:layout_marginTop="10dp"
+                    android:paddingRight="20dp"
+                    android:paddingLeft="20dp"
+                    android:textStyle="bold"
+                    android:textSize="16dp"
+                    android:textColor="@color/White"
+                    android:gravity="center"
+                    />
+
+
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:id="@+id/llayout8"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_below="@+id/layout1"
+                android:orientation="vertical"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:background="@drawable/playpaddyimage"
+                android:layout_centerHorizontal="true">
+
+
+
+<!--            <ImageView-->
+<!--                    android:layout_width="fill_parent"-->
+<!--                    android:layout_height="300dp"-->
+<!--                    android:layout_marginTop="0dp"-->
+<!--                    android:layout_marginBottom="0dp"-->
+<!--                    android:src="@drawable/playpaddyimage" />-->
+
+
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="PlayPaddy is fun to play. Why not earn with what you know than play Gambling."
+                    app:fontFamily="@font/montserrat"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingLeft="20dp"
+                    android:textStyle="bold"
+                    android:textSize="18dp"
+                    android:textColor="@color/White"
+                    android:gravity="center"
+
+                    />
+
+
+                <Button
+                    android:id="@+id/buttonSignUp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/steel_blue_button"
+                    android:text="Sign Up"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="@color/White"
+                    android:layout_marginTop="10dp"
+                    android:visibility="visible"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    app:fontFamily="@font/montserrat"/>
+
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="I already have an Account?"
+                    android:textAlignment="center"
+                    android:textSize="16dp"
+                    android:textColor="@color/Red"
+                    app:fontFamily="@font/montserrat" />
+
+
+
+                <Button
+                    android:id="@+id/buttonSignIn"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/dark_blue_button"
+                    android:text="Sign In"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="@color/White"
+                    android:layout_marginTop="10dp"
+                    android:visibility="visible"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    app:fontFamily="@font/montserrat"/>
+
+            </LinearLayout>
+
+
+
+
+<!--                <com.google.android.gms.ads.AdView-->
+<!--                    xmlns:ads="http://schemas.android.com/apk/res-auto"-->
+<!--                    android:id="@+id/adViewHome"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="70dp"-->
+<!--                    android:layout_centerHorizontal="true"-->
+<!--                    android:layout_alignParentBottom="true"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginTop="30dp"-->
+<!--                    ads:adSize="BANNER"-->
+<!--                    ads:adUnitId="ca-app-pub-2954191210352297/6499414227" />-->
+
+
+
+                <LinearLayout
+                    android:id="@+id/llayout6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/layout1"
+                    android:orientation="vertical"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp"
+                    android:layout_centerHorizontal="true">
+
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:gravity="center"
+                        android:text="From PlayPaddy"
+                        android:textAlignment="center"
+                        android:textSize="18dp"
+                        android:textStyle="italic"
+                        android:textColor="@color/White"
+                        app:fontFamily="@font/montserrat" />
+
+
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+
+
+
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
