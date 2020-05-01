@@ -11,6 +11,7 @@ import HttpAdapter.EWalletHttpServiceAdapter;
 import HttpAdapter.UserHttpServiceAdapter;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import co.paystack.android.PaystackSdk;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,10 +40,14 @@ public class UserHomeFragment extends Fragment {
     Button buttonUserHomeViewTopicResponses;
     Button buttonUserHomePlayAndWinGame;
 
+
+    Button buttonUserHomeFundEwallet;
+
     JSONObject jsonUserObj;
     JSONObject jsonEwalletObj;
 
 
+    String userId = "";
     String userName = "";
 
 
@@ -56,7 +61,10 @@ public class UserHomeFragment extends Fragment {
 
 
 
+
+
         Intent intent = getActivity().getIntent();
+        userId = intent.getStringExtra("userid");
         userName = intent.getStringExtra("username");
 
 
@@ -74,6 +82,8 @@ public class UserHomeFragment extends Fragment {
             public void onClick(View view) {
 
                 Intent intent = new Intent(getActivity(), ViewTopicsActivity.class);
+                intent.putExtra("userid", userId);
+                intent.putExtra("username", userName);
                 startActivity(intent);
 
             }
@@ -95,6 +105,23 @@ public class UserHomeFragment extends Fragment {
             public void onClick(View view) {
 
                 Intent intent = new Intent(getActivity(), RewardGameHomeActivity.class);
+                intent.putExtra("userid", userId);
+                intent.putExtra("username", userName);
+                startActivity(intent);
+
+            }
+        });
+
+
+        buttonUserHomeFundEwallet = (Button) view.findViewById(R.id.buttonUserHomeFundEwallet);
+        buttonUserHomeFundEwallet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                Intent intent = new Intent(getActivity(), FundEWalletActivity.class);
+                intent.putExtra("userid", userId);
+                intent.putExtra("username", userName);
                 startActivity(intent);
 
             }

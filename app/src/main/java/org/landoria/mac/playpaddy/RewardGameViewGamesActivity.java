@@ -276,9 +276,9 @@ public class RewardGameViewGamesActivity extends AppCompatActivity {
                             @Override
                             public void onClick(View v) {
 
-//                                Intent intent = new Intent(RewardGameViewGamesActivity.this, RewardGameViewGamesActivity.class);
-//                                intent.putExtra("categoryId", categoryId);
-//                                startActivity(intent);
+                                Intent intent = new Intent(RewardGameViewGamesActivity.this, ConfirmEnrolmentActivity.class);
+                               // intent.putExtra("categoryId", categoryId);
+                                startActivity(intent);
                             }
                         });
 
@@ -322,10 +322,9 @@ public class RewardGameViewGamesActivity extends AppCompatActivity {
                         buttonEnrolToPlay.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-
-//                                Intent intent = new Intent(RewardGameViewGamesActivity.this, RewardGameViewGamesActivity.class);
-//                                intent.putExtra("categoryId", categoryId);
-//                                startActivity(intent);
+                                Intent intent = new Intent(RewardGameViewGamesActivity.this, ConfirmEnrolmentActivity.class);
+                                // intent.putExtra("categoryId", categoryId);
+                                startActivity(intent);
                             }
                         });
 

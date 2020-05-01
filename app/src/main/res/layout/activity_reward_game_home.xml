@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/Black"
     tools:context=".RewardGameHomeActivity">
 
 
@@ -23,7 +24,7 @@
             android:textAlignment="center"
             android:textSize="18dp"
             android:textStyle="bold"
-            android:textColor="@color/Black"
+            android:textColor="@color/White"
             app:fontFamily="@font/montserrat" />
 
         <TextView
@@ -35,7 +36,7 @@
             android:text="Select a Category you know so well and are sure you can answer questions correctly and on time. Remember there is so much money to be made."
             android:textAlignment="center"
             android:textSize="16dp"
-            android:textColor="@color/Green"
+            android:textColor="@color/White"
             app:fontFamily="@font/montserrat" />
 
 
@@ -44,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:dividerHeight="5.0dp"/>
+            android:dividerHeight="10.0dp"/>
 
 
     </LinearLayout>

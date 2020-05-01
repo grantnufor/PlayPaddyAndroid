@@ -21,7 +21,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ConfirmEnrolmentActivity"></activity>
+        <activity android:name=".FundEWalletActivity"></activity>
+        <activity android:name=".ConfirmEnrolmentActivity" />
         <activity android:name=".RewardGameViewGamesActivity" />
         <activity android:name=".RewardGameHomeActivity" />
         <activity android:name=".ViewTopicsActivity" />
@@ -59,6 +60,11 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+        <meta-data
+            android:name="co.paystack.android.PublicKey"
+            android:value="pk_live_c2a9df39c0b927ebdab8f5236c8de16a45ca23d2" />
+
+
     </application>
 
 </manifest>

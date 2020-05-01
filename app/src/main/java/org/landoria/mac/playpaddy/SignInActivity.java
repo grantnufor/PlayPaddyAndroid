@@ -225,6 +225,7 @@ public class SignInActivity extends AppCompatActivity {
                                 }
 
                                 Intent intent = new Intent(SignInActivity.this, UserHomeMainActivity.class);
+                                intent.putExtra("userid", userServerId);
                                 intent.putExtra("username", userName);
                                 startActivity(intent);
                                 finish();

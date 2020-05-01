@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/White"
+    android:background="@color/Black"
     tools:context=".UserHomeFragment">
 
 
@@ -142,15 +142,15 @@
 
                     <Button
                         android:id="@+id/buttonUserHomeFundEwallet"
-                        android:layout_width="150dp"
-                        android:layout_height="40dp"
+                        android:layout_width="180dp"
+                        android:layout_height="30dp"
                         android:background="@drawable/red_button"
                         android:textColor="@color/White"
-                        android:layout_marginTop="0dp"
+                        android:layout_marginTop="10dp"
                         android:layout_marginLeft="10dp"
                         android:fontFamily="@font/montserrat"
                         android:layout_alignParentBottom="true"
-                        android:text="Fund EWallet" />
+                        android:text="Fund My EWallet" />
 
                 </LinearLayout>
 
@@ -284,7 +284,7 @@
                     android:layout_weight="80"
                     android:width="0dp"
                     android:text="Topic Game gives you topics you would share with your friends and get their responses anonymously."
-                    android:textColor="@color/Red"
+                    android:textColor="@color/White"
                     android:textSize="10dp" />
 
 
@@ -319,7 +319,7 @@
                     android:layout_weight="80"
                     android:width="0dp"
                     android:text="View Topic Responses shows you your friend's responses to your shared topic."
-                    android:textColor="@color/Red"
+                    android:textColor="@color/White"
                     android:textSize="10dp" />
 
 
@@ -353,7 +353,7 @@
                     android:layout_weight="80"
                     android:width="0dp"
                     android:text="Reward Game pays you money as you answer questions on any field you think you know, you sign up for a game and make payment from your EWallet, as you answers the questions correctly and on time, you win cash which is sent to your bank account."
-                    android:textColor="@color/Red"
+                    android:textColor="@color/White"
                     android:textSize="10dp" />
 
 
@@ -373,7 +373,7 @@
                 android:fontFamily="@font/montserrat"
                 android:layout_marginLeft="20dp"
                 android:text="What would you like to do?"
-                android:textColor="@color/Black"
+                android:textColor="@color/White"
                 android:textSize="14dp"
                 android:gravity="center"
                 android:layout_marginTop="20dp"
@@ -402,7 +402,7 @@
                     android:layout_marginLeft="10dp"
                     android:fontFamily="@font/montserrat"
                     android:layout_alignParentBottom="true"
-                    android:text="Topic Game" />
+                    android:text="Play the Topic Game" />
 
                 <Button
                     android:id="@+id/buttonUserHomeViewTopicResponses"
@@ -413,6 +413,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
                     android:fontFamily="@font/montserrat"
                     android:layout_alignParentBottom="true"
                     android:layout_marginBottom="10dp"
@@ -432,9 +433,9 @@
                 android:layout_marginLeft="10dp"
                 android:fontFamily="@font/montserrat"
                 android:layout_alignParentBottom="true"
-                android:text="Reward Game" />
+                android:text="Play the Play and Win Game" />
 
-
+ccdd
 
             <!--            <com.google.android.gms.ads.AdView-->
             <!--                xmlns:ads="http://schemas.android.com/apk/res-auto"-->

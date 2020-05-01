@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/White"
+    tools:context=".FundEWalletActivity">
+
+       <LinearLayout
+           android:layout_width="fill_parent"
+           android:layout_height="wrap_content"
+           android:orientation="vertical">
+
+           <ImageView
+               android:layout_width="fill_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginLeft="20dp"
+               android:layout_marginRight="20dp"
+               android:src="@drawable/paystacklogowhite">
+           </ImageView>
+
+           <com.google.android.material.textfield.TextInputLayout
+               android:layout_width="match_parent"
+               android:layout_marginTop="40dp"
+               android:layout_height="match_parent">
+
+
+               <EditText
+                   android:id="@+id/editTextFundEwalletAmount"
+                   android:layout_width="fill_parent"
+                   android:background="@drawable/text_edit_border_grey"
+                   android:layout_height="50dp"
+                   android:layout_below="@+id/textView4"
+                   android:layout_marginLeft="10dp"
+                   android:layout_marginRight="10dp"
+                   android:cursorVisible="true"
+                   android:ems="10"
+                   android:hint="Amount"
+                   android:inputType="textLongMessage"
+                   android:paddingLeft="10dp"
+                   android:paddingRight="10dp"
+                   android:textColor="@color/Black"
+                   android:textCursorDrawable="@null"
+                   android:textSize="14dp"
+                   app:fontFamily="@font/montserrat"/>
+
+
+           </com.google.android.material.textfield.TextInputLayout>
+
+
+
+           <com.google.android.material.textfield.TextInputLayout
+               android:layout_width="match_parent"
+               android:layout_marginTop="20dp"
+               android:layout_height="match_parent">
+
+
+               <EditText
+                   android:id="@+id/editTextFundEwalletCardNumber"
+                   android:layout_width="fill_parent"
+                   android:background="@drawable/text_edit_border_grey"
+                   android:layout_height="50dp"
+                   android:layout_below="@+id/textView4"
+                   android:layout_marginLeft="10dp"
+                   android:layout_marginRight="10dp"
+                   android:cursorVisible="true"
+                   android:ems="10"
+                   android:hint="Enter Card Number"
+                   android:inputType="textLongMessage"
+                   android:paddingLeft="10dp"
+                   android:paddingRight="10dp"
+                   android:textColor="@color/Black"
+                   android:textCursorDrawable="@null"
+                   android:textSize="14dp"
+                   app:fontFamily="@font/montserrat"/>
+
+
+           </com.google.android.material.textfield.TextInputLayout>
+
+
+           <TextView
+               android:id="@+id/textView15"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:textSize="16dp"
+               android:textColor="@color/Red"
+               android:text="Card Expiration Date:"
+               android:layout_marginTop="10dp"
+               android:layout_marginLeft="10dp"/>
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="horizontal">
+
+
+
+
+
+               <LinearLayout
+                   android:layout_width="0dp"
+                   android:layout_weight=".5"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="0dp"
+                   android:layout_marginLeft="10dp"
+                   android:orientation="vertical">
+
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:textSize="12dp"
+                       android:layout_marginLeft="0dp"
+                       android:textColor="@color/Red"
+                       android:text="Month"/>
+
+                   <Spinner
+                       android:id="@+id/spinnerFundEwalletCardExpirationDateMonth"
+                       android:layout_width="fill_parent"
+                       android:layout_height="30dp"
+                       android:layout_alignParentLeft="true"
+                       android:layout_alignParentStart="true"
+                       android:layout_marginLeft="0dp"
+                       android:layout_marginRight="10dp"
+                       android:layout_marginTop="10dp"
+                       android:background="@drawable/spinner_bg"
+                       android:textColor="@color/Black" />
+
+
+               </LinearLayout>
+
+
+
+
+
+               <LinearLayout
+                   android:layout_width="0dp"
+                   android:layout_weight=".5"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="0dp"
+                   android:layout_marginLeft="10dp"
+                   android:orientation="vertical">
+
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:textSize="12dp"
+                       android:layout_marginLeft="10dp"
+                       android:textColor="@color/Red"
+                       android:text="Year"/>
+
+                   <Spinner
+                       android:id="@+id/spinnerFundEwalletCardExpirationDateYear"
+                       android:layout_width="fill_parent"
+                       android:layout_height="30dp"
+                       android:layout_alignParentLeft="true"
+                       android:layout_alignParentStart="true"
+                       android:layout_marginLeft="10dp"
+                       android:layout_marginRight="10dp"
+                       android:layout_marginTop="10dp"
+                       android:background="@drawable/spinner_bg"
+                       android:textColor="@color/Black" />
+
+
+               </LinearLayout>
+
+
+
+           </LinearLayout>
+
+
+
+
+           <com.google.android.material.textfield.TextInputLayout
+               android:layout_width="match_parent"
+               android:layout_height="match_parent">
+
+
+               <EditText
+                   android:id="@+id/editTextFundEwalletCVC"
+                   android:layout_width="fill_parent"
+                   android:layout_height="50dp"
+                   android:background="@drawable/text_edit_border_grey"
+                   android:layout_below="@+id/textView4"
+                   android:layout_marginLeft="10dp"
+                   android:layout_marginRight="10dp"
+                   android:layout_marginTop="11dp"
+                   android:cursorVisible="true"
+                   android:ems="10"
+                   android:hint="Enter CVC"
+                   android:inputType="textPassword"
+                   android:paddingLeft="10dp"
+                   android:paddingRight="10dp"
+                   android:textColor="@color/Black"
+                   android:textCursorDrawable="@null"
+                   android:textSize="14dp"
+                   app:fontFamily="@font/montserrat"/>
+
+
+           </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+           <LinearLayout
+               android:id="@+id/linearLayoutLoadingPayment"
+               android:layout_width="fill_parent"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center"
+               android:layout_marginTop="20dp"
+               android:gravity="center"
+               android:background="@color/Black"
+               android:paddingTop="10dp"
+               android:paddingBottom="10dp"
+               android:visibility="gone"
+               android:orientation="horizontal">
+
+               <TextView
+                   android:id="@+id/textViewLoadingPayment"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Processing Payment.....please wait"
+                   android:layout_marginLeft="20dp"
+                   android:layout_marginRight="3dp"
+                   android:textColor="@color/Red"
+                   android:gravity="center"
+                   android:textSize="20dp"
+                   android:visibility="gone"
+                   android:textStyle="bold"
+                   />
+
+               <pl.droidsonroids.gif.GifImageView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:id="@+id/imageViewLoadingPayment"
+                   android:src="@drawable/ajax_loader"
+                   android:visibility="gone"/>
+
+           </LinearLayout>
+
+
+
+
+           <Button
+               android:id="@+id/buttonFundEWalletPay"
+               android:layout_width="fill_parent"
+               android:layout_height="wrap_content"
+               android:layout_alignParentLeft="true"
+               android:layout_alignParentStart="true"
+               android:layout_marginLeft="70dp"
+               android:layout_marginRight="70dp"
+               android:layout_marginTop="20dp"
+               android:background="@drawable/red_button"
+               android:text="Pay"
+               android:textColor="@color/White"
+               app:fontFamily="@font/montserrat"/>
+
+
+
+       </LinearLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
