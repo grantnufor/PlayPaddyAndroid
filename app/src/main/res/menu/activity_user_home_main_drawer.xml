@@ -20,6 +20,11 @@
             android:state_checked="true"
             android:title="Play And Win Game" />
         <item
+            android:id="@+id/nav_my_enrolled_games"
+            android:icon="@drawable/playandwinicon"
+            android:state_checked="true"
+            android:title="My Enrolled Games" />
+        <item
             android:id="@+id/nav_sign_out"
             android:icon="@drawable/logout"
             android:state_checked="true"

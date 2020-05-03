@@ -10,17 +10,18 @@ import org.ksoap2.transport.HttpTransportSE;
 
 import java.util.ArrayList;
 
-public class UserGameEnrolmentHttpServiceAdapter {
+public class GameOptionHttpServiceAdapter {
 
-    public ArrayList<JSONObject> GetAllUserGameEnrolments()
+
+    public ArrayList<JSONObject> GetAllGameOptions()
     {
-        String SOAP_ACTION_GetJsonData ="http://tempuri.org/GetAllUserGameEnrolments";
-        String OPERATION_NAME_GetJsonData = "GetAllUserGameEnrolments";
+        String SOAP_ACTION_GetJsonData ="http://tempuri.org/GetAllGameOptions";
+        String OPERATION_NAME_GetJsonData = "GetAllGameOptions";
 
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
 
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/UserGameEnrolmentServices.asmx";
+        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/GameOptionServices.asmx";
 
 
         SoapPrimitive response=null;
@@ -80,14 +81,14 @@ public class UserGameEnrolmentHttpServiceAdapter {
 
 
 
-    public JSONObject GetUserGameEnrolmentByUserGameEnrolmentId(String userGameEnrolmentId)
+    public JSONObject GetGameOptionByGameOptionId(String gameOptionId)
     {
-        String SOAP_ACTION_GetJsonData ="http://tempuri.org/GetUserGameEnrolmentByUserGameEnrolmentId";
-        String OPERATION_NAME_GetJsonData = "GetUserGameEnrolmentByUserGameEnrolmentId";
+        String SOAP_ACTION_GetJsonData ="http://tempuri.org/GetGameOptionByGameOptionId";
+        String OPERATION_NAME_GetJsonData = "GetGameOptionByGameOptionId";
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
 
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/UserGameEnrolmentServices.asmx";
+        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/GameOptionServices.asmx";
 
         SoapPrimitive response=null;
 
@@ -96,7 +97,7 @@ public class UserGameEnrolmentHttpServiceAdapter {
         try
         {
             SoapObject request = new SoapObject(WSDL_TARGET_NAMESPACE,OPERATION_NAME_GetJsonData);
-            request.addProperty("userGameEnrolmentId", userGameEnrolmentId);
+            request.addProperty("gameQuestionId", gameOptionId);
             SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
             envelope.dotNet = true;
             envelope.setOutputSoapObject(request);
@@ -122,147 +123,14 @@ public class UserGameEnrolmentHttpServiceAdapter {
 
 
 
-    public ArrayList<JSONObject> GetUserGameEnrolmentByUserId( String userId)
+    public JSONObject GetGameOptionByGameQuestionIdAndOptionName(String gameQuestionId, String optionName)
     {
-        String SOAP_ACTION_GetJsonData ="http://tempuri.org/GetUserGameEnrolmentByUserId";
-        String OPERATION_NAME_GetJsonData = "GetUserGameEnrolmentByUserId";
-
+        String SOAP_ACTION_GetJsonData ="http://tempuri.org/GetGameOptionByGameQuestionIdAndOptionName";
+        String OPERATION_NAME_GetJsonData = "GetGameOptionByGameQuestionIdAndOptionName";
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
 
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/UserGameEnrolmentServices.asmx";
-
-
-        SoapPrimitive response=null;
-
-        ArrayList<JSONObject> obj = new ArrayList<JSONObject>();//create arraylist of jsonobject to capture all returned objects
-
-        try
-        {
-            SoapObject request = new SoapObject(WSDL_TARGET_NAMESPACE,OPERATION_NAME_GetJsonData);
-            request.addProperty("userId", userId);
-            SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
-            envelope.dotNet = true;
-            envelope.setOutputSoapObject(request);
-            HttpTransportSE httpTransport = new HttpTransportSE(SOAP_ADDRESS);
-            httpTransport.call(SOAP_ACTION_GetJsonData, envelope);
-
-            response = (SoapPrimitive) envelope.getResponse();
-
-
-
-
-            if(response.toString().length()>0 )
-            {
-                //String responseModified = "["+response+"]";
-
-                JSONArray aryJSONStrings  = new JSONArray(response.toString());
-                JSONObject jsonObj = new JSONObject();
-
-
-
-                for(int i=0; i<aryJSONStrings.length(); i++) {
-
-                    jsonObj = (JSONObject)aryJSONStrings.getJSONObject(i);
-
-                    obj.add(jsonObj);
-
-                }
-
-            }
-            else
-            {
-                obj = null;
-            }
-
-        }
-        catch (Exception exception)
-        {
-            obj = null;
-            exception.printStackTrace();
-            //Toast.makeTextundefinedthis, exception.printStackTraceundefined) ,Toast.LENGTH_LONG).showundefined);
-        }
-
-        return obj;
-
-    }
-
-
-    public ArrayList<JSONObject> GetUserGameEnrolmentByGameId( String gameId)
-    {
-        String SOAP_ACTION_GetJsonData ="http://tempuri.org/GetUserGameEnrolmentByGameId";
-        String OPERATION_NAME_GetJsonData = "GetUserGameEnrolmentByGameId";
-
-
-        String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
-
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/UserGameEnrolmentServices.asmx";
-
-
-        SoapPrimitive response=null;
-
-        ArrayList<JSONObject> obj = new ArrayList<JSONObject>();//create arraylist of jsonobject to capture all returned objects
-
-        try
-        {
-            SoapObject request = new SoapObject(WSDL_TARGET_NAMESPACE,OPERATION_NAME_GetJsonData);
-            request.addProperty("gameId", gameId);
-            SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
-            envelope.dotNet = true;
-            envelope.setOutputSoapObject(request);
-            HttpTransportSE httpTransport = new HttpTransportSE(SOAP_ADDRESS);
-            httpTransport.call(SOAP_ACTION_GetJsonData, envelope);
-
-            response = (SoapPrimitive) envelope.getResponse();
-
-
-
-
-            if(response.toString().length()>0 )
-            {
-                //String responseModified = "["+response+"]";
-
-                JSONArray aryJSONStrings  = new JSONArray(response.toString());
-                JSONObject jsonObj = new JSONObject();
-
-
-
-                for(int i=0; i<aryJSONStrings.length(); i++) {
-
-                    jsonObj = (JSONObject)aryJSONStrings.getJSONObject(i);
-
-                    obj.add(jsonObj);
-
-                }
-
-            }
-            else
-            {
-                obj = null;
-            }
-
-        }
-        catch (Exception exception)
-        {
-            obj = null;
-            exception.printStackTrace();
-            //Toast.makeTextundefinedthis, exception.printStackTraceundefined) ,Toast.LENGTH_LONG).showundefined);
-        }
-
-        return obj;
-
-    }
-
-
-
-    public JSONObject GetUserGameEnrolmentByUserIdAndGameId(String gameId, String userId)
-    {
-        String SOAP_ACTION_GetJsonData ="http://tempuri.org/GetUserGameEnrolmentByUserIdAndGameId";
-        String OPERATION_NAME_GetJsonData = "GetUserGameEnrolmentByUserIdAndGameId";
-
-        String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
-
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/UserGameEnrolmentServices.asmx";
+        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/GameOptionServices.asmx";
 
         SoapPrimitive response=null;
 
@@ -271,8 +139,8 @@ public class UserGameEnrolmentHttpServiceAdapter {
         try
         {
             SoapObject request = new SoapObject(WSDL_TARGET_NAMESPACE,OPERATION_NAME_GetJsonData);
-            request.addProperty("gameId", gameId);
-            request.addProperty("userId", userId);
+            request.addProperty("gameQuestionId", gameQuestionId);
+            request.addProperty("optionName", optionName);
             SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
             envelope.dotNet = true;
             envelope.setOutputSoapObject(request);
@@ -299,27 +167,25 @@ public class UserGameEnrolmentHttpServiceAdapter {
 
 
 
-    public String AddUserGameEnrolment(String userId, String gameId, String amountPaid, String dateOfPayment, String status)
+    public String AddGameOption(String optionName, String optionDetail, String image, String gameQuestionId)
     {
-        String SOAP_ACTION_GetJsonData ="http://tempuri.org/AddUserGameEnrolment";
-        String OPERATION_NAME_GetJsonData = "AddUserGameEnrolment";
+        String SOAP_ACTION_GetJsonData ="http://tempuri.org/AddGameOption";
+        String OPERATION_NAME_GetJsonData = "AddGameOption";
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
 
 
 
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/UserGameEnrolmentServices.asmx";
+        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/GameOptionServices.asmx";
 
         SoapPrimitive response=null;
         try
         {
             SoapObject request = new SoapObject(WSDL_TARGET_NAMESPACE,OPERATION_NAME_GetJsonData);
-            request.addProperty("userId", userId);
-            request.addProperty("gameId", gameId);
-            request.addProperty("amountPaid", amountPaid);
-            request.addProperty("dateOfPayment", dateOfPayment);
-            request.addProperty("status", status);
-
+            request.addProperty("optionName", optionName);
+            request.addProperty("optionDetail", optionDetail);
+            request.addProperty("image", image);
+            request.addProperty("gameQuestionId", gameQuestionId);
 
             SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
             envelope.dotNet = true;
@@ -370,27 +236,26 @@ public class UserGameEnrolmentHttpServiceAdapter {
 
 
 
-    public String UpdateUserGameEnrolment(String userGameEnrolmentId, String userId, String gameId, String amountPaid, String dateOfPayment, String status)
+    public String UpdateGameOption(String gameOptionId, String optionName, String optionDetail, String image, String gameQuestionId )
     {
-        String SOAP_ACTION_GetJsonData ="http://tempuri.org/UpdateUserGameEnrolment";
-        String OPERATION_NAME_GetJsonData = "UpdateUserGameEnrolment";
+        String SOAP_ACTION_GetJsonData ="http://tempuri.org/UpdateGameOption";
+        String OPERATION_NAME_GetJsonData = "UpdateGameOption";
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
 
 
 
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/UserGameEnrolmentServices.asmx";
+        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/GameOptionServices.asmx";
 
         SoapPrimitive response=null;
         try
         {
             SoapObject request = new SoapObject(WSDL_TARGET_NAMESPACE,OPERATION_NAME_GetJsonData);
-            request.addProperty("userGameEnrolmentId", userGameEnrolmentId);
-            request.addProperty("userId", userId);
-            request.addProperty("gameId", gameId);
-            request.addProperty("amountPaid", amountPaid);
-            request.addProperty("dateOfPayment", dateOfPayment);
-            request.addProperty("status", status);
+            request.addProperty("gameOptionId", gameOptionId);
+            request.addProperty("optionName", optionName);
+            request.addProperty("optionDetail", optionDetail);
+            request.addProperty("image", image);
+            request.addProperty("gameQuestionId", gameQuestionId);
 
 
 

@@ -1,5 +1,6 @@
 package org.landoria.mac.playpaddy;
 
+import HttpAdapter.CompanyAccountHttpServiceAdapter;
 import HttpAdapter.EWalletHttpServiceAdapter;
 import HttpAdapter.EWalletTransactionHttpServiceAdapter;
 import HttpAdapter.UserHttpServiceAdapter;
@@ -45,6 +46,7 @@ public class FundEWalletActivity extends AppCompatActivity {
     EWalletHttpServiceAdapter eWalletHttpServiceAdapter = new EWalletHttpServiceAdapter();
     EWalletTransactionHttpServiceAdapter eWalletTransactionHttpServiceAdapter = new EWalletTransactionHttpServiceAdapter();
     UserHttpServiceAdapter userHttpServiceAdapter = new UserHttpServiceAdapter();
+    CompanyAccountHttpServiceAdapter companyAccountHttpServiceAdapter = new CompanyAccountHttpServiceAdapter();
 
 
 
@@ -169,7 +171,7 @@ public class FundEWalletActivity extends AppCompatActivity {
             return;
         }
         else{
-            amount = Integer.parseInt( editTextFundEwalletAmount.getText()+"");
+            amount = Integer.parseInt( editTextFundEwalletAmount.getText()+"00");
         }
 
 
@@ -307,27 +309,16 @@ public class FundEWalletActivity extends AppCompatActivity {
                 // Retrieve the transaction, and send its reference to your server
                 // for verification.
                 //fund the users ewallet
-                AlertDialog.Builder builder = new AlertDialog.Builder(FundEWalletActivity.this);
-                builder.setTitle("PlayPaddy");
-                builder.setMessage("Transaction was successful.");
-                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        // You don't have to do anything here if you just
-                        // want it dismissed when clicked
-                    }
-                });
-                builder.show();
 
 
-
-
+                creditEwallet();
 
                 linearLayoutLoadingPayment.setVisibility(View.INVISIBLE);
                 textViewLoadingPayment.setVisibility(View.INVISIBLE);
                 imageViewLoadingPayment.setVisibility(View.INVISIBLE);
 
 
-                creditEwallet();
+
 
 
             }
@@ -365,6 +356,7 @@ public class FundEWalletActivity extends AppCompatActivity {
 
     JSONObject jsonEwalletObj = new JSONObject();
     JSONObject jsonEwalletTransactionObj = new JSONObject();
+    JSONObject jsonCompanyObj = new JSONObject();
 
     private void creditEwallet(){
 
@@ -423,6 +415,66 @@ public class FundEWalletActivity extends AppCompatActivity {
                                 eWalletTransactionHttpServiceAdapter.AddEwalletTransaction(ewalletId, confimedAmount+"", "0.00", "EWallet Funding", newEwalletBalance+"", userId, "0", "Success", date);
                             }
                         }
+                        else{// if user does not have ewallet, create one for him
+
+                           //
+
+                            String pattern = "MM/dd/yyyy";
+                            SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, new Locale("fr", "FR"));
+                            String date = simpleDateFormat.format(new Date());
+
+                            double ewalletBalance = jsonEwalletObj.getDouble("Balance");
+
+                            double newEwalletBalance = ewalletBalance + confimedAmount;
+
+                            if(newEwalletBalance > 0){
+
+                                eWalletHttpServiceAdapter.AddEwallet( userId, "0.00", "0.00", newEwalletBalance+"", "0000", date, date);
+
+
+                                JSONObject jsonEwalletObjForNew = eWalletHttpServiceAdapter.GetEwalletByUserId(userId);
+
+                                if(jsonEwalletObjForNew.isNull("EWalletId")) {
+
+                                    String ewalletIdForNew = jsonEwalletObjForNew.getString("EWalletId");
+
+                                    eWalletTransactionHttpServiceAdapter.AddEwalletTransaction(ewalletIdForNew, confimedAmount + "", "0.00", "EWallet Funding", newEwalletBalance + "", userId, "0", "Success", date);
+                                }
+                            }
+                        }
+
+
+
+                        //also check company balance and credit the company account
+                        jsonCompanyObj = companyAccountHttpServiceAdapter.GetCompanyAccountByCompanyAccountId("1");
+
+                       // if(!jsonCompanyObj.isNull("CompanyAccountId")){//if company account already exists
+
+                            String pattern = "MM/dd/yyyy";
+                            SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, new Locale("fr", "FR"));
+                            String date = simpleDateFormat.format(new Date());
+
+                            String companyAccountId = jsonCompanyObj.isNull("CompanyAccountId")+"";
+
+                            double companyBalance = Double.parseDouble( jsonCompanyObj.isNull("CompanyBalance")+"");
+                            double newCompanyBalance = companyBalance + confimedAmount;
+                            companyAccountHttpServiceAdapter.AddCompanyAccount(userId, "EWallet Funding", confimedAmount+"", "0.00", newCompanyBalance+"", date);
+
+//
+//                        }
+//                        else{
+//
+//                            String pattern = "MM/dd/yyyy";
+//                            SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, new Locale("fr", "FR"));
+//                            String date = simpleDateFormat.format(new Date());
+//
+//                           // String companyAccountId = jsonCompanyObj.isNull("CompanyAccountId")+"";
+//
+//                            double companyBalance = Double.parseDouble( jsonCompanyObj.isNull("CompanyBalance")+"");
+//                            double newCompanyBalance = companyBalance + confimedAmount;
+//                            companyAccountHttpServiceAdapter.AddCompanyAccount(userId, "EWallet Funding", confimedAmount+"", "0.00", newCompanyBalance+"", date);
+//
+//                        }
 
 
 
@@ -446,19 +498,24 @@ public class FundEWalletActivity extends AppCompatActivity {
                     } else {
 
 
-                            // Use the Builder class for convenient dialog construction
-                            AlertDialog.Builder builder = new AlertDialog.Builder(FundEWalletActivity.this);
-                            builder.setTitle("PlayPaddy");
-                            builder.setMessage("Your EWallet was funded successfuly.");
-                            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    // You don't have to do anything here if you just
-                                    // want it dismissed when clicked
-                                }
-                            });
-                            builder.show();
+//                            // Use the Builder class for convenient dialog construction
+//                            AlertDialog.Builder builder = new AlertDialog.Builder(FundEWalletActivity.this);
+//                            builder.setTitle("PlayPaddy");
+//                            builder.setMessage("Your EWallet was funded successfuly.");
+//                            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//                                public void onClick(DialogInterface dialog, int id) {
+//                                    // You don't have to do anything here if you just
+//                                    // want it dismissed when clicked
+//                                }
+//                            });
+//                            builder.show();
+//
+//                            return;
 
-                            return;
+                        Intent intent = new Intent(FundEWalletActivity.this, EWalletFundingConfirmationActivity.class);
+                        intent.putExtra("amount", amount);
+                        startActivity(intent);
+                        finishAffinity();
 
 
                     }

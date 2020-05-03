@@ -6,10 +6,16 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -42,12 +48,26 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
 
 
+       // showBackButton();
+
+
+//        //showing activity name and app icon on action bar
+//        getSupportActionBar().setDisplayShowHomeEnabled(true);
+//        getSupportActionBar().setLogo(R.drawable.logomainwhite);
+////        getSupportActionBar().setTitle(sessionDb.getSessionBySessionId("1").get("NAME").toString());
+//        getSupportActionBar().setDisplayUseLogoEnabled(true);
+//
+//
+////        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#800000")));
+//        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#006400")));
+
+
         sessionDb = new SessionDB(this);
 
-        editTextSignUpUserName = (EditText)findViewById(R.id.editTextSignUpUserName);
-        editTextSignUpPassword = (EditText)findViewById(R.id.editTextSignUpPassword);
+        editTextSignUpUserName = (EditText) findViewById(R.id.editTextSignUpUserName);
+        editTextSignUpPassword = (EditText) findViewById(R.id.editTextSignUpPassword);
 
-        buttonSignUpSignUp =  (Button) findViewById(R.id.buttonSignUpSignUp);
+        buttonSignUpSignUp = (Button) findViewById(R.id.buttonSignUpSignUp);
         buttonSignUpSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,11 +86,9 @@ public class SignUpActivity extends AppCompatActivity {
         });
 
 
-
         //showBackButton();
 
     }
-
 
 
     String userName = "";
@@ -85,7 +103,6 @@ public class SignUpActivity extends AppCompatActivity {
     JSONObject jsonUserObj = new JSONObject();
 
     public void signUp() {
-
 
 
         //user name
@@ -111,11 +128,10 @@ public class SignUpActivity extends AppCompatActivity {
 
 
         //password
-        if(!editTextSignUpPassword.getText().equals("")){
+        if (!editTextSignUpPassword.getText().equals("")) {
 
             password = editTextSignUpPassword.getText().toString();
-        }
-        else{
+        } else {
             // Use the Builder class for convenient dialog construction
             AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this);
             builder.setTitle("PlayPaddy");
@@ -128,12 +144,6 @@ public class SignUpActivity extends AppCompatActivity {
             });
             builder.show();
         }
-
-
-
-
-
-
 
 
         try {
@@ -175,18 +185,14 @@ public class SignUpActivity extends AppCompatActivity {
                         jsonUserObj = userHttpServiceAdapter.GetUserByUserName(userName);
 
 
-                        if(jsonUserObj.isNull("UserName")){
+                        if (jsonUserObj.isNull("UserName")) {
 
                             //if the username does not exist, then register this user
-                            returnVal = userHttpServiceAdapter.RegisterUser(userName,"", "", password,date, date, "");
+                            returnVal = userHttpServiceAdapter.RegisterUser(userName, "", "", password, date, date, "");
 
-                        }
-                        else{
+                        } else {
                             returnVal = "2";//the user already exists.  represents existence of the user
                         }
-
-
-
 
 
                     } catch (Exception ex) {
@@ -208,7 +214,7 @@ public class SignUpActivity extends AppCompatActivity {
                         alert.show();
                     } else {
 
-                        if(returnVal.equals("1")){//if the registration was successful
+                        if (returnVal.equals("1")) {//if the registration was successful
 
 
                             try {
@@ -246,14 +252,13 @@ public class SignUpActivity extends AppCompatActivity {
                                 intent.putExtra("userid", userServerId);
                                 intent.putExtra("username", userName);
                                 startActivity(intent);
-                                finish();
-                            }
-                            catch(Exception ex){
+                                finishAffinity();
+                            } catch (Exception ex) {
 
                                 // Use the Builder class for convenient dialog construction
                                 AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this);
                                 builder.setTitle("PlayPaddy");
-                                builder.setMessage("An error has occurred. "+errorMessage);
+                                builder.setMessage("An error has occurred. " + errorMessage);
                                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
                                         // You don't have to do anything here if you just
@@ -264,13 +269,12 @@ public class SignUpActivity extends AppCompatActivity {
                                 return;
                             }
 
-                        }
-                        else if(returnVal.equals("0")){//if the registration was not successful
+                        } else if (returnVal.equals("0")) {//if the registration was not successful
 
                             // Use the Builder class for convenient dialog construction
                             AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this);
                             builder.setTitle("PlayPaddy");
-                            builder.setMessage("Registration was not successful. "+errorMessage);
+                            builder.setMessage("Registration was not successful. " + errorMessage);
                             builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
                                     // You don't have to do anything here if you just
@@ -280,13 +284,12 @@ public class SignUpActivity extends AppCompatActivity {
                             builder.show();
                             return;
 
-                        }
-                        else if(returnVal.equals("2")){
+                        } else if (returnVal.equals("2")) {
 
                             // Use the Builder class for convenient dialog construction
                             AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this);
                             builder.setTitle("PlayPaddy");
-                            builder.setMessage("A user with this username aleady exists. "+errorMessage);
+                            builder.setMessage("A user with this username aleady exists. " + errorMessage);
                             builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
                                     // You don't have to do anything here if you just
@@ -319,7 +322,6 @@ public class SignUpActivity extends AppCompatActivity {
         }
 
 
-
     }
 
 
@@ -329,7 +331,6 @@ public class SignUpActivity extends AppCompatActivity {
 //
 //    }
 //
-//
 //    @Override
 //    public boolean onOptionsItemSelected(MenuItem menuItem) {
 //        if (menuItem.getItemId() == android.R.id.home) {
@@ -337,4 +338,13 @@ public class SignUpActivity extends AppCompatActivity {
 //        }
 //        return super.onOptionsItemSelected(menuItem);
 //    }
+//
+//
+//    public boolean isNetworkAvailable() {
+//        ConnectivityManager connectivityManager
+//                = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
+//        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+//        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+//    }
+
 }

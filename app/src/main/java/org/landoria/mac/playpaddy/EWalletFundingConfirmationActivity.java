@@ -14,22 +14,25 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class ConfirmEnrolmentActivity extends AppCompatActivity {
+public class EWalletFundingConfirmationActivity extends AppCompatActivity {
 
 
-    TextView textViewConfirmEnrolment;
-    Button buttonConfirmEnrolmentDone;
 
-    String gameAmount = "";
+
+    TextView textViewEWalletFundingConfirmation;
+    Button buttonEWalletFundingConfirmationDone;
+
+    String amount = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_confirm_enrolment);
+        setContentView(R.layout.activity_ewallet_funding_confirmation);
 
 
         Intent intent = getIntent();
-        gameAmount = intent.getStringExtra("gameamount");
+        amount = intent.getStringExtra("amount");
+
 
         showBackButton();
 
@@ -46,18 +49,23 @@ public class ConfirmEnrolmentActivity extends AppCompatActivity {
 
 
 
-         textViewConfirmEnrolment = (TextView)findViewById(R.id.textViewConfirmEnrolment);
-         textViewConfirmEnrolment.setText("You have been enrol successfuly. Make sure to play the game at game time.");
+        textViewEWalletFundingConfirmation = (TextView)findViewById(R.id.textViewEWalletFundingConfirmation);
+        textViewEWalletFundingConfirmation.setText(amount+ "has been credited into your EWallet. You can now enrol and pay for games from your EWallet and make some money. Best wishes!");
 
-         buttonConfirmEnrolmentDone = (Button)findViewById(R.id.buttonConfirmEnrolmentDone);
-        buttonConfirmEnrolmentDone.setOnClickListener(new View.OnClickListener() {
+
+        buttonEWalletFundingConfirmationDone = (Button)findViewById(R.id.buttonEWalletFundingConfirmationDone);
+
+        buttonEWalletFundingConfirmationDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+                Intent intent = new Intent(EWalletFundingConfirmationActivity.this, UserHomeMainActivity.class);
+                startActivity(intent);
                 finish();
 
             }
         });
-
 
     }
 

@@ -4,14 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/Black"
     tools:context=".ConfirmEnrolmentActivity">
+
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="@color/Black"
+        android:gravity="center"
         android:orientation="vertical">
 
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:src="@drawable/logomainwhite"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="-100dp"
+            />
 
         <TextView
             android:layout_width="fill_parent"
@@ -26,19 +37,20 @@
             app:fontFamily="@font/montserrat" />
 
         <TextView
+            android:id="@+id/textViewConfirmEnrolment"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:layout_marginBottom="10dp"
             android:gravity="center"
-            android:text="Pay N... from my EWallet to Enrol. Please confirm by clicking the Pay button below"
+            android:text="Success"
             android:textAlignment="center"
             android:textSize="16dp"
             android:textColor="@color/White"
             app:fontFamily="@font/montserrat" />
 
         <Button
-            android:id="@+id/buttonConfirmEnrolmentPay"
+            android:id="@+id/buttonConfirmEnrolmentDone"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -48,12 +60,14 @@
             android:layout_marginRight="10dp"
             android:layout_marginTop="30dp"
             android:background="@drawable/red_button"
-            android:text="Pay"
+            android:text="Done"
             android:textColor="@color/White"
             app:fontFamily="@font/montserrat"/>
 
-
     </LinearLayout>
+
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

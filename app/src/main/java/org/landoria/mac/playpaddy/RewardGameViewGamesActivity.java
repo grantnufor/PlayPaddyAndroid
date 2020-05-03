@@ -415,8 +415,8 @@ public class RewardGameViewGamesActivity extends AppCompatActivity {
     JSONObject jsonEwalletObj = new JSONObject();
     JSONObject jsonEwalletTransactionObj = new JSONObject();
 
-    String enoughFunds = "false";
-    String userEnroled = "false";
+    String enoughFunds = "";
+    String userEnroled = "";
 
     private  void enrolUser(){
 
@@ -454,20 +454,20 @@ public class RewardGameViewGamesActivity extends AppCompatActivity {
                         try {
 
                             //getting the ewallet for this user
-                            jsonEwalletObj = eWalletHttpServiceAdapter.GetEwalletByUserId(userId);
+                           JSONObject  jsonEwalletNewObj = eWalletHttpServiceAdapter.GetEwalletByUserId(userId);
 
-                            if(!jsonEwalletObj.isNull("EWalletId")) {
+                            if(!jsonEwalletNewObj.isNull("EwalletId")) {
                                 //getting the balance and crediting the user with the new balance
-                                String ewalletId = jsonEwalletObj.getString("EWalletId");
+                                String ewalletId = jsonEwalletNewObj.getString("EwalletId");
 
                                 String pattern = "MM/dd/yyyy";
                                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, new Locale("fr", "FR"));
                                 String date = simpleDateFormat.format(new Date());
 
-                                double ewalletBalance = jsonEwalletObj.getDouble("Balance");
+                                double ewalletBalance = jsonEwalletNewObj.getDouble("CurrentBalance");
 
 
-                                if(ewalletBalance > gameAmountToPlay) {
+                                if(ewalletBalance >= gameAmountToPlay) {
 
                                     double newEwalletBalance = ewalletBalance - gameAmountToPlay;
 
@@ -497,9 +497,6 @@ public class RewardGameViewGamesActivity extends AppCompatActivity {
                                        }
 
                                     }
-
-
-
 
                                 }
                                 else {

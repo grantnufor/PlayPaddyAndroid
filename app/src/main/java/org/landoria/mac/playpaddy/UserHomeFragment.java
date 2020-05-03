@@ -43,8 +43,9 @@ public class UserHomeFragment extends Fragment {
 
     Button buttonUserHomeFundEwallet;
 
-    JSONObject jsonUserObj;
-    JSONObject jsonEwalletObj;
+    JSONObject jsonUserObj = new JSONObject();
+    JSONObject jsonEwalletMainObj = new JSONObject();
+
 
 
     String userId = "";
@@ -69,7 +70,7 @@ public class UserHomeFragment extends Fragment {
 
 
         jsonUserObj = new JSONObject();
-        jsonEwalletObj = new JSONObject();
+
 
         textViewUserHomeDateSignedUp = (TextView)view.findViewById(R.id.textViewUserHomeDateSignedUp);
         textViewUserHomeEWalletBalance =(TextView)view.findViewById(R.id.textViewUserHomeEWalletBalance);
@@ -183,6 +184,13 @@ public class UserHomeFragment extends Fragment {
 
                         jsonUserObj = userHttpServiceAdapter.GetUserByUserName(userName);
 
+//                        String userIdNew = jsonUserObj.getString("UserId");
+//
+//                        if(!eWalletHttpServiceAdapter.GetEwalletByUserId(userIdNew).isNull("EWalletId")){
+//
+//                            jsonEwalletMainObj = eWalletHttpServiceAdapter.GetEwalletByUserId(userIdNew);
+//                        }
+
 
 
                     } catch (Exception ex) {
@@ -209,6 +217,9 @@ public class UserHomeFragment extends Fragment {
                             try {
 
                                 textViewUserHomeDateSignedUp.setText(jsonUserObj.getString("DateRegistered"));
+
+                             //   textViewUserHomeEWalletBalance.setText("N"+jsonEwalletMainObj.getString("CurrentBalance"));
+
 
                             }
                             catch(Exception ex){
@@ -254,6 +265,9 @@ public class UserHomeFragment extends Fragment {
         }
     }
 
+
+
+
     private void loadUserEwalletInfo(){
 
 
@@ -289,9 +303,11 @@ public class UserHomeFragment extends Fragment {
                     try {
 
 
-                        if(!jsonUserObj.isNull("UserName")) {
+                        if(!jsonUserObj.isNull("UserId")) {
 
-                            jsonEwalletObj = eWalletHttpServiceAdapter.GetEwalletByUserId(jsonUserObj.getString("UserName"));
+                            String userIdNewNow = jsonUserObj.getString("UserId");
+
+                            jsonEwalletMainObj = eWalletHttpServiceAdapter.GetEwalletByUserId(userIdNewNow);
                         }
 
 
@@ -319,7 +335,7 @@ public class UserHomeFragment extends Fragment {
 
                         try{
 
-                            textViewUserHomeEWalletBalance.setText("N"+jsonEwalletObj.getString("CurrentBalance"));
+                            textViewUserHomeEWalletBalance.setText("N"+jsonEwalletMainObj.getString("CurrentBalance"));
 
                         }
                         catch(Exception ex){

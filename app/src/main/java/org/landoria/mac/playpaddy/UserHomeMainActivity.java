@@ -37,12 +37,22 @@ public class UserHomeMainActivity extends AppCompatActivity
 
     private AppBarConfiguration mAppBarConfiguration;
 
+    String userId = "";
+    String userName = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_home_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
+        Intent intent = getIntent();
+        userId = intent.getStringExtra("userid");
+        userName = intent.getStringExtra("username");
+
+
 //        FloatingActionButton fab = findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -163,6 +173,16 @@ public class UserHomeMainActivity extends AppCompatActivity
                 ft.replace(R.id.nav_host_fragment, fragment);
                 ft.commit();
             }
+
+        }
+        if (id == R.id.nav_my_enrolled_games) {
+
+
+            Intent intent = new Intent(UserHomeMainActivity.this, UserEnroledGamesActivity.class);
+            intent.putExtra("userid", userId);
+            intent.putExtra("username", userName);
+            startActivity(intent);
+
 
         }
         else if(id == R.id.nav_sign_out){

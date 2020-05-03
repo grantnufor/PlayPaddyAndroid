@@ -6,10 +6,16 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -41,6 +47,22 @@ public class SignInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
+
+
+//        showBackButton();
+
+
+//        //showing activity name and app icon on action bar
+//        getSupportActionBar().setDisplayShowHomeEnabled(true);
+//        getSupportActionBar().setLogo(R.drawable.logomainwhite);
+////        getSupportActionBar().setTitle(sessionDb.getSessionBySessionId("1").get("NAME").toString());
+//        getSupportActionBar().setDisplayUseLogoEnabled(true);
+//
+//
+////        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#800000")));
+//        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#006400")));
+
+
 
 
         sessionDb = new SessionDB(this);
@@ -228,7 +250,7 @@ public class SignInActivity extends AppCompatActivity {
                                 intent.putExtra("userid", userServerId);
                                 intent.putExtra("username", userName);
                                 startActivity(intent);
-                                finish();
+                                finishAffinity();
                                 return;
 
                             }
@@ -289,5 +311,29 @@ public class SignInActivity extends AppCompatActivity {
         }
 
     }
+
+
+
+//    public void showBackButton() {
+//
+//        this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem menuItem) {
+//        if (menuItem.getItemId() == android.R.id.home) {
+//            finish();
+//        }
+//        return super.onOptionsItemSelected(menuItem);
+//    }
+//
+//
+//    public boolean isNetworkAvailable() {
+//        ConnectivityManager connectivityManager
+//                = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
+//        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+//        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+//    }
 
 }

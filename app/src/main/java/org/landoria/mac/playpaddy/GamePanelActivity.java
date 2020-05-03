@@ -1,5 +1,6 @@
 package org.landoria.mac.playpaddy;
 
+import HttpAdapter.GameHttpServiceAdapter;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -10,26 +11,25 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 
-public class ConfirmEnrolmentActivity extends AppCompatActivity {
+public class GamePanelActivity extends AppCompatActivity {
 
 
-    TextView textViewConfirmEnrolment;
-    Button buttonConfirmEnrolmentDone;
+    GameHttpServiceAdapter gameHttpServiceAdapter = new GameHttpServiceAdapter();
 
-    String gameAmount = "";
+
+    String userId = "";
+    String userName = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_confirm_enrolment);
+        setContentView(R.layout.activity_game_panel);
 
 
         Intent intent = getIntent();
-        gameAmount = intent.getStringExtra("gameamount");
+        userId = intent.getStringExtra("userid");
+        userName = intent.getStringExtra("username");
 
         showBackButton();
 
@@ -43,21 +43,6 @@ public class ConfirmEnrolmentActivity extends AppCompatActivity {
 
 //        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#800000")));
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#006400")));
-
-
-
-         textViewConfirmEnrolment = (TextView)findViewById(R.id.textViewConfirmEnrolment);
-         textViewConfirmEnrolment.setText("You have been enrol successfuly. Make sure to play the game at game time.");
-
-         buttonConfirmEnrolmentDone = (Button)findViewById(R.id.buttonConfirmEnrolmentDone);
-        buttonConfirmEnrolmentDone.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-
-            }
-        });
-
 
     }
 
@@ -84,6 +69,4 @@ public class ConfirmEnrolmentActivity extends AppCompatActivity {
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
-
-
 }

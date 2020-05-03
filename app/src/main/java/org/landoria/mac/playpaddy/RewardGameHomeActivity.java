@@ -35,11 +35,18 @@ public class RewardGameHomeActivity extends AppCompatActivity {
 
     ListView listViewGameCategories;
 
+    String userId = "";
+    String userName = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reward_game_home);
 
+
+        Intent intent = getIntent();
+        userId = intent.getStringExtra("userid");
+        userName = intent.getStringExtra("username");
 
         showBackButton();
 
@@ -241,6 +248,8 @@ public class RewardGameHomeActivity extends AppCompatActivity {
 
                                 Intent intent = new Intent(RewardGameHomeActivity.this, RewardGameViewGamesActivity.class);
                                 intent.putExtra("categoryId", categoryId);
+                                intent.putExtra("userid", userId);
+                                intent.putExtra("username", userName);
                                 startActivity(intent);
                             }
                         });
@@ -282,6 +291,8 @@ public class RewardGameHomeActivity extends AppCompatActivity {
 
                                 Intent intent = new Intent(RewardGameHomeActivity.this, RewardGameViewGamesActivity.class);
                                 intent.putExtra("categoryId", categoryId);
+                                intent.putExtra("userid", userId);
+                                intent.putExtra("username", userName);
                                 startActivity(intent);
 
                             }

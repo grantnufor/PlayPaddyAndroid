@@ -22,7 +22,7 @@ public class EWalletHttpServiceAdapter {
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
 
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/EwalletServices.asmx";
+        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/EWalletServices.asmx";
 
 
         SoapPrimitive response=null;
@@ -86,7 +86,7 @@ public class EWalletHttpServiceAdapter {
         String OPERATION_NAME_GetJsonData = "GetEwalletByEwalletId";
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/EwalletServices.asmx";
+        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/EWalletServices.asmx";
         SoapPrimitive response=null;
 
         JSONObject jsonObj = new JSONObject();
@@ -137,7 +137,7 @@ public class EWalletHttpServiceAdapter {
         String OPERATION_NAME_GetJsonData = "GetEwalletByUserId";
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/EwalletServices.asmx";
+        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/EWalletServices.asmx";
         SoapPrimitive response=null;
 
         JSONObject jsonObj = new JSONObject();
@@ -191,7 +191,7 @@ public class EWalletHttpServiceAdapter {
 
 
 
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/EwalletServices.asmx";
+        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/EWalletServices.asmx";
 
         SoapPrimitive response=null;
         try
@@ -259,14 +259,14 @@ public class EWalletHttpServiceAdapter {
 
     public String UpdateEwallet( String ewalletId, String userId, String referralBonus, String amountForSale, String currentBalance, String otp, String dateCreated, String dateLastModified)
     {
-        String SOAP_ACTION_GetJsonData ="http://tempuri.org/AddEwallet";
-        String OPERATION_NAME_GetJsonData = "AddEwallet";
+        String SOAP_ACTION_GetJsonData ="http://tempuri.org/UpdateEwallet";
+        String OPERATION_NAME_GetJsonData = "UpdateEwallet";
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
 
 
 
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/EwalletServices.asmx";
+        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/EWalletServices.asmx";
 
         SoapPrimitive response=null;
         try
