@@ -123,6 +123,72 @@ public class GameOptionHttpServiceAdapter {
 
 
 
+    public ArrayList<JSONObject> GetGameOptionByGameQuestionId(String gameQuestionId)
+    {
+        String SOAP_ACTION_GetJsonData ="http://tempuri.org/GetGameOptionByGameQuestionId";
+        String OPERATION_NAME_GetJsonData = "GetGameOptionByGameQuestionId";
+
+
+        String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
+
+        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/GameOptionServices.asmx";
+
+
+        SoapPrimitive response=null;
+
+        ArrayList<JSONObject> obj = new ArrayList<JSONObject>();//create arraylist of jsonobject to capture all returned objects
+
+        try
+        {
+            SoapObject request = new SoapObject(WSDL_TARGET_NAMESPACE,OPERATION_NAME_GetJsonData);
+            request.addProperty("gameQuestionId", gameQuestionId);
+            SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+            envelope.dotNet = true;
+            envelope.setOutputSoapObject(request);
+            HttpTransportSE httpTransport = new HttpTransportSE(SOAP_ADDRESS);
+            httpTransport.call(SOAP_ACTION_GetJsonData, envelope);
+
+            response = (SoapPrimitive) envelope.getResponse();
+
+
+
+
+            if(response.toString().length()>0 )
+            {
+                //String responseModified = "["+response+"]";
+
+                JSONArray aryJSONStrings  = new JSONArray(response.toString());
+                JSONObject jsonObj = new JSONObject();
+
+
+
+                for(int i=0; i<aryJSONStrings.length(); i++) {
+
+                    jsonObj = (JSONObject)aryJSONStrings.getJSONObject(i);
+
+                    obj.add(jsonObj);
+
+                }
+
+            }
+            else
+            {
+                obj = null;
+            }
+
+        }
+        catch (Exception exception)
+        {
+            obj = null;
+            exception.printStackTrace();
+            //Toast.makeTextundefinedthis, exception.printStackTraceundefined) ,Toast.LENGTH_LONG).showundefined);
+        }
+
+        return obj;
+
+    }
+
+
     public JSONObject GetGameOptionByGameQuestionIdAndOptionName(String gameQuestionId, String optionName)
     {
         String SOAP_ACTION_GetJsonData ="http://tempuri.org/GetGameOptionByGameQuestionIdAndOptionName";
