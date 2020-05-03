@@ -1,6 +1,12 @@
 package org.landoria.mac.playpaddy;
 
+import DBLayer.GameOptionDB;
+import DBLayer.GameQuestionDB;
+import DBLayer.GameUserAnswerDB;
 import HttpAdapter.GameHttpServiceAdapter;
+import HttpAdapter.GameOptionHttpServiceAdapter;
+import HttpAdapter.GameQuestionHttpServiceAdapter;
+import HttpAdapter.GameUserAnswerHttpServiceAdapter;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -16,6 +22,14 @@ public class GamePanelActivity extends AppCompatActivity {
 
 
     GameHttpServiceAdapter gameHttpServiceAdapter = new GameHttpServiceAdapter();
+    GameQuestionHttpServiceAdapter gameQuestionHttpServiceAdapter  = new GameQuestionHttpServiceAdapter();
+    GameOptionHttpServiceAdapter gameOptionHttpServiceAdapter = new GameOptionHttpServiceAdapter();
+    GameUserAnswerHttpServiceAdapter gameUserAnswerHttpServiceAdapter = new GameUserAnswerHttpServiceAdapter();
+
+    //local db objects
+    GameQuestionDB gameQuestionDB = new GameQuestionDB(this);
+    GameOptionDB gameOptionDB = new GameOptionDB(this);
+    GameUserAnswerDB gameUserAnswerDB = new GameUserAnswerDB(this);
 
 
     String userId = "";
@@ -46,6 +60,10 @@ public class GamePanelActivity extends AppCompatActivity {
 
     }
 
+
+    private void pullDownGame(){
+
+    }
 
 
     public void showBackButton() {
