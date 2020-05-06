@@ -21,7 +21,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".UserEnroledGamesActivity"></activity>
+        <activity android:name=".GameCompletedActivity"></activity>
+        <activity android:name=".UserEnroledGamesActivity" />
         <activity android:name=".GamePanelActivity" />
         <activity android:name=".EWalletFundingConfirmationActivity" />
         <activity android:name=".FundEWalletActivity" />

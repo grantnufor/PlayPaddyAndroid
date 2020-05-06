@@ -53,57 +53,65 @@ public class SplashActivity extends AppCompatActivity {
                 if(status.equals("logged in")) {
 
 
-                    loadUserInfo();
+                    Intent intent = new Intent(SplashActivity.this, UserHomeMainActivity.class);
+                    intent.putExtra("userid", userServerId);
+                    intent.putExtra("username", userName);
+                    startActivity(intent);
+                    finish();
+                    return;
 
-                    if(jsonUserObj.isNull("UserId")) {
+//
+//                    loadUserInfo();
+//
+//                    if(jsonUserObj.isNull("UserId")) {
+//
+//                        try {
+//
+//                            userId = jsonUserObj.getString("UserId");
+//
+//                            Intent intent = new Intent(SplashActivity.this, UserHomeMainActivity.class);
+//                            intent.putExtra("userid", userId);
+//                            intent.putExtra("username", userName);
+//                            startActivity(intent);
+//                            finish();
+//                            return;
+//
+//                        }catch(Exception ex){
+//
+//
+//                            // Use the Builder class for convenient dialog construction
+//                            AlertDialog.Builder builder = new AlertDialog.Builder(SplashActivity.this);
+//                            builder.setTitle("PlayPaddy");
+//                            builder.setMessage("An error has occurred. Please try again.");
+//                            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//                                public void onClick(DialogInterface dialog, int id) {
+//                                    // You don't have to do anything here if you just
+//                                    // want it dismissed when clicked
+//                                }
+//                            });
+//                            builder.show();
+//
+//
+//                        }
 
-                        try {
-
-                            userId = jsonUserObj.getString("UserId");
-
-                            Intent intent = new Intent(SplashActivity.this, UserHomeMainActivity.class);
-                            intent.putExtra("userid", userId);
-                            intent.putExtra("username", userName);
-                            startActivity(intent);
-                            finish();
-                            return;
-
-                        }catch(Exception ex){
-
-
-                            // Use the Builder class for convenient dialog construction
-                            AlertDialog.Builder builder = new AlertDialog.Builder(SplashActivity.this);
-                            builder.setTitle("PlayPaddy");
-                            builder.setMessage("An error has occurred. Please try again.");
-                            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    // You don't have to do anything here if you just
-                                    // want it dismissed when clicked
-                                }
-                            });
-                            builder.show();
-
-
-                        }
-
-
-                    }
-                    else{
-
-                        // Use the Builder class for convenient dialog construction
-                        AlertDialog.Builder builder = new AlertDialog.Builder(SplashActivity.this);
-                        builder.setTitle("PlayPaddy");
-                        builder.setMessage("An error has occurred. Please try again.");
-                        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                // You don't have to do anything here if you just
-                                // want it dismissed when clicked
-                            }
-                        });
-                        builder.show();
-
-
-                    }
+//
+//                    }
+//                    else{
+//
+//                        // Use the Builder class for convenient dialog construction
+//                        AlertDialog.Builder builder = new AlertDialog.Builder(SplashActivity.this);
+//                        builder.setTitle("PlayPaddy");
+//                        builder.setMessage("An error has occurred. Please try again.");
+//                        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//                            public void onClick(DialogInterface dialog, int id) {
+//                                // You don't have to do anything here if you just
+//                                // want it dismissed when clicked
+//                            }
+//                        });
+//                        builder.show();
+//
+//
+//                    }
                 }
 
             }

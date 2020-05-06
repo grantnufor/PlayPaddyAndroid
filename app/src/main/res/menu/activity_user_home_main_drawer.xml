@@ -21,7 +21,7 @@
             android:title="Play And Win Game" />
         <item
             android:id="@+id/nav_my_enrolled_games"
-            android:icon="@drawable/playandwinicon"
+            android:icon="@drawable/enrol"
             android:state_checked="true"
             android:title="My Enrolled Games" />
         <item

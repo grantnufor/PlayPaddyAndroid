@@ -11,7 +11,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical"
-        android:background="@color/DarkBlue">
+        android:background="#006400">
 
 
         <LinearLayout

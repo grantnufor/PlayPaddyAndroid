@@ -63,7 +63,7 @@
                 android:orientation="vertical"
                 android:paddingTop="10dp"
                 android:paddingBottom="20dp"
-                android:background="@color/DarkBlue"
+                android:background="#006400"
                 android:layout_centerHorizontal="true">
 
                 <ImageView
@@ -88,33 +88,33 @@
                 android:orientation="vertical"
                 android:paddingTop="20dp"
                 android:paddingBottom="20dp"
-                android:background="@color/Maroon"
+                android:background="@color/DarkOliveGreen"
                 android:layout_centerHorizontal="true">
 
 
 
 
 
+<!--                <TextView-->
+<!--                    android:layout_width="fill_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="#Send Personal and Intelligent questions to your friends and get anonymous response for free"-->
+<!--                    app:fontFamily="@font/montserrat"-->
+<!--                    android:layout_marginBottom="10dp"-->
+<!--                    android:paddingRight="20dp"-->
+<!--                    android:paddingLeft="20dp"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:textSize="16dp"-->
+<!--                    android:textColor="@color/White"-->
+<!--                    android:gravity="center"-->
+
+<!--                    />-->
+
+
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:text="#Send Personal and Intelligent questions to your friends and get anonymous response for free"
-                    app:fontFamily="@font/montserrat"
-                    android:layout_marginBottom="10dp"
-                    android:paddingRight="20dp"
-                    android:paddingLeft="20dp"
-                    android:textStyle="bold"
-                    android:textSize="16dp"
-                    android:textColor="@color/White"
-                    android:gravity="center"
-
-                    />
-
-
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="#Answer questions in your desired field accurately and on time to win."
+                    android:text="#Answer questions in your desired field accurately and on time to win lots of money."
                     app:fontFamily="@font/montserrat"
                     android:layout_marginTop="10dp"
                     android:paddingRight="20dp"
@@ -174,7 +174,7 @@
                     android:id="@+id/buttonSignUp"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/steel_blue_button"
+                    android:background="@drawable/green_button"
                     android:text="Sign Up"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
@@ -204,7 +204,7 @@
                     android:id="@+id/buttonSignIn"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/dark_blue_button"
+                    android:background="@drawable/dark_green_button"
                     android:text="Sign In"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"

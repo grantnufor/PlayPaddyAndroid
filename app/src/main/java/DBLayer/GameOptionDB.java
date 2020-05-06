@@ -43,6 +43,7 @@ public class GameOptionDB {
 
         values.put("GAME_OPTION_ID", queryValues.get("GAME_OPTION_ID"));
         values.put("OPTION_NAME", queryValues.get("OPTION_NAME"));
+        values.put("OPTION_DETAIL", queryValues.get("OPTION_DETAIL"));
         values.put("IMAGE", queryValues.get("IMAGE"));
         values.put("GAME_QUESTION_ID", queryValues.get("GAME_QUESTION_ID"));
 
@@ -62,6 +63,7 @@ public class GameOptionDB {
 
         values.put("GAME_OPTION_ID", queryValues.get("GAME_OPTION_ID"));
         values.put("OPTION_NAME", queryValues.get("OPTION_NAME"));
+        values.put("OPTION_DETAIL", queryValues.get("OPTION_DETAIL"));
         values.put("IMAGE", queryValues.get("IMAGE"));
         values.put("GAME_QUESTION_ID", queryValues.get("GAME_QUESTION_ID"));
 
@@ -103,8 +105,9 @@ public class GameOptionDB {
 
                 gameOptionMap.put("GAME_OPTION_ID", cursor.getString(0));
                 gameOptionMap.put("OPTION_NAME", cursor.getString(1));
-                gameOptionMap.put("IMAGE", cursor.getString(2));
-                gameOptionMap.put("GAME_QUESTION_ID", cursor.getString(3));
+                gameOptionMap.put("OPTION_DETAIL", cursor.getString(2));
+                gameOptionMap.put("IMAGE", cursor.getString(3));
+                gameOptionMap.put("GAME_QUESTION_ID", cursor.getString(4));
 
 
 
@@ -140,8 +143,9 @@ public class GameOptionDB {
 
                 gameOptionMap.put("GAME_OPTION_ID", cursor.getString(0));
                 gameOptionMap.put("OPTION_NAME", cursor.getString(1));
-                gameOptionMap.put("IMAGE", cursor.getString(2));
-                gameOptionMap.put("GAME_QUESTION_ID", cursor.getString(3));
+                gameOptionMap.put("OPTION_DETAIL", cursor.getString(2));
+                gameOptionMap.put("IMAGE", cursor.getString(3));
+                gameOptionMap.put("GAME_QUESTION_ID", cursor.getString(4));
 
             }while(cursor.moveToNext());
 
@@ -171,8 +175,9 @@ public class GameOptionDB {
 
                 gameOptionMap.put("GAME_OPTION_ID", cursor.getString(0));
                 gameOptionMap.put("OPTION_NAME", cursor.getString(1));
-                gameOptionMap.put("IMAGE", cursor.getString(2));
-                gameOptionMap.put("GAME_QUESTION_ID", cursor.getString(3));
+                gameOptionMap.put("OPTION_DETAIL", cursor.getString(2));
+                gameOptionMap.put("IMAGE", cursor.getString(3));
+                gameOptionMap.put("GAME_QUESTION_ID", cursor.getString(4));
 
             }while(cursor.moveToNext());
 

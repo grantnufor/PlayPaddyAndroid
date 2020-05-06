@@ -12,79 +12,98 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
             android:orientation="vertical" >
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
                 android:layout_marginTop="5dp">
 
-                <TextView
-                    android:id="@+id/textViewSubject"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
-                    android:text="Subject"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColor="@color/White"
-                    android:typeface="serif"
-                    android:textSize="12dp" />
+<!--                <TextView-->
+<!--                    android:id="@+id/textViewSubject"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginRight="5dp"-->
+<!--                    android:text="Subject"-->
+<!--                    android:textAppearance="?android:attr/textAppearanceSmall"-->
+<!--                    android:textColor="@color/White"-->
+<!--                    android:typeface="serif"-->
+<!--                    android:textSize="12dp" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/textViewYear"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Exam Year"-->
+<!--                    android:textAppearance="?android:attr/textAppearanceSmall"-->
+<!--                    android:textColor="@color/White"-->
+<!--                    android:typeface="serif"-->
+<!--                    android:textSize="12dp"-->
+<!--                    android:visibility="invisible" />-->
 
                 <TextView
-                    android:id="@+id/textViewYear"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Exam Year"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColor="@color/White"
-                    android:typeface="serif"
-                    android:textSize="12dp"
-                    android:visibility="invisible" />
-
-                <TextView
-                    android:id="@+id/textViewExamTime"
+                    android:id="@+id/textViewGamePanelGameInfo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:text="Exam Time"
+                    android:text="Game Info"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textColor="@color/White"
-                    android:typeface="serif"
+                    android:fontFamily="@font/montserrat"
                     android:textSize="12dp" />
             </LinearLayout>
 
             <TextView
-                android:id="@+id/textViewQuestionInstruction"
+                android:id="@+id/textViewGamePanelQuestionInstruction"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
                 android:text="Question Instruction"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@color/Red"
-                android:typeface="serif"
+                android:fontFamily="@font/montserrat"
                 android:textSize="12dp"
+                android:gravity="center"
                 android:layout_marginTop="10dp" />
 
+
             <TextView
-                android:id="@+id/textViewQuestionStatus"
-                android:layout_width="wrap_content"
+                android:id="@+id/textViewGamePanelTime"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
+                android:gravity="center"
                 android:layout_marginTop="10dp"
-                android:text="Question Status"
+                android:text="0 Second(s) left"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@color/LightGreen"
-                android:typeface="serif"
+                android:fontFamily="@font/montserrat"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/textViewGamePanelQuestionStatus"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Question Status"
+                android:gravity="center"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@color/LightGreen"
+                android:fontFamily="@font/montserrat"
                 android:textSize="12dp" />
 
             <EditText
-                android:id="@+id/editTextQuestion"
+                android:id="@+id/editTextGamePanelQuestion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/text_edit_border_grey"
                 android:ems="10"
                 android:inputType="textMultiLine"
                 android:textColor="@color/White"
+                android:fontFamily="@font/montserrat"
                 android:typeface="serif"
                 android:textSize="12dp"
                 android:padding="10dp"
@@ -95,49 +114,59 @@
             </EditText>
 
             <RadioButton
-                android:id="@+id/radioButtonOptionA"
+                android:id="@+id/radioButtonGamePanelOptionA"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:text="RadioButton"
                 android:textColor="@color/White"
+                android:background="@color/Black"
                 android:textSize="12dp"
-                android:typeface="serif" />
+                android:fontFamily="@font/montserrat" />
 
             <RadioButton
-                android:id="@+id/radioButtonOptionB"
+                android:id="@+id/radioButtonGamePanelOptionB"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:text="RadioButton"
                 android:textColor="@color/White"
+                android:background="@color/Black"
                 android:textSize="12dp"
-                android:typeface="serif" />
+                android:fontFamily="@font/montserrat"/>
 
             <RadioButton
-                android:id="@+id/radioButtonOptionC"
+                android:id="@+id/radioButtonGamePanelOptionC"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:text="RadioButton"
                 android:textColor="@color/White"
+                android:background="@color/Black"
                 android:textSize="12dp"
-                android:typeface="serif" />
+                android:fontFamily="@font/montserrat" />
 
             <RadioButton
-                android:id="@+id/radioButtonOptionD"
+                android:id="@+id/radioButtonGamePanelOptionD"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="RadioButton"
+                android:layout_marginTop="10dp"
                 android:textColor="@color/White"
+                android:background="@color/Black"
                 android:textSize="12dp"
-                android:typeface="serif" />
+                android:fontFamily="@font/montserrat"/>
 
             <RadioButton
-                android:id="@+id/radioButtonOptionE"
+                android:id="@+id/radioButtonGamePanelOptionE"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:text="RadioButton"
                 android:textColor="@color/White"
+                android:background="@color/Black"
                 android:textSize="12dp"
-                android:typeface="serif" />
+                android:fontFamily="@font/montserrat" />
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -153,26 +182,28 @@
                 android:gravity="center">
 
                 <Button
-                    android:id="@+id/btnPrevious"
+                    android:id="@+id/buttonGamePanelNext"
                     android:layout_width="150dp"
                     android:layout_height="40dp"
                     android:background="@drawable/dark_blue_button"
-                    android:text="&lt;&lt;Previous"
+                    android:text="Next Question>>"
                     android:textColor="@color/White"
+                    android:fontFamily="@font/montserrat"
                     android:textSize="12dp" />
 
+                //android:text="&lt;&lt;Previous"
+
                 <Button
-                    android:id="@+id/btnNext"
+                    android:id="@+id/buttonGamePanelSubmit"
                     android:layout_width="150dp"
                     android:layout_height="40dp"
                     android:layout_marginLeft="20dp"
-                    android:background="@drawable/dark_blue_button"
-                    android:text="Next>>"
+                    android:background="@drawable/red_button"
+                    android:text="Submit to End"
                     android:textColor="@color/White"
                     android:textSize="12dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_toRightOf="@+id/btnPrevious"
-                    android:layout_toEndOf="@+id/btnPrevious" />
+                    android:fontFamily="@font/montserrat"
+                    android:layout_alignParentTop="true" />
 
             </LinearLayout>
 

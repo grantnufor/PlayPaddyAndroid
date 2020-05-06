@@ -11,6 +11,7 @@ import com.google.android.material.snackbar.Snackbar;
 import android.view.MenuItem;
 import android.view.View;
 
+import DBLayer.SessionDB;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.core.view.GravityCompat;
 import androidx.fragment.app.Fragment;
@@ -40,6 +41,9 @@ public class UserHomeMainActivity extends AppCompatActivity
     String userId = "";
     String userName = "";
 
+
+    SessionDB sessionDb;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +51,7 @@ public class UserHomeMainActivity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        sessionDb = new SessionDB(this);
 
         Intent intent = getIntent();
         userId = intent.getStringExtra("userid");
@@ -198,6 +203,14 @@ public class UserHomeMainActivity extends AppCompatActivity
 //            sessionMap.put("LAST_MODIFIED", new Date().toString());
 //            sessionMap.put("USER_SERVER_ID", sessionDb.getSessionBySessionId("1").get("USER_SERVER_ID") );
 //            sessionDb.updateSession(sessionMap);
+
+            HashMap<String, String> sessionMap = new HashMap<>();
+            sessionMap.put("SESSION_ID", "1");
+            sessionMap.put("USER_NAME", userName);
+            sessionMap.put("PASSWORD", sessionDb.getSessionBySessionId("1").get("PASSWORD"));
+            sessionMap.put("STATUS", "logged out");
+            sessionMap.put("USER_SERVER_ID", sessionDb.getSessionBySessionId("1").get("USER_SERVER_ID"));
+            sessionDb.updateSession(sessionMap);
 
             Intent intent = new Intent(UserHomeMainActivity.this, SignInActivity.class);
             intent.putExtra("LoggedOut", "You have logged out");

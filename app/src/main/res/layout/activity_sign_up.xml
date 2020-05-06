@@ -40,7 +40,7 @@ tools:layout_editor_absoluteX="8dp">
             android:orientation="vertical"
             android:paddingTop="10dp"
             android:paddingBottom="20dp"
-            android:background="@color/DarkBlue"
+            android:background="#006400"
             android:layout_centerHorizontal="true">
 
             <ImageView
@@ -197,7 +197,7 @@ tools:layout_editor_absoluteX="8dp">
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="30dp"
-                android:background="@drawable/red_button"
+                android:background="@drawable/green_button"
                 android:text="Sign Up"
                 android:textColor="@color/White"
                 app:fontFamily="@font/montserrat"/>
@@ -213,7 +213,7 @@ tools:layout_editor_absoluteX="8dp">
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/dark_blue_button"
+                android:background="@drawable/dark_green_button"
                 android:text="Back to Home"
                 android:textColor="@color/White"
                 app:fontFamily="@font/montserrat"/>

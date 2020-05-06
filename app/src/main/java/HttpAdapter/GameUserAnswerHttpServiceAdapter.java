@@ -1,5 +1,7 @@
 package HttpAdapter;
 
+import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.ksoap2.SoapEnvelope;
@@ -170,6 +172,7 @@ public class GameUserAnswerHttpServiceAdapter {
     public String AddGameUserAnswer(String gameQuestionId, String userId, String userAnswer, String correct,
                                     String position, String timeSubmitted, String dateSubmitted)
     {
+
         String SOAP_ACTION_GetJsonData ="http://tempuri.org/AddGameUserAnswer";
         String OPERATION_NAME_GetJsonData = "AddGameUserAnswer";
 
@@ -179,10 +182,12 @@ public class GameUserAnswerHttpServiceAdapter {
 
         String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/GameUserAnswerServices.asmx";
 
-        SoapPrimitive response=null;
+
+        SoapPrimitive response= null;
         try
         {
             SoapObject request = new SoapObject(WSDL_TARGET_NAMESPACE,OPERATION_NAME_GetJsonData);
+
             request.addProperty("gameQuestionId", gameQuestionId);
             request.addProperty("userId", userId);
             request.addProperty("userAnswer", userAnswer);
@@ -191,13 +196,14 @@ public class GameUserAnswerHttpServiceAdapter {
             request.addProperty("timeSubmitted", timeSubmitted);
             request.addProperty("dateSubmitted", dateSubmitted);
 
+
             SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
             envelope.dotNet = true;
             envelope.setOutputSoapObject(request);
             HttpTransportSE httpTransport = new HttpTransportSE(SOAP_ADDRESS);
             httpTransport.call(SOAP_ACTION_GetJsonData, envelope);
 
-            response = (SoapPrimitive)envelope.getResponse();
+            response = (SoapPrimitive) envelope.getResponse();
             //JSONObject mainJson = new JSONObject(response.toString());
 
 //            ///JSONArray jsonArray = mainJson.getJSONArrayundefined"student");
@@ -240,7 +246,7 @@ public class GameUserAnswerHttpServiceAdapter {
 
 
 
-    public String UpdateGameUserAnswer (String gameUserAnswerId, String gameOptionId, String gameQuestionId, String userId, String userAnswer, String correct,
+    public String UpdateGameUserAnswer (String gameUserAnswerId, String gameQuestionId, String userId, String userAnswer, String correct,
                                    String position, String timeSubmitted, String dateSubmitted)
     {
         String SOAP_ACTION_GetJsonData ="http://tempuri.org/UpdateGameUserAnswer";
@@ -256,8 +262,8 @@ public class GameUserAnswerHttpServiceAdapter {
         try
         {
             SoapObject request = new SoapObject(WSDL_TARGET_NAMESPACE,OPERATION_NAME_GetJsonData);
+
             request.addProperty("gameUserAnswerId", gameUserAnswerId);
-            request.addProperty("gameOptionId", gameOptionId);
             request.addProperty("gameQuestionId", gameQuestionId);
             request.addProperty("userId", userId);
             request.addProperty("userAnswer", userAnswer);

@@ -94,6 +94,17 @@ public class GameUserAnswerDB {
 
 
 
+    public void deleteAllGameUserAnswer(){
+
+        //Open connection to write data
+        SQLiteDatabase db = assetDatabaseOpenHelper.openDatabase();
+        String deleteQuery = "DELETE FROM GAME_USER_ANSWER ";
+
+        db.execSQL(deleteQuery);
+
+    }
+
+
 
     public ArrayList<HashMap<String, String>> getAllGameUserAnswers(){
 
