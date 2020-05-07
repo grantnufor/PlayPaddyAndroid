@@ -190,6 +190,16 @@ public class UserHomeMainActivity extends AppCompatActivity
 
 
         }
+        if (id == R.id.nav_my_bank_account_info) {
+
+
+            Intent intent = new Intent(UserHomeMainActivity.this, ManageBankInfoActivity.class);
+            intent.putExtra("userid", userId);
+            intent.putExtra("username", userName);
+            startActivity(intent);
+
+
+        }
         else if(id == R.id.nav_sign_out){
 
 //            HashMap<String, String> sessionMap = new HashMap<>();

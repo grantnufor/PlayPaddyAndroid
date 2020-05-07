@@ -9,11 +9,11 @@
             android:icon="@drawable/home"
             android:state_checked="true"
             android:title="Home" />
-        <item
-            android:id="@+id/nav_topic_game"
-            android:icon="@drawable/topicgameicon"
-            android:state_checked="true"
-            android:title="Topic Game" />
+<!--        <item-->
+<!--            android:id="@+id/nav_topic_game"-->
+<!--            android:icon="@drawable/topicgameicon"-->
+<!--            android:state_checked="true"-->
+<!--            android:title="Topic Game" />-->
         <item
             android:id="@+id/nav_play_and_win"
             android:icon="@drawable/playandwinicon"
@@ -24,6 +24,11 @@
             android:icon="@drawable/enrol"
             android:state_checked="true"
             android:title="My Enrolled Games" />
+        <item
+            android:id="@+id/nav_my_bank_account_info"
+            android:icon="@drawable/bank"
+            android:state_checked="true"
+            android:title="My Bank Account Info" />
         <item
             android:id="@+id/nav_sign_out"
             android:icon="@drawable/logout"
