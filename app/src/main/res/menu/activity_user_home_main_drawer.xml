@@ -15,10 +15,10 @@
 <!--            android:state_checked="true"-->
 <!--            android:title="Topic Game" />-->
         <item
-            android:id="@+id/nav_play_and_win"
+            android:id="@+id/nav_enrol_to_play_a_game"
             android:icon="@drawable/playandwinicon"
             android:state_checked="true"
-            android:title="Play And Win Game" />
+            android:title="Enrol to Play a Game" />
         <item
             android:id="@+id/nav_my_enrolled_games"
             android:icon="@drawable/enrol"

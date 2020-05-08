@@ -297,6 +297,7 @@ public class SignUpActivity extends AppCompatActivity {
                                 }
                             });
                             builder.show();
+                            return;
                         }
 
 

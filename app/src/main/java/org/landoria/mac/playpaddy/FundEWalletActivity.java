@@ -360,8 +360,6 @@ public class FundEWalletActivity extends AppCompatActivity {
 
     private void creditEwallet(){
 
-
-
         try {
 
             //setting up the error dialog

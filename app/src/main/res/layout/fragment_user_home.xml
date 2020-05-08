@@ -283,7 +283,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_weight="80"
                     android:width="0dp"
-                    android:text="Topic Game gives you topics you would share with your friends and get their responses anonymously."
+                    android:text="Click the ENROL TO PLAY button to see upcoming game and register to play. You will be prompted to pay through your EWallet."
                     android:textColor="@color/White"
                     android:textSize="10dp" />
 
@@ -318,7 +318,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_weight="80"
                     android:width="0dp"
-                    android:text="View Topic Responses shows you your friend's responses to your shared topic."
+                    android:text="Click on the PLAY YOUR ENROLLED GAMES to play your already enrolled games."
                     android:textColor="@color/White"
                     android:textSize="10dp" />
 
@@ -352,7 +352,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_weight="80"
                     android:width="0dp"
-                    android:text="Reward Game pays you money as you answer questions on any field you think you know, you sign up for a game and make payment from your EWallet, as you answers the questions correctly and on time, you win cash which is sent to your bank account."
+                    android:text="Click the VIEW GAME RESULTS to view results of games already played."
                     android:textColor="@color/White"
                     android:textSize="10dp" />
 
@@ -382,6 +382,19 @@
 
 
 
+            <Button
+                android:id="@+id/buttonUserHomeEnrolToPlayAGame"
+                android:layout_width="fill_parent"
+                android:background="@drawable/dark_red_button"
+                android:textColor="@color/White"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/montserrat"
+                android:layout_alignParentBottom="true"
+                android:text="Enrol to Play a Game" />
+
 
 
             <LinearLayout
@@ -392,22 +405,23 @@
 
 
                 <Button
-                    android:id="@+id/buttonUserHomeTopicGame"
+                    android:id="@+id/buttonUserHomePlayEnrolledGames"
                     android:layout_width="0dp"
-                    android:layout_weight=".48"
+                    android:layout_weight=".45"
                     android:background="@drawable/red_button"
                     android:textColor="@color/White"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="40dp"
                     android:fontFamily="@font/montserrat"
                     android:layout_alignParentBottom="true"
-                    android:text="Play the Topic Game" />
+                    android:text="Play your Enrolled Games" />
 
                 <Button
-                    android:id="@+id/buttonUserHomeViewTopicResponses"
+                    android:id="@+id/buttonUserHomeViewGameResults"
                     android:layout_width="0dp"
-                    android:layout_weight=".48"
+                    android:layout_weight=".45"
                     android:background="@drawable/steel_blue_button"
                     android:textColor="@color/White"
                     android:layout_height="wrap_content"
@@ -416,24 +430,14 @@
                     android:layout_marginLeft="10dp"
                     android:fontFamily="@font/montserrat"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginBottom="10dp"
-                    android:text="View Topic Responses" />
+                    android:layout_marginBottom="20dp"
+                    android:text="View your Game Results" />
 
 
             </LinearLayout>
 
 
-            <Button
-                android:id="@+id/buttonUserHomeRewardGame"
-                android:layout_width="fill_parent"
-                android:background="@drawable/dark_red_button"
-                android:textColor="@color/White"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
-                android:fontFamily="@font/montserrat"
-                android:layout_alignParentBottom="true"
-                android:text="Play the Play and Win Game" />
+
 
 ccdd
 

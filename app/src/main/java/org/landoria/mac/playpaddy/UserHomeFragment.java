@@ -36,9 +36,9 @@ public class UserHomeFragment extends Fragment {
     TextView textViewUserHomeDateSignedUp;
     TextView textViewUserHomeEWalletBalance;
     TextView textViewUserHomeWelcome;
-    Button buttonUserHomeTopicGame;
-    Button buttonUserHomeViewTopicResponses;
-    Button buttonUserHomePlayAndWinGame;
+    Button buttonUserHomePlayEnrolledGames;
+    Button buttonUserHomeViewGameResults;
+    Button buttonUserHomeEnrolToPlayAGame;
 
 
     Button buttonUserHomeFundEwallet;
@@ -62,8 +62,6 @@ public class UserHomeFragment extends Fragment {
 
 
 
-
-
         Intent intent = getActivity().getIntent();
         userId = intent.getStringExtra("userid");
         userName = intent.getStringExtra("username");
@@ -77,31 +75,48 @@ public class UserHomeFragment extends Fragment {
 
         textViewUserHomeWelcome = (TextView)view.findViewById(R.id.textViewUserHomeWelcome);
 
-        buttonUserHomeTopicGame = (Button)view.findViewById(R.id.buttonUserHomeTopicGame);
-        buttonUserHomeTopicGame.setOnClickListener(new View.OnClickListener() {
+        buttonUserHomePlayEnrolledGames = (Button)view.findViewById(R.id.buttonUserHomePlayEnrolledGames);
+        buttonUserHomePlayEnrolledGames.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(getActivity(), ViewTopicsActivity.class);
+
+                Intent intent = new Intent(getActivity(), UserEnroledGamesActivity.class);
                 intent.putExtra("userid", userId);
                 intent.putExtra("username", userName);
                 startActivity(intent);
 
+
             }
         });
 
 
-        buttonUserHomeViewTopicResponses =(Button)view.findViewById(R.id.buttonUserHomeViewTopicResponses);
-        buttonUserHomeViewTopicResponses.setOnClickListener(new View.OnClickListener() {
+        buttonUserHomeViewGameResults =(Button)view.findViewById(R.id.buttonUserHomeViewGameResults);
+        buttonUserHomeViewGameResults.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+
+                // Use the Builder class for convenient dialog construction
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setTitle("PlayPaddy");
+                builder.setMessage("You do not have any game results at the moment");
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // You don't have to do anything here if you just
+                        // want it dismissed when clicked
+                    }
+                });
+                builder.show();
+                return;
+
+
             }
         });
 
 
-        buttonUserHomePlayAndWinGame = (Button)view.findViewById(R.id.buttonUserHomeRewardGame);
-        buttonUserHomePlayAndWinGame.setOnClickListener(new View.OnClickListener() {
+        buttonUserHomeEnrolToPlayAGame = (Button)view.findViewById(R.id.buttonUserHomeEnrolToPlayAGame);
+        buttonUserHomeEnrolToPlayAGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
