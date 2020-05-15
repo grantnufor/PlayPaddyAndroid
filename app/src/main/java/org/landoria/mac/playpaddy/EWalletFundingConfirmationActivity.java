@@ -23,6 +23,8 @@ public class EWalletFundingConfirmationActivity extends AppCompatActivity {
     Button buttonEWalletFundingConfirmationDone;
 
     String amount = "";
+    String userId = "";
+    String userName = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +33,10 @@ public class EWalletFundingConfirmationActivity extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-        amount = intent.getStringExtra("amount");
+        userId = intent.getStringExtra("userid");
+        amount =  intent.getStringExtra("actualamount");
+        userName =  intent.getStringExtra("username");
+
 
 
         showBackButton();
@@ -50,7 +55,7 @@ public class EWalletFundingConfirmationActivity extends AppCompatActivity {
 
 
         textViewEWalletFundingConfirmation = (TextView)findViewById(R.id.textViewEWalletFundingConfirmation);
-        textViewEWalletFundingConfirmation.setText(amount+ "has been credited into your EWallet. You can now enrol and pay for games from your EWallet and make some money. Best wishes!");
+        textViewEWalletFundingConfirmation.setText("N"+amount.replace(".0","") + " has been credited into your EWallet. You can now enrol and pay for games from your EWallet and make some money. Best wishes!");
 
 
         buttonEWalletFundingConfirmationDone = (Button)findViewById(R.id.buttonEWalletFundingConfirmationDone);
@@ -61,6 +66,8 @@ public class EWalletFundingConfirmationActivity extends AppCompatActivity {
 
 
                 Intent intent = new Intent(EWalletFundingConfirmationActivity.this, UserHomeMainActivity.class);
+                intent.putExtra("userid", userId);
+                intent.putExtra("username", userName);
                 startActivity(intent);
                 finish();
 

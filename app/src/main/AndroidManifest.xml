@@ -21,20 +21,38 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ManageBankInfoActivity"></activity>
+        <activity android:name=".ViewEWalletTransactionsActivity"></activity>
+        <activity
+            android:name=".ManageBankInfoActivity"
+            android:windowSoftInputMode="stateHidden" />
         <activity android:name=".GameCompletedActivity" />
-        <activity android:name=".UserEnroledGamesActivity" />
-        <activity android:name=".GamePanelActivity" />
-        <activity android:name=".EWalletFundingConfirmationActivity" />
-        <activity android:name=".FundEWalletActivity" />
-        <activity android:name=".ConfirmEnrolmentActivity" />
-        <activity android:name=".RewardGameViewGamesActivity" />
-        <activity android:name=".RewardGameHomeActivity" />
+        <activity
+            android:name=".UserEnroledGamesActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".GamePanelActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".EWalletFundingConfirmationActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".FundEWalletActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".ConfirmEnrolmentActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".RewardGameViewGamesActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".RewardGameHomeActivity"
+            android:windowSoftInputMode="stateHidden" />
         <activity android:name=".ViewTopicsActivity" />
         <activity
             android:name=".UserHomeMainActivity"
             android:label=""
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".SignInActivity"
             android:configChanges="orientation|screenSize"

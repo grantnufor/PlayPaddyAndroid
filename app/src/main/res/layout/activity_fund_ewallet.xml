@@ -7,37 +7,74 @@
     android:background="@color/White"
     tools:context=".FundEWalletActivity">
 
+    <ScrollView
+        android:id="@+id/login_form"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentTop="true">
+
        <LinearLayout
            android:layout_width="fill_parent"
            android:layout_height="wrap_content"
            android:orientation="vertical">
 
+           <TextView
+               android:id="@+id/textViewGameCategoryTag1"
+               android:layout_width="fill_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="10dp"
+               android:gravity="center"
+               android:text="Fund your EWallet"
+               android:textAlignment="center"
+               android:textSize="18dp"
+               android:textStyle="bold"
+               android:textColor="@color/Black"
+               app:fontFamily="@font/montserrat" />
+
+
+           <TextView
+               android:id="@+id/textViewGameCategoryTag2"
+               android:layout_width="fill_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="10dp"
+               android:gravity="center"
+               android:text="POWERED BY"
+               android:textAlignment="center"
+               android:textSize="18dp"
+               android:textStyle="bold"
+               android:textColor="@color/Black"
+               app:fontFamily="@font/montserrat" />
+
+
            <ImageView
                android:layout_width="fill_parent"
                android:layout_height="wrap_content"
-               android:layout_marginLeft="20dp"
-               android:layout_marginRight="20dp"
+               android:layout_marginLeft="80dp"
+               android:layout_marginRight="80dp"
+               android:layout_marginTop="-20dp"
                android:src="@drawable/paystacklogowhite">
            </ImageView>
 
+
+
            <com.google.android.material.textfield.TextInputLayout
                android:layout_width="match_parent"
-               android:layout_marginTop="40dp"
+               android:layout_marginTop="0dp"
                android:layout_height="match_parent">
 
 
                <EditText
-                   android:id="@+id/editTextFundEwalletAmount"
+                   android:id="@+id/editTextFundEwalletEmailAddress"
                    android:layout_width="fill_parent"
                    android:background="@drawable/text_edit_border_grey"
-                   android:layout_height="50dp"
+                   android:layout_height="40dp"
                    android:layout_below="@+id/textView4"
                    android:layout_marginLeft="10dp"
                    android:layout_marginRight="10dp"
                    android:cursorVisible="true"
                    android:ems="10"
-                   android:hint="Amount"
-                   android:inputType="textLongMessage"
+                   android:hint="Email Address"
+                   android:inputType="text"
                    android:paddingLeft="10dp"
                    android:paddingRight="10dp"
                    android:textColor="@color/Black"
@@ -52,7 +89,37 @@
 
            <com.google.android.material.textfield.TextInputLayout
                android:layout_width="match_parent"
-               android:layout_marginTop="20dp"
+               android:layout_marginTop="10dp"
+               android:layout_height="match_parent">
+
+
+               <EditText
+                   android:id="@+id/editTextFundEwalletAmount"
+                   android:layout_width="fill_parent"
+                   android:background="@drawable/text_edit_border_grey"
+                   android:layout_height="40dp"
+                   android:layout_below="@+id/textView4"
+                   android:layout_marginLeft="10dp"
+                   android:layout_marginRight="10dp"
+                   android:cursorVisible="true"
+                   android:ems="10"
+                   android:hint="Amount"
+                   android:inputType="text"
+                   android:paddingLeft="10dp"
+                   android:paddingRight="10dp"
+                   android:textColor="@color/Black"
+                   android:textCursorDrawable="@null"
+                   android:textSize="14dp"
+                   app:fontFamily="@font/montserrat"/>
+
+
+           </com.google.android.material.textfield.TextInputLayout>
+
+
+
+           <com.google.android.material.textfield.TextInputLayout
+               android:layout_width="match_parent"
+               android:layout_marginTop="10dp"
                android:layout_height="match_parent">
 
 
@@ -60,14 +127,14 @@
                    android:id="@+id/editTextFundEwalletCardNumber"
                    android:layout_width="fill_parent"
                    android:background="@drawable/text_edit_border_grey"
-                   android:layout_height="50dp"
+                   android:layout_height="40dp"
                    android:layout_below="@+id/textView4"
                    android:layout_marginLeft="10dp"
                    android:layout_marginRight="10dp"
                    android:cursorVisible="true"
                    android:ems="10"
                    android:hint="Enter Card Number"
-                   android:inputType="textLongMessage"
+                   android:inputType="number"
                    android:paddingLeft="10dp"
                    android:paddingRight="10dp"
                    android:textColor="@color/Black"
@@ -86,6 +153,7 @@
                android:textSize="16dp"
                android:textColor="@color/Red"
                android:text="Card Expiration Date:"
+               android:fontFamily="@font/montserrat"
                android:layout_marginTop="10dp"
                android:layout_marginLeft="10dp"/>
 
@@ -112,6 +180,7 @@
                        android:textSize="12dp"
                        android:layout_marginLeft="0dp"
                        android:textColor="@color/Red"
+                       android:fontFamily="@font/montserrat"
                        android:text="Month"/>
 
                    <Spinner
@@ -147,6 +216,7 @@
                        android:textSize="12dp"
                        android:layout_marginLeft="10dp"
                        android:textColor="@color/Red"
+                       android:fontFamily="@font/montserrat"
                        android:text="Year"/>
 
                    <Spinner
@@ -179,7 +249,7 @@
                <EditText
                    android:id="@+id/editTextFundEwalletCVC"
                    android:layout_width="fill_parent"
-                   android:layout_height="50dp"
+                   android:layout_height="40dp"
                    android:background="@drawable/text_edit_border_grey"
                    android:layout_below="@+id/textView4"
                    android:layout_marginLeft="10dp"
@@ -244,12 +314,12 @@
            <Button
                android:id="@+id/buttonFundEWalletPay"
                android:layout_width="fill_parent"
-               android:layout_height="wrap_content"
+               android:layout_height="40dp"
                android:layout_alignParentLeft="true"
                android:layout_alignParentStart="true"
                android:layout_marginLeft="70dp"
                android:layout_marginRight="70dp"
-               android:layout_marginTop="20dp"
+               android:layout_marginTop="10dp"
                android:background="@drawable/red_button"
                android:text="Pay"
                android:textColor="@color/White"
@@ -259,6 +329,6 @@
 
        </LinearLayout>
 
-
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

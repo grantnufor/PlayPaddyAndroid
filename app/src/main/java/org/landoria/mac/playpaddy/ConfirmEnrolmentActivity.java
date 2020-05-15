@@ -47,7 +47,7 @@ public class ConfirmEnrolmentActivity extends AppCompatActivity {
 
 
          textViewConfirmEnrolment = (TextView)findViewById(R.id.textViewConfirmEnrolment);
-         textViewConfirmEnrolment.setText("You have been enrol successfuly. Make sure to play the game at game time.");
+         textViewConfirmEnrolment.setText("You have been enrolled successfuly. Make sure to play the game at game time.");
 
          buttonConfirmEnrolmentDone = (Button)findViewById(R.id.buttonConfirmEnrolmentDone);
         buttonConfirmEnrolmentDone.setOnClickListener(new View.OnClickListener() {

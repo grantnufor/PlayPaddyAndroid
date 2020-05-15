@@ -105,7 +105,7 @@ public class UserEnroledGamesActivity extends AppCompatActivity {
                 @Override
                 protected void onPreExecute() {
                     // what to do before background task
-                    dialog.setTitle("Loading Available Games...");
+                    dialog.setTitle("Loading Enrolled Games...");
                     dialog.setMessage("Please wait...");
                     dialog.setIndeterminate(true);
                     dialog.setCancelable(false);
@@ -120,9 +120,9 @@ public class UserEnroledGamesActivity extends AppCompatActivity {
 
                         //game
                         if (userGameEnrolmentHttpServiceAdapter != null) {
-                            if (userGameEnrolmentHttpServiceAdapter.GetUserGameEnrolmentByUserId(userId).size() > 0) {
+                            if (userGameEnrolmentHttpServiceAdapter.GetUserGameEnrolmentByUserIdAndStatus(userId, "unplayed").size() > 0) {
 
-                                userEnroledGameJsonList = userGameEnrolmentHttpServiceAdapter.GetUserGameEnrolmentByUserId(userId);
+                                userEnroledGameJsonList = userGameEnrolmentHttpServiceAdapter.GetUserGameEnrolmentByUserIdAndStatus(userId, "unplayed");
 
                                 for (int i = 0; i < userEnroledGameJsonList.size(); i++) {
 
@@ -271,8 +271,8 @@ public class UserEnroledGamesActivity extends AppCompatActivity {
 
                         textViewUserEnrolledGameIdList.setText(gameId);
                         textViewcGameLayoutDateAndTimeToPlay.setText(dateAndTimeToPlay);
-                        textViewUserEnrolledGameLayoutAmountToWin.setText(amountToWin);
-                        textViewUserEnrolledGameLayoutAmountToPay.setText(amountToPlay);
+                        textViewUserEnrolledGameLayoutAmountToWin.setText("N"+String.format("%,.2f", Double.parseDouble(amountToWin)));
+                        textViewUserEnrolledGameLayoutAmountToPay.setText("N"+String.format("%,.2f", Double.parseDouble( amountToPlay)));
 
                         buttonUserEnrolledGamePlayGame.setOnClickListener(new View.OnClickListener() {
                             @Override
@@ -341,8 +341,9 @@ public class UserEnroledGamesActivity extends AppCompatActivity {
 
                         textViewUserEnrolledGameIdList.setText(gameId);
                         textViewcGameLayoutDateAndTimeToPlay.setText(dateAndTimeToPlay);
-                        textViewUserEnrolledGameLayoutAmountToWin.setText(amountToWin);
-                        textViewUserEnrolledGameLayoutAmountToPay.setText(amountToPlay);
+                        textViewUserEnrolledGameLayoutAmountToWin.setText("N"+String.format("%,.2f", Double.parseDouble(amountToWin)));
+                        textViewUserEnrolledGameLayoutAmountToPay.setText("N"+String.format("%,.2f", Double.parseDouble( amountToPlay)));
+
 
                         buttonUserEnrolledGamePlayGame.setOnClickListener(new View.OnClickListener() {
                             @Override

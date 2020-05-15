@@ -45,7 +45,11 @@ public class RewardGameViewGamesActivity extends AppCompatActivity {
 
     ListView listViewGames;
 
+    TextView textViewRewardGameTag;
+
+
     String gameCategoryId = "";
+    String categoryName = "";
 
     String userId = "";
     String userName = "";
@@ -53,6 +57,10 @@ public class RewardGameViewGamesActivity extends AppCompatActivity {
 
     double gameAmountToPlay = 0.00;
     long gameIdToPlay = 0;
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +93,7 @@ public class RewardGameViewGamesActivity extends AppCompatActivity {
         if(!bundle.isEmpty())
         {
             gameCategoryId = bundle.getString("categoryId");
+            categoryName = bundle.getString("categoryName");
 
         }
         else{
@@ -105,6 +114,10 @@ public class RewardGameViewGamesActivity extends AppCompatActivity {
 
 
         listViewGames = (ListView)findViewById(R.id.listViewGames);
+
+        textViewRewardGameTag = (TextView)findViewById(R.id.textViewRewardGameTag);
+
+        textViewRewardGameTag.setText("Available " + categoryName+" Games");
 
 
         loadRewardGames();
@@ -154,9 +167,9 @@ public class RewardGameViewGamesActivity extends AppCompatActivity {
 
                         //game
                         if (gameHttpServiceAdapter != null) {
-                            if (gameHttpServiceAdapter.GetGameByGameCategoryId(gameCategoryId).size() > 0) {
+                            if (gameHttpServiceAdapter.GetGameByGameCategoryIdAndPlayed(gameCategoryId, "false").size() > 0) {
 
-                                rewardGameJsonList = gameHttpServiceAdapter.GetGameByGameCategoryId(gameCategoryId);
+                                rewardGameJsonList = gameHttpServiceAdapter.GetGameByGameCategoryIdAndPlayed(gameCategoryId, "false");
 
                                 for (int i = 0; i < rewardGameJsonList.size(); i++) {
 
@@ -273,7 +286,7 @@ public class RewardGameViewGamesActivity extends AppCompatActivity {
                     final TextView textViewGameIdList = (TextView) itemView.findViewById(R.id.textViewGameIdList);
                     TextView textViewGameLayoutDateAndTimeToPlay = (TextView) itemView.findViewById(R.id.textViewGameLayoutDateAndTimeToPlay);
                     TextView textViewGameLayoutAmountToWin = (TextView)itemView.findViewById(R.id.textViewGameLayoutAmountToWin);
-                    TextView textViewGameLayoutAmountToPay = (TextView)itemView.findViewById(R.id.textViewGameLayoutAmountToPay);
+                    final TextView textViewGameLayoutAmountToPay = (TextView)itemView.findViewById(R.id.textViewGameLayoutAmountToPay);
                     TextView textViewGameLayoutNoOfQuestion = (TextView) itemView.findViewById(R.id.textViewGameLayoutNoOfQuestion);
 
                     Button buttonEnrolToPlay = (Button)itemView.findViewById(R.id.buttonEnrolToPlay);
@@ -282,8 +295,8 @@ public class RewardGameViewGamesActivity extends AppCompatActivity {
 
                         final String gameId = "" + rewardGameJsonList.get(position).get("GameId");
                         String dateAndTimeToPlay = ""+ rewardGameJsonList.get(position).get("DateToPlay")+" "+rewardGameJsonList.get(position).get("TimeToPlay");
-                        String amountToWin = ""+ rewardGameJsonList.get(position).get("AmountToWin");
-                        String amountToPlay = ""+ rewardGameJsonList.get(position).get("PlayPrice");
+                        Double amountToWin = Double.parseDouble(""+ rewardGameJsonList.get(position).get("AmountToWin"));
+                        final Double amountToPlay = Double.parseDouble( ""+ rewardGameJsonList.get(position).get("PlayPrice"));
 
 
                         gameIdToPlay = Long.parseLong("" + rewardGameJsonList.get(position).get("GameId"));
@@ -292,8 +305,8 @@ public class RewardGameViewGamesActivity extends AppCompatActivity {
 
                         textViewGameIdList.setText(gameId);
                         textViewGameLayoutDateAndTimeToPlay.setText(dateAndTimeToPlay);
-                        textViewGameLayoutAmountToWin.setText(amountToWin);
-                        textViewGameLayoutAmountToPay.setText(amountToPlay);
+                        textViewGameLayoutAmountToWin.setText("N"+String.format("%,.2f", amountToWin) );
+                        textViewGameLayoutAmountToPay.setText("N"+String.format("%,.2f", amountToPlay));
 
                         buttonEnrolToPlay.setOnClickListener(new View.OnClickListener() {
                             @Override
@@ -304,8 +317,9 @@ public class RewardGameViewGamesActivity extends AppCompatActivity {
                                 builder.setMessage("Are you sure you want to Enrol to Play this Game?");
                                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
+
                                         //enrol user
-                                        enrolUser();
+                                        enrolUser(textViewGameIdList.getText()+"", textViewGameLayoutAmountToPay.getText().toString().replace("N", "").replace(",", "")+"");
                                     }
                                 });
                                 builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -338,7 +352,7 @@ public class RewardGameViewGamesActivity extends AppCompatActivity {
                     final TextView textViewGameIdList = (TextView) itemView.findViewById(R.id.textViewGameIdList);
                     TextView textViewGameLayoutDateAndTimeToPlay = (TextView) itemView.findViewById(R.id.textViewGameLayoutDateAndTimeToPlay);
                     TextView textViewGameLayoutAmountToWin = (TextView)itemView.findViewById(R.id.textViewGameLayoutAmountToWin);
-                    TextView textViewGameLayoutAmountToPay = (TextView)itemView.findViewById(R.id.textViewGameLayoutAmountToPay);
+                    final TextView textViewGameLayoutAmountToPay = (TextView)itemView.findViewById(R.id.textViewGameLayoutAmountToPay);
                     TextView textViewGameLayoutNoOfQuestion = (TextView) itemView.findViewById(R.id.textViewGameLayoutNoOfQuestion);
                     Button buttonEnrolToPlay = (Button)itemView.findViewById(R.id.buttonEnrolToPlay);
 
@@ -347,8 +361,8 @@ public class RewardGameViewGamesActivity extends AppCompatActivity {
 
                         final String gameId = "" + rewardGameJsonList.get(position).get("GameId");
                         String dateAndTimeToPlay = ""+ rewardGameJsonList.get(position).get("DateToPlay")+" "+rewardGameJsonList.get(position).get("TimeToPlay");
-                        String amountToWin = ""+ rewardGameJsonList.get(position).get("AmountToWin");
-                        String amountToPlay = ""+ rewardGameJsonList.get(position).get("PlayPrice");
+                        Double amountToWin = Double.parseDouble(""+ rewardGameJsonList.get(position).get("AmountToWin"));
+                        final Double amountToPlay = Double.parseDouble( ""+ rewardGameJsonList.get(position).get("PlayPrice"));
 
 
                         gameIdToPlay = Long.parseLong("" + rewardGameJsonList.get(position).get("GameId"));
@@ -356,8 +370,8 @@ public class RewardGameViewGamesActivity extends AppCompatActivity {
 
                         textViewGameIdList.setText(gameId);
                         textViewGameLayoutDateAndTimeToPlay.setText(dateAndTimeToPlay);
-                        textViewGameLayoutAmountToWin.setText(amountToWin);
-                        textViewGameLayoutAmountToPay.setText(amountToPlay);
+                        textViewGameLayoutAmountToWin.setText("N"+String.format("%,.2f", amountToWin) );
+                        textViewGameLayoutAmountToPay.setText("N"+String.format("%,.2f", amountToPlay));
 
                         buttonEnrolToPlay.setOnClickListener(new View.OnClickListener() {
                             @Override
@@ -370,8 +384,10 @@ public class RewardGameViewGamesActivity extends AppCompatActivity {
                                 builder.setMessage("Are you sure you want to Enrol to Play this Game?");
                                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
+
+
                                         //enrol user
-                                        enrolUser();
+                                        enrolUser(textViewGameIdList.getText()+"", textViewGameLayoutAmountToPay.getText().toString().replace("N", "").replace(",", "")+"");
                                     }
                                 });
                                 builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -398,6 +414,8 @@ public class RewardGameViewGamesActivity extends AppCompatActivity {
 
                 }
 
+
+
             } catch (Exception ex) {
                 // TODO Auto-generated catch block
                 ex.printStackTrace();
@@ -418,7 +436,10 @@ public class RewardGameViewGamesActivity extends AppCompatActivity {
     String enoughFunds = "";
     String userEnroled = "";
 
-    private  void enrolUser(){
+
+    String userGameEnrolmentExists  = "false";
+
+    private  void enrolUser(final String gameId, final String gameAmount){
 
 
 
@@ -453,58 +474,68 @@ public class RewardGameViewGamesActivity extends AppCompatActivity {
 
                         try {
 
-                            //getting the ewallet for this user
-                           JSONObject  jsonEwalletNewObj = eWalletHttpServiceAdapter.GetEwalletByUserId(userId);
 
-                            if(!jsonEwalletNewObj.isNull("EwalletId")) {
-                                //getting the balance and crediting the user with the new balance
-                                String ewalletId = jsonEwalletNewObj.getString("EwalletId");
+                            //checking if this user is already enrolled for this game
+                            if (userGameEnrolmentHttpServiceAdapter.GetUserGameEnrolmentByUserIdAndGameId(gameId, userId).isNull("UserGameEnrolmentId")) {//if user is not already enrolled
 
-                                String pattern = "MM/dd/yyyy";
-                                SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, new Locale("fr", "FR"));
-                                String date = simpleDateFormat.format(new Date());
+                                //getting the ewallet for this user
+                                JSONObject jsonEwalletNewObj = eWalletHttpServiceAdapter.GetEwalletByUserId(userId);
 
-                                double ewalletBalance = jsonEwalletNewObj.getDouble("CurrentBalance");
+                                if (!jsonEwalletNewObj.isNull("EwalletId")) {
+                                    //getting the balance and crediting the user with the new balance
+                                    String ewalletId = jsonEwalletNewObj.getString("EwalletId");
 
+                                    String pattern = "MM/dd/yyyy";
+                                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, new Locale("fr", "FR"));
+                                    String date = simpleDateFormat.format(new Date());
 
-                                if(ewalletBalance >= gameAmountToPlay) {
-
-                                    double newEwalletBalance = ewalletBalance - gameAmountToPlay;
-
-
-                                   String returnValEwallet =  eWalletHttpServiceAdapter.UpdateEwallet(ewalletId, userId, "0.00", "0.00", newEwalletBalance + "", "0000", date, date);
-
-                                   String returnValEwalletTransaction = eWalletTransactionHttpServiceAdapter.AddEwalletTransaction(ewalletId, "0.00", gameAmountToPlay + "", "Game Enrolment", newEwalletBalance + "", userId, "0", "Success", date);
+                                    double ewalletBalance = jsonEwalletNewObj.getDouble("CurrentBalance");
 
 
-                                    enoughFunds = "true";
+                                    if (ewalletBalance >= Double.parseDouble(gameAmount)) {
+
+                                        double newEwalletBalance = ewalletBalance - Double.parseDouble(gameAmount);
 
 
+                                        String returnValEwallet = eWalletHttpServiceAdapter.UpdateEwallet(ewalletId, userId, "0.00", "0.00", newEwalletBalance + "", "0000", date, date);
 
-                                    if(returnValEwallet.equals("1")) {//if ewallet was debited successfuly, then enrol user to play game
-
-                                       String returnValUserGame = userGameEnrolmentHttpServiceAdapter.AddUserGameEnrolment(userId, gameIdToPlay + "", gameAmountToPlay + "", date, "unplayed");
+                                        String returnValEwalletTransaction = eWalletTransactionHttpServiceAdapter.AddEwalletTransaction(ewalletId, "0.00", gameAmount + "", "Game Enrolment", newEwalletBalance + "", userId, "0", "Success", date);
 
 
-                                       if(returnValUserGame.equals("1")){
+                                        enoughFunds = "true";
 
-                                           userEnroled = "true";
 
-                                       }
-                                       else{
+                                        if (returnValEwallet.equals("1")) {//if ewallet was debited successfuly, then enrol user to play game
 
-                                           userEnroled = "false";
-                                       }
+                                            String returnValUserGame = userGameEnrolmentHttpServiceAdapter.AddUserGameEnrolment(userId, gameId + "", gameAmount + "", date, "unplayed");
 
+
+                                            if (!returnValUserGame.equals("0")) {
+
+                                                userEnroled = "true";
+
+                                            } else {
+
+                                                userEnroled = "false";
+                                            }
+
+                                        }
+
+                                    } else {
+                                        enoughFunds = "false";
                                     }
+                                }
 
-                                }
-                                else {
-                                    enoughFunds = "false";
-                                }
+
+                                userGameEnrolmentExists = "false";//user is not enrolled
+
+
                             }
+                            else{//user is already enrolled for this game
 
+                                userGameEnrolmentExists = "true";
 
+                            }
 
 
                         } catch (Exception ex) {
@@ -526,25 +557,44 @@ public class RewardGameViewGamesActivity extends AppCompatActivity {
                             alert.show();
                         } else {
 
-                            if(enoughFunds.equals("true")) {
+                            if(userGameEnrolmentExists.equals("false")) {
 
 
-                                if(userEnroled.equals("true")) {
+                                if (enoughFunds.equals("true")) {
 
-                                    Intent intent = new Intent(RewardGameViewGamesActivity.this, ConfirmEnrolmentActivity.class);
-                                    intent.putExtra("gameamount", gameAmountToPlay);
-                                    startActivity(intent);
-                                    finish();
 
-                                }
-                                else if(userEnroled.equals("false")){
+                                    if (userEnroled.equals("true")) {
 
-                                    //return user's money to ewallet
+                                        Intent intent = new Intent(RewardGameViewGamesActivity.this, ConfirmEnrolmentActivity.class);
+                                        intent.putExtra("gameamount", gameAmount);
+                                        startActivity(intent);
+                                        finish();
+
+                                    } else if (userEnroled.equals("false")) {
+
+                                        //return user's money to ewallet
+
+                                        // Use the Builder class for convenient dialog construction
+                                        AlertDialog.Builder builder = new AlertDialog.Builder(RewardGameViewGamesActivity.this);
+                                        builder.setTitle("PlayPaddy");
+                                        builder.setMessage("Game Enrolment was not successful.");
+                                        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
+                                                // You don't have to do anything here if you just
+                                                // want it dismissed when clicked
+                                            }
+                                        });
+                                        builder.show();
+                                        return;
+
+                                    }
+
+                                } else if (enoughFunds.equals("false")) {
 
                                     // Use the Builder class for convenient dialog construction
                                     AlertDialog.Builder builder = new AlertDialog.Builder(RewardGameViewGamesActivity.this);
                                     builder.setTitle("PlayPaddy");
-                                    builder.setMessage("Game Enrolment was not successful.");
+                                    builder.setMessage("You do not have enough money to enrol for this game. Please fund your EWallet and try again.");
                                     builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int id) {
                                             // You don't have to do anything here if you just
@@ -553,16 +603,16 @@ public class RewardGameViewGamesActivity extends AppCompatActivity {
                                     });
                                     builder.show();
                                     return;
-
                                 }
 
                             }
-                            else if(enoughFunds.equals("false")){
+                            else if(userGameEnrolmentExists.equals("true")){
+
 
                                 // Use the Builder class for convenient dialog construction
                                 AlertDialog.Builder builder = new AlertDialog.Builder(RewardGameViewGamesActivity.this);
                                 builder.setTitle("PlayPaddy");
-                                builder.setMessage("You do not have enough money to enrol for this game. Please fund your EWallet and try again.");
+                                builder.setMessage("You have already enrolled to play this game. Please enrol to another game.");
                                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
                                         // You don't have to do anything here if you just
@@ -571,6 +621,7 @@ public class RewardGameViewGamesActivity extends AppCompatActivity {
                                 });
                                 builder.show();
                                 return;
+
                             }
 
 

@@ -86,7 +86,7 @@ public class ManageBankInfoActivity extends AppCompatActivity {
          });
 
 
-         buttonManageBankInfoCancel = (Button)findViewById(R.id.buttonManageBankInfoSave);
+         buttonManageBankInfoCancel = (Button)findViewById(R.id.buttonManageBankInfoCancel);
          buttonManageBankInfoCancel.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
@@ -413,7 +413,6 @@ public class ManageBankInfoActivity extends AppCompatActivity {
                         alert.show();
                     } else {
 
-                        if(!userBankJsonObjSave.isNull("UserBankId")) {//if there is a bank information
 
                             try {
 
@@ -431,7 +430,9 @@ public class ManageBankInfoActivity extends AppCompatActivity {
                                         }
                                     });
                                     builder.show();
-                                    return;
+
+
+                                    finish();
 
                                 }
                                 else{
@@ -439,7 +440,7 @@ public class ManageBankInfoActivity extends AppCompatActivity {
                                     // Use the Builder class for convenient dialog construction
                                     AlertDialog.Builder builder = new AlertDialog.Builder(ManageBankInfoActivity.this);
                                     builder.setTitle("PlayPaddy");
-                                    builder.setMessage("Save was not successful.");
+                                    builder.setMessage("Save was not successful. Please try again.");
                                     builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int id) {
                                             // You don't have to do anything here if you just
@@ -471,22 +472,6 @@ public class ManageBankInfoActivity extends AppCompatActivity {
                             }
 
 
-                        }
-                        else{// if user does not have any bank information on this system
-
-                            // Use the Builder class for convenient dialog construction
-                            AlertDialog.Builder builder = new AlertDialog.Builder(ManageBankInfoActivity.this);
-                            builder.setTitle("PlayPaddy");
-                            builder.setMessage("You do not have any bank account information on our system yet. Please enter your bank details so we can pay you when you win.");
-                            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    // You don't have to do anything here if you just
-                                    // want it dismissed when clicked
-                                }
-                            });
-                            builder.show();
-                            return;
-                        }
 
 
                     }

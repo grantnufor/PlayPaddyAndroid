@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -168,10 +169,37 @@ public class RewardGameHomeActivity extends AppCompatActivity {
 
                             Toast.makeText(RewardGameHomeActivity.this, "Game categories Loaded", Toast.LENGTH_LONG).show();
 
+
+//                            // Use the Builder class for convenient dialog construction
+//                            AlertDialog.Builder builder = new AlertDialog.Builder(RewardGameHomeActivity.this);
+//                            builder.setTitle("PlayPaddy");
+//                            builder.setMessage("Game categories Loaded");
+//                            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//                                public void onClick(DialogInterface dialog, int id) {
+//                                    // You don't have to do anything here if you just
+//                                    // want it dismissed when clicked
+//                                }
+//                            });
+//                            builder.show();
+
+
                         }
                         else{
 
                             Toast.makeText(RewardGameHomeActivity.this, "No Game Categories found", Toast.LENGTH_LONG).show();
+
+                            // Use the Builder class for convenient dialog construction
+                            AlertDialog.Builder builder = new AlertDialog.Builder(RewardGameHomeActivity.this);
+                            builder.setTitle("PlayPaddy");
+                            builder.setMessage("No Game Categories found");
+                            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    // You don't have to do anything here if you just
+                                    // want it dismissed when clicked
+                                }
+                            });
+                            builder.show();
+
 
 
                         }
@@ -235,8 +263,8 @@ public class RewardGameHomeActivity extends AppCompatActivity {
                     if (rewardGameCategoryJsonList.size() > 0) {//if there are game category to load
 
                         final String categoryId = "" + rewardGameCategoryJsonList.get(position).get("GameCategoryId");
-                        String categoryName = ""+ rewardGameCategoryJsonList.get(position).get("CategoryName");
-                        String categoryHighestWorth = ""+ rewardGameCategoryJsonList.get(position).get("CategoryHighestWorth");
+                        final String categoryName = ""+ rewardGameCategoryJsonList.get(position).get("CategoryName");
+                        String categoryHighestWorth = ""+rewardGameCategoryJsonList.get(position).get("CategoryHighestWorth");
 
 
                         textViewGameCategoryIdList.setText(categoryId);
@@ -248,6 +276,7 @@ public class RewardGameHomeActivity extends AppCompatActivity {
 
                                 Intent intent = new Intent(RewardGameHomeActivity.this, RewardGameViewGamesActivity.class);
                                 intent.putExtra("categoryId", categoryId);
+                                intent.putExtra("categoryName", categoryName);
                                 intent.putExtra("userid", userId);
                                 intent.putExtra("username", userName);
                                 startActivity(intent);
@@ -275,11 +304,12 @@ public class RewardGameHomeActivity extends AppCompatActivity {
                     Button buttonOpenGames = (Button)itemView.findViewById(R.id.buttonOpenGames);
 
 
+
                     if (rewardGameCategoryJsonList.size() > 0) {//if there are grades to load
 
-                       final String categoryId = "" + rewardGameCategoryJsonList.get(position).get("GameCategoryId");
-                        String categoryName = ""+ rewardGameCategoryJsonList.get(position).get("CategoryName");
-                        String categoryHighestWorth = ""+ rewardGameCategoryJsonList.get(position).get("CategoryHighestWorth");
+                        final String categoryId = "" + rewardGameCategoryJsonList.get(position).get("GameCategoryId");
+                        final String categoryName = ""+ rewardGameCategoryJsonList.get(position).get("CategoryName");
+                        String categoryHighestWorth = ""+rewardGameCategoryJsonList.get(position).get("CategoryHighestWorth");
 
 
                         textViewGameCategoryIdList.setText(categoryId);
@@ -291,12 +321,13 @@ public class RewardGameHomeActivity extends AppCompatActivity {
 
                                 Intent intent = new Intent(RewardGameHomeActivity.this, RewardGameViewGamesActivity.class);
                                 intent.putExtra("categoryId", categoryId);
+                                intent.putExtra("categoryName", categoryName);
                                 intent.putExtra("userid", userId);
                                 intent.putExtra("username", userName);
                                 startActivity(intent);
-
                             }
                         });
+
 
 
                     } else {

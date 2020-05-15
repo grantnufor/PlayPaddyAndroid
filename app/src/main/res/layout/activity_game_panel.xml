@@ -45,16 +45,16 @@
 <!--                    android:textSize="12dp"-->
 <!--                    android:visibility="invisible" />-->
 
-                <TextView
-                    android:id="@+id/textViewGamePanelGameInfo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:text="Game Info"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColor="@color/White"
-                    android:fontFamily="@font/montserrat"
-                    android:textSize="12dp" />
+<!--                <TextView-->
+<!--                    android:id="@+id/textViewGamePanelGameInfo"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginLeft="20dp"-->
+<!--                    android:text="Game Info"-->
+<!--                    android:textAppearance="?android:attr/textAppearanceSmall"-->
+<!--                    android:textColor="@color/White"-->
+<!--                    android:fontFamily="@font/montserrat"-->
+<!--                    android:textSize="12dp" />-->
             </LinearLayout>
 
             <TextView

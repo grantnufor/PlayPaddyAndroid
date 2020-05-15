@@ -421,7 +421,24 @@ public class GamePanelActivity extends AppCompatActivity {
 //                            alert.show();
 
                             Toast.makeText(GamePanelActivity.this, "Error has occurred" + errorMessage, Toast.LENGTH_LONG).show();
+
+
+                            // Use the Builder class for convenient dialog construction
+                            AlertDialog.Builder builder = new AlertDialog.Builder(GamePanelActivity.this);
+                            builder.setTitle("PlayPaddy");
+                            builder.setMessage("Error has occurred" + errorMessage + ". Please try again or contact PlayPaddy.");
+                            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+
+                                    finish();
+
+                                }
+                            });
+                            builder.show();
+
                             return;
+
+
 
 
                         } else {
@@ -466,6 +483,21 @@ public class GamePanelActivity extends AppCompatActivity {
 
             } catch (Exception ex) {
                 Toast.makeText(GamePanelActivity.this, ex.getMessage(), Toast.LENGTH_LONG).show();
+
+                // Use the Builder class for convenient dialog construction
+                AlertDialog.Builder builder = new AlertDialog.Builder(GamePanelActivity.this);
+                builder.setTitle("PlayPaddy");
+                builder.setMessage("Error has occurred" + ex.getMessage()+ ". Please try again or contact PlayPaddy.");
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                        finish();
+
+                    }
+                });
+                builder.show();
+
+                return;
 
             }
 
@@ -614,7 +646,22 @@ public class GamePanelActivity extends AppCompatActivity {
 //                            alert.setMessage("Error has occured");
 //                            alert.show();
 
-                            Toast.makeText(GamePanelActivity.this, "Error has occurred" + errorMessage, Toast.LENGTH_LONG).show();
+                            Toast.makeText(GamePanelActivity.this, "Error has occurred " + errorMessage, Toast.LENGTH_LONG).show();
+
+
+                            // Use the Builder class for convenient dialog construction
+                            AlertDialog.Builder builder = new AlertDialog.Builder(GamePanelActivity.this);
+                            builder.setTitle("PlayPaddy");
+                            builder.setMessage("Error has occurred " + errorMessage+ ". Please try again or contact PlayPaddy.");
+                            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+
+                                    finish();
+
+                                }
+                            });
+                            builder.show();
+
                             return;
 
 
@@ -657,6 +704,22 @@ public class GamePanelActivity extends AppCompatActivity {
 
             } catch (Exception ex) {
                 Toast.makeText(GamePanelActivity.this, ex.getMessage(), Toast.LENGTH_LONG).show();
+
+
+                // Use the Builder class for convenient dialog construction
+                AlertDialog.Builder builder = new AlertDialog.Builder(GamePanelActivity.this);
+                builder.setTitle("PlayPaddy");
+                builder.setMessage(ex.getMessage()+ ". Please try again or contact PlayPaddy.");
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                        finish();
+
+                    }
+                });
+                builder.show();
+
+                return;
 
             }
 

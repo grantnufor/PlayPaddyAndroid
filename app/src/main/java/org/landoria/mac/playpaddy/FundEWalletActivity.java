@@ -50,6 +50,7 @@ public class FundEWalletActivity extends AppCompatActivity {
 
 
 
+    EditText editTextFundEwalletEmailAddress;
     EditText editTextFundEwalletAmount;
     EditText editTextFundEwalletCardNumber;
     EditText editTextFundEwalletCVC;
@@ -72,6 +73,8 @@ public class FundEWalletActivity extends AppCompatActivity {
 
     String userId = "";
     String userName = "";
+
+    Double actualAmount = 0.00;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,6 +107,7 @@ public class FundEWalletActivity extends AppCompatActivity {
 
 
 
+        editTextFundEwalletEmailAddress = (EditText)findViewById(R.id.editTextFundEwalletEmailAddress);
         editTextFundEwalletAmount = (EditText) findViewById(R.id.editTextFundEwalletAmount);
         editTextFundEwalletCardNumber = (EditText) findViewById(R.id.editTextFundEwalletCardNumber);
         editTextFundEwalletCVC = (EditText) findViewById(R.id.editTextFundEwalletCVC);
@@ -140,6 +144,7 @@ public class FundEWalletActivity extends AppCompatActivity {
 
     Card card;
     int amount = 0;
+    String emailAddress= "";
 
     public  void pay(){
 
@@ -154,6 +159,26 @@ public class FundEWalletActivity extends AppCompatActivity {
 
 
 
+
+
+        if(editTextFundEwalletEmailAddress.getText().equals("")){
+
+            // Use the Builder class for convenient dialog construction
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("PlayPaddy");
+            builder.setMessage("You need to enter your Email Address (Your Receipt will be sent to your Email Address.)");
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    // You don't have to do anything here if you just
+                    // want it dismissed when clicked
+                }
+            });
+            builder.show();
+            return;
+        }
+        else{
+            emailAddress = editTextFundEwalletEmailAddress.getText()+"";
+        }
 
 
         if(editTextFundEwalletAmount.getText().equals("")){
@@ -172,6 +197,7 @@ public class FundEWalletActivity extends AppCompatActivity {
         }
         else{
             amount = Integer.parseInt( editTextFundEwalletAmount.getText()+"00");
+            actualAmount = Double.parseDouble( editTextFundEwalletAmount.getText().toString());
         }
 
 
@@ -291,7 +317,7 @@ public class FundEWalletActivity extends AppCompatActivity {
 
 
 
-    double confimedAmount = 0.00;
+    //double confimedAmount = 0.00;
 
     // This is the subroutine you will call after creating the charge
     // adding a card and setting the access_code
@@ -300,7 +326,7 @@ public class FundEWalletActivity extends AppCompatActivity {
         Charge charge = new Charge();
         charge.setCard(card); //sets the card to charge
         charge.setAmount(amount);//sets the amount to charge
-        charge.setEmail("grantnufor@yahoo.com");
+        charge.setEmail(emailAddress);
 
         PaystackSdk.chargeCard(FundEWalletActivity.this, charge, new Paystack.TransactionCallback() {
             @Override
@@ -394,23 +420,23 @@ public class FundEWalletActivity extends AppCompatActivity {
                         //getting the ewallet for this user
                         jsonEwalletObj = eWalletHttpServiceAdapter.GetEwalletByUserId(userId);
 
-                        if(!jsonEwalletObj.isNull("EWalletId")) {
+                        if(!jsonEwalletObj.isNull("EwalletId")) {
                             //getting the balance and crediting the user with the new balance
-                            String ewalletId = jsonEwalletObj.getString("EWalletId");
+                            String ewalletId = jsonEwalletObj.getString("EwalletId");
 
                             String pattern = "MM/dd/yyyy";
                             SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, new Locale("fr", "FR"));
                             String date = simpleDateFormat.format(new Date());
 
-                            double ewalletBalance = jsonEwalletObj.getDouble("Balance");
+                            double ewalletBalance = jsonEwalletObj.getDouble("CurrentBalance");
 
-                            double newEwalletBalance = ewalletBalance + confimedAmount;
+                            double newEwalletBalance = ewalletBalance + actualAmount;
 
                             if(newEwalletBalance > 0){
 
                                 eWalletHttpServiceAdapter.UpdateEwallet(ewalletId, userId, "0.00", "0.00", newEwalletBalance+"", "0000", date, date);
 
-                                eWalletTransactionHttpServiceAdapter.AddEwalletTransaction(ewalletId, confimedAmount+"", "0.00", "EWallet Funding", newEwalletBalance+"", userId, "0", "Success", date);
+                                eWalletTransactionHttpServiceAdapter.AddEwalletTransaction(ewalletId, actualAmount+"", "0.00", "EWallet Funding", newEwalletBalance+"", userId, "0", "Success", date);
                             }
                         }
                         else{// if user does not have ewallet, create one for him
@@ -421,9 +447,9 @@ public class FundEWalletActivity extends AppCompatActivity {
                             SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, new Locale("fr", "FR"));
                             String date = simpleDateFormat.format(new Date());
 
-                            double ewalletBalance = jsonEwalletObj.getDouble("Balance");
+                            double ewalletBalance = jsonEwalletObj.getDouble("CurrentBalance");
 
-                            double newEwalletBalance = ewalletBalance + confimedAmount;
+                            double newEwalletBalance = ewalletBalance + actualAmount;
 
                             if(newEwalletBalance > 0){
 
@@ -432,11 +458,11 @@ public class FundEWalletActivity extends AppCompatActivity {
 
                                 JSONObject jsonEwalletObjForNew = eWalletHttpServiceAdapter.GetEwalletByUserId(userId);
 
-                                if(jsonEwalletObjForNew.isNull("EWalletId")) {
+                                if(jsonEwalletObjForNew.isNull("EwalletId")) {
 
-                                    String ewalletIdForNew = jsonEwalletObjForNew.getString("EWalletId");
+                                    String ewalletIdForNew = jsonEwalletObjForNew.getString("EwalletId");
 
-                                    eWalletTransactionHttpServiceAdapter.AddEwalletTransaction(ewalletIdForNew, confimedAmount + "", "0.00", "EWallet Funding", newEwalletBalance + "", userId, "0", "Success", date);
+                                    eWalletTransactionHttpServiceAdapter.AddEwalletTransaction(ewalletIdForNew, actualAmount + "", "0.00", "EWallet Funding", newEwalletBalance + "", userId, "0", "Success", date);
                                 }
                             }
                         }
@@ -455,8 +481,8 @@ public class FundEWalletActivity extends AppCompatActivity {
                             String companyAccountId = jsonCompanyObj.isNull("CompanyAccountId")+"";
 
                             double companyBalance = Double.parseDouble( jsonCompanyObj.isNull("CompanyBalance")+"");
-                            double newCompanyBalance = companyBalance + confimedAmount;
-                            companyAccountHttpServiceAdapter.AddCompanyAccount(userId, "EWallet Funding", confimedAmount+"", "0.00", newCompanyBalance+"", date);
+                            double newCompanyBalance = companyBalance + actualAmount;
+                            companyAccountHttpServiceAdapter.AddCompanyAccount(userId, "EWallet Funding", actualAmount+"", "0.00", newCompanyBalance+"", date);
 
 //
 //                        }
@@ -511,7 +537,9 @@ public class FundEWalletActivity extends AppCompatActivity {
 //                            return;
 
                         Intent intent = new Intent(FundEWalletActivity.this, EWalletFundingConfirmationActivity.class);
-                        intent.putExtra("amount", amount);
+                        intent.putExtra("userid", userId);
+                        intent.putExtra("actualamount", actualAmount.toString());
+                        intent.putExtra("username", userName);
                         startActivity(intent);
                         finishAffinity();
 

@@ -43,6 +43,8 @@ public class UserHomeFragment extends Fragment {
 
     Button buttonUserHomeFundEwallet;
 
+    Button buttonUserHomeEwalletTransactions;
+
     JSONObject jsonUserObj = new JSONObject();
     JSONObject jsonEwalletMainObj = new JSONObject();
 
@@ -143,6 +145,14 @@ public class UserHomeFragment extends Fragment {
             }
         });
 
+
+        buttonUserHomeEwalletTransactions = (Button)view.findViewById(R.id.buttonUserHomeEwalletTransactions);
+        buttonUserHomeEwalletTransactions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
+            }
+        });
 
         loadStats();
 
@@ -247,11 +257,14 @@ public class UserHomeFragment extends Fragment {
                             // Use the Builder class for convenient dialog construction
                             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                             builder.setTitle("PlayPaddy");
-                            builder.setMessage("User Info not found. Please try again. ");
+                            builder.setMessage("User Info not found. Please check your internet connection and try again.");
                             builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
                                     // You don't have to do anything here if you just
                                     // want it dismissed when clicked
+
+                                    getActivity().finish();
+
                                 }
                             });
                             builder.show();
@@ -350,7 +363,9 @@ public class UserHomeFragment extends Fragment {
 
                         try{
 
-                            textViewUserHomeEWalletBalance.setText("N"+jsonEwalletMainObj.getString("CurrentBalance"));
+                            double currentBalance = Double.parseDouble(jsonEwalletMainObj.getString("CurrentBalance"));
+
+                            textViewUserHomeEWalletBalance.setText("N"+String.format("%,.2f", currentBalance));
 
                         }
                         catch(Exception ex){
