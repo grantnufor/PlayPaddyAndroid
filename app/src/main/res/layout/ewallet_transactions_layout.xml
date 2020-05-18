@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/LightGreen">
+
+
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/textViewEWalletTransactionLayoutAmount"
+                    android:layout_width="0dp"
+                    android:layout_weight=".45"
+                    android:text="Amount: N0.00"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:textColor="@color/Red"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_gravity="left"
+                    android:gravity="left"
+                    android:textSize="16dp"
+                    android:textStyle="bold"/>
+
+
+                <TextView
+                    android:id="@+id/textViewEWalletTransactionLayoutDescription"
+                    android:layout_width="0dp"
+                    android:layout_weight=".45"
+                    android:text="Narration: NA"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:textColor="@color/Red"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_gravity="right"
+                    android:gravity="right"
+                    android:textSize="16dp"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/textViewEWalletTransactionLayoutDate"
+                    android:layout_width="0dp"
+                    android:layout_weight=".45"
+                    android:text="Date: NA"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:textColor="@color/Red"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_gravity="left"
+                    android:gravity="left"
+                    android:textSize="16dp"
+                    android:textStyle="bold"/>
+
+
+                <TextView
+                    android:id="@+id/textViewEWalletTransactionLayoutType"
+                    android:layout_width="0dp"
+                    android:layout_weight=".45"
+                    android:text="Type: NA"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:textColor="@color/Red"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_gravity="right"
+                    android:gravity="right"
+                    android:textSize="16dp"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+
+
+
+
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/textViewGameIdList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NA"
+            android:visibility="invisible"
+            android:layout_marginLeft="0dp"
+            android:layout_marginStart="10dp"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            android:layout_alignParentLeft="true" />
+
+    </LinearLayout>
+
+</LinearLayout>

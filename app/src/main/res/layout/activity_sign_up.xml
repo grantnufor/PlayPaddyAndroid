@@ -186,6 +186,33 @@ tools:layout_editor_absoluteX="8dp">
 
 
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <EditText
+                    android:id="@+id/editTextSignUpPhoneNumber"
+                    android:layout_width="fill_parent"
+                    android:layout_height="50dp"
+                    android:layout_below="@+id/textView4"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="11dp"
+                    android:cursorVisible="true"
+                    android:ems="10"
+                    android:hint="Enter your Phone Number (Optional)"
+                    android:inputType="text"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textColor="@color/Black"
+                    android:textCursorDrawable="@null"
+                    android:textSize="14dp"
+                    app:fontFamily="@font/montserrat"/>
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
 
 
             <Button
@@ -219,7 +246,24 @@ tools:layout_editor_absoluteX="8dp">
                 app:fontFamily="@font/montserrat"/>
 
 
-<!--            <com.google.android.gms.ads.AdView-->
+
+
+
+            <com.google.android.gms.ads.AdView
+                xmlns:ads="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/adViewSignUp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                ads:adSize="BANNER"
+                ads:adUnitId="ca-app-pub-1422423899855082/3820125354" />
+
+
+
+            <!--            <com.google.android.gms.ads.AdView-->
 <!--                xmlns:ads="http://schemas.android.com/apk/res-auto"-->
 <!--                android:id="@+id/adViewUserSignUp"-->
 <!--                android:layout_width="fill_parent"-->
@@ -256,6 +300,9 @@ tools:layout_editor_absoluteX="8dp">
         </LinearLayout>
 
     </LinearLayout>
+
+
+
 
 </ScrollView>
 

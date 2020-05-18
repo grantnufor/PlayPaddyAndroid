@@ -9,20 +9,28 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.SigningInfo;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Debug;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import org.json.JSONObject;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.HashMap;
 
 public class SignInActivity extends AppCompatActivity {
@@ -42,11 +50,45 @@ public class SignInActivity extends AppCompatActivity {
 
     SessionDB sessionDb;
 
+    AdView adViewSignIn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
+
+
+
+
+
+        if(!isNetworkAvailable()) {
+
+            // Use the Builder class for convenient dialog construction
+            AlertDialog.Builder builder = new AlertDialog.Builder(SignInActivity.this);
+            builder.setTitle("PlayPaddy");
+            builder.setMessage("Your device is not connected to the internet. Please connect to internet.");
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    // You don't have to do anything here if you just
+                    // want it dismissed when clicked
+                }
+            });
+            builder.show();
+
+            return;
+
+        }
+
+
+
+        adViewSignIn = findViewById(R.id.adViewSignIn);
+
+
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+//                .addTestDevice("9E8BD8C610A2CA40FF212DEE9766A88F")
+                .build();
+        adViewSignIn.loadAd(adRequest);
 
 
 //        showBackButton();
@@ -76,7 +118,29 @@ public class SignInActivity extends AppCompatActivity {
         buttonSignInSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                signIn();
+
+
+                if(isNetworkAvailable()) {
+
+                        signIn();
+
+                }
+                else{
+
+                    // Use the Builder class for convenient dialog construction
+                    AlertDialog.Builder builder = new AlertDialog.Builder(SignInActivity.this);
+                    builder.setTitle("PlayPaddy");
+                    builder.setMessage("Your device is not connected to the internet. Please connect to internet.");
+                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // You don't have to do anything here if you just
+                            // want it dismissed when clicked
+                        }
+                    });
+                    builder.show();
+                    return;
+
+                }
             }
         });
 
@@ -84,6 +148,9 @@ public class SignInActivity extends AppCompatActivity {
         buttonSignInBackToHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+
                 Intent intent = new Intent(SignInActivity.this, HomeActivity.class);
                 intent.putExtra("username", userName);
                 startActivity(intent);
@@ -127,6 +194,7 @@ public class SignInActivity extends AppCompatActivity {
                 }
             });
             builder.show();
+            return;
 
         }
 
@@ -148,6 +216,7 @@ public class SignInActivity extends AppCompatActivity {
                 }
             });
             builder.show();
+            return;
         }
 
 
@@ -312,6 +381,28 @@ public class SignInActivity extends AppCompatActivity {
 
     }
 
+
+    public boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
+//    // ping the google server to check if internet is really working or not
+//    public static boolean isInternetWorking() {
+//        boolean success = false;
+//        try {
+//            URL url = new URL("https://google.com");
+//            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+//            connection.setConnectTimeout(10000);
+//            connection.connect();
+//            success = connection.getResponseCode() == 200;
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        return success;
+//    }
 
 
 //    public void showBackButton() {

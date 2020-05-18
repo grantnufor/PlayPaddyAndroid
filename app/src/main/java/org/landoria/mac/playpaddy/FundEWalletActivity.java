@@ -83,6 +83,7 @@ public class FundEWalletActivity extends AppCompatActivity {
 
 
 
+
         Intent intent = getIntent();
         userId = intent.getStringExtra("userid");
         userName = intent.getStringExtra("username");
@@ -100,6 +101,25 @@ public class FundEWalletActivity extends AppCompatActivity {
 
 //        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#800000")));
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#006400")));
+
+
+
+
+        if(!isNetworkAvailable()) {
+
+            // Use the Builder class for convenient dialog construction
+            AlertDialog.Builder builder = new AlertDialog.Builder(FundEWalletActivity.this);
+            builder.setTitle("PlayPaddy");
+            builder.setMessage("Your device is not connected to the internet. Please connect to internet.");
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    // You don't have to do anything here if you just
+                    // want it dismissed when clicked
+                }
+            });
+            builder.show();
+            return;
+        }
 
 
 
@@ -424,7 +444,7 @@ public class FundEWalletActivity extends AppCompatActivity {
                             //getting the balance and crediting the user with the new balance
                             String ewalletId = jsonEwalletObj.getString("EwalletId");
 
-                            String pattern = "MM/dd/yyyy";
+                            String pattern = "MM/dd/yyyy HH:mm:ss";
                             SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, new Locale("fr", "FR"));
                             String date = simpleDateFormat.format(new Date());
 

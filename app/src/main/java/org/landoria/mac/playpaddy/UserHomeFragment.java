@@ -2,8 +2,11 @@ package org.landoria.mac.playpaddy;
 
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
@@ -20,7 +23,14 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import org.json.JSONObject;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 
 /**
@@ -56,12 +66,46 @@ public class UserHomeFragment extends Fragment {
 
     View view;
 
+
+    AdView adViewUserHome;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
          view = inflater.inflate(R.layout.fragment_user_home, container, false);
 
+
+
+        if(!isNetworkAvailable()) {
+
+            // Use the Builder class for convenient dialog construction
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setTitle("PlayPaddy");
+            builder.setMessage("Your device is not connected to the internet. Please connect to internet.");
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    // You don't have to do anything here if you just
+                    // want it dismissed when clicked
+                }
+            });
+            builder.show();
+
+
+            return null;
+
+        }
+
+
+
+        adViewUserHome = view.findViewById(R.id.adViewUserHome);
+
+
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+//                .addTestDevice("9E8BD8C610A2CA40FF212DEE9766A88F")
+                .build();
+        adViewUserHome.loadAd(adRequest);
 
 
         Intent intent = getActivity().getIntent();
@@ -97,6 +141,26 @@ public class UserHomeFragment extends Fragment {
         buttonUserHomeViewGameResults.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+//                String pattern = "MM/dd/yyyy HH:mm:ss";
+//                SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, new Locale("fr", "FR"));
+//                String date = simpleDateFormat.format(new Date());
+//
+//
+//
+//                // Use the Builder class for convenient dialog construction
+//                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+//                builder.setTitle("PlayPaddy");
+//                builder.setMessage(date);
+//                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//                    public void onClick(DialogInterface dialog, int id) {
+//                        // You don't have to do anything here if you just
+//                        // want it dismissed when clicked
+//                    }
+//                });
+//                builder.show();
+//                return;
 
 
                 // Use the Builder class for convenient dialog construction
@@ -150,7 +214,12 @@ public class UserHomeFragment extends Fragment {
         buttonUserHomeEwalletTransactions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+
+                Intent intent = new Intent(getActivity(), ViewEWalletTransactionsActivity.class);
+                intent.putExtra("userid", userId);
+                intent.putExtra("username", userName);
+                startActivity(intent);
+
             }
         });
 
@@ -393,6 +462,15 @@ public class UserHomeFragment extends Fragment {
             //ex.printStackTrace();
         }
 
+    }
+
+
+
+    public boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
 }

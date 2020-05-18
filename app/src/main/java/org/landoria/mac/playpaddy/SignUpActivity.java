@@ -21,6 +21,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
@@ -36,11 +39,14 @@ public class SignUpActivity extends AppCompatActivity {
 
     EditText editTextSignUpUserName;
     EditText editTextSignUpPassword;
+    EditText editTextSignUpPhoneNumber;
 
     Button buttonSignUpSignUp;
     Button buttonSignUpBackToHome;
 
     SessionDB sessionDb;
+
+    AdView adViewSignUp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +54,42 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
 
 
-       // showBackButton();
+
+
+        if(!isNetworkAvailable()) {
+
+            // Use the Builder class for convenient dialog construction
+            AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this);
+            builder.setTitle("PlayPaddy");
+            builder.setMessage("Your device is not connected to the internet. Please connect to internet.");
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    // You don't have to do anything here if you just
+                    // want it dismissed when clicked
+                }
+            });
+            builder.show();
+
+
+            return;
+
+        }
+
+
+
+        adViewSignUp = findViewById(R.id.adViewSignUp);
+
+
+        AdRequest adRequest = new AdRequest.Builder()
+               .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+//                .addTestDevice("9E8BD8C610A2CA40FF212DEE9766A88F")
+                .build();
+        adViewSignUp.loadAd(adRequest);
+
+
+
+
+        // showBackButton();
 
 
 //        //showing activity name and app icon on action bar
@@ -66,12 +107,33 @@ public class SignUpActivity extends AppCompatActivity {
 
         editTextSignUpUserName = (EditText) findViewById(R.id.editTextSignUpUserName);
         editTextSignUpPassword = (EditText) findViewById(R.id.editTextSignUpPassword);
+        editTextSignUpPhoneNumber = (EditText) findViewById(R.id.editTextSignUpPhoneNumber);
 
         buttonSignUpSignUp = (Button) findViewById(R.id.buttonSignUpSignUp);
         buttonSignUpSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                signUp();
+                if(isNetworkAvailable()) {
+
+                    signUp();
+
+                }
+                else{
+
+                    // Use the Builder class for convenient dialog construction
+                    AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this);
+                    builder.setTitle("PlayPaddy");
+                    builder.setMessage("Your device is not connected to the internet. Please connect to internet.");
+                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // You don't have to do anything here if you just
+                            // want it dismissed when clicked
+                        }
+                    });
+                    builder.show();
+                    return;
+
+                }
             }
         });
 
@@ -93,14 +155,17 @@ public class SignUpActivity extends AppCompatActivity {
 
     String userName = "";
     String password = "";
+    String phoneNumber = "";
 
     String returnVal = "";
 
-    String pattern = "MM/dd/yyyy";
+    String pattern = "MM/dd/yyyy HH:mm:ss";
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, new Locale("fr", "FR"));
     String date = simpleDateFormat.format(new Date());
 
     JSONObject jsonUserObj = new JSONObject();
+
+    JSONObject jsonUserLoadedObj = new JSONObject();
 
     public void signUp() {
 
@@ -146,6 +211,9 @@ public class SignUpActivity extends AppCompatActivity {
         }
 
 
+        phoneNumber = editTextSignUpPhoneNumber.getText().toString();
+
+
         try {
 
 
@@ -188,7 +256,11 @@ public class SignUpActivity extends AppCompatActivity {
                         if (jsonUserObj.isNull("UserName")) {
 
                             //if the username does not exist, then register this user
-                            returnVal = userHttpServiceAdapter.RegisterUser(userName, "", "", password, date, date, "");
+                            returnVal = userHttpServiceAdapter.RegisterUser(userName, phoneNumber, "", password, date, date, "");
+
+
+                            jsonUserLoadedObj = userHttpServiceAdapter.GetUserByUserName(userName);
+
 
                         } else {
                             returnVal = "2";//the user already exists.  represents existence of the user
@@ -219,9 +291,9 @@ public class SignUpActivity extends AppCompatActivity {
 
                             try {
 
-                                String userServerId = jsonUserObj.getString("UserId");
-                                String userName = jsonUserObj.getString("UserName");
-                                String password = jsonUserObj.getString("Password");
+                                String userServerId = jsonUserLoadedObj.getString("UserId");
+                                String userName = jsonUserLoadedObj.getString("UserName");
+                                String password = jsonUserLoadedObj.getString("Password");
 
                                 if (sessionDb.getAllSessions().size() > 0) {//if a record is saved already
 
@@ -258,7 +330,7 @@ public class SignUpActivity extends AppCompatActivity {
                                 // Use the Builder class for convenient dialog construction
                                 AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this);
                                 builder.setTitle("PlayPaddy");
-                                builder.setMessage("An error has occurred. " + errorMessage);
+                                builder.setMessage("An error has occurred. " + ex.getMessage());
                                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
                                         // You don't have to do anything here if you just
@@ -323,6 +395,16 @@ public class SignUpActivity extends AppCompatActivity {
         }
 
 
+    }
+
+
+
+
+    public boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
 

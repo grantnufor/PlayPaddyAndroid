@@ -50,6 +50,8 @@ public class UserEnroledGamesActivity extends AppCompatActivity {
 
 
 
+
+
         Intent intent = getIntent();
         userId = intent.getStringExtra("userid");
         userName = intent.getStringExtra("username");
@@ -66,6 +68,26 @@ public class UserEnroledGamesActivity extends AppCompatActivity {
 
 //        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#800000")));
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#006400")));
+
+
+
+
+        if(!isNetworkAvailable()) {
+
+            // Use the Builder class for convenient dialog construction
+            AlertDialog.Builder builder = new AlertDialog.Builder(UserEnroledGamesActivity.this);
+            builder.setTitle("PlayPaddy");
+            builder.setMessage("Your device is not connected to the internet. Please connect to internet.");
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    // You don't have to do anything here if you just
+                    // want it dismissed when clicked
+                }
+            });
+            builder.show();
+
+            return;
+        }
 
 
 
@@ -125,6 +147,7 @@ public class UserEnroledGamesActivity extends AppCompatActivity {
                                 userEnroledGameJsonList = userGameEnrolmentHttpServiceAdapter.GetUserGameEnrolmentByUserIdAndStatus(userId, "unplayed");
 
                                 for (int i = 0; i < userEnroledGameJsonList.size(); i++) {
+
 
                                     String gameId = userEnroledGameJsonList.get(i).getString("GameId");
 
@@ -238,7 +261,7 @@ public class UserEnroledGamesActivity extends AppCompatActivity {
         }
 
         @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
+        public View getView(final int position, View convertView, ViewGroup parent) {
 
             View itemView = null;
 
@@ -284,11 +307,28 @@ public class UserEnroledGamesActivity extends AppCompatActivity {
                                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
 
-                                        Intent intent = new Intent(UserEnroledGamesActivity.this, GamePanelActivity.class);
-                                        intent.putExtra("gameid", gameId);
-                                        intent.putExtra("userid", userId);
-                                        startActivity(intent);
-                                        finish();
+                                        String userGameEnrolmentId = "";
+
+                                        try {
+
+                                            String userGameId = userEnroledGameJsonList.get(position).getString("GameId");
+
+                                            if (userGameId.equals(gameId)) {
+
+                                                userGameEnrolmentId = userEnroledGameJsonList.get(position).getString("UserGameEnrolmentId");
+
+                                                Intent intent = new Intent(UserEnroledGamesActivity.this, GamePanelActivity.class);
+                                                intent.putExtra("gameid", gameId);
+                                                intent.putExtra("userid", userId);
+                                                intent.putExtra("userenrolledgameid", userGameEnrolmentId);
+                                                startActivity(intent);
+                                                finish();
+                                            }
+
+                                        }
+                                        catch(Exception ex){
+
+                                        }
 
                                     }
                                 });
@@ -355,11 +395,28 @@ public class UserEnroledGamesActivity extends AppCompatActivity {
                                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
 
-                                        Intent intent = new Intent(UserEnroledGamesActivity.this, GamePanelActivity.class);
-                                        intent.putExtra("gameid", gameId);
-                                        intent.putExtra("userid", userId);
-                                        startActivity(intent);
-                                        finish();
+                                        String userGameEnrolmentId = "";
+
+                                        try {
+
+                                            String userGameId = userEnroledGameJsonList.get(position).getString("GameId");
+
+                                            if (userGameId.equals(gameId)) {
+
+                                                userGameEnrolmentId = userEnroledGameJsonList.get(position).getString("UserGameEnrolmentId");
+
+                                                Intent intent = new Intent(UserEnroledGamesActivity.this, GamePanelActivity.class);
+                                                intent.putExtra("gameid", gameId);
+                                                intent.putExtra("userid", userId);
+                                                intent.putExtra("userenrolledgameid", userGameEnrolmentId);
+                                                startActivity(intent);
+                                                finish();
+                                            }
+
+                                        }
+                                        catch(Exception ex){
+
+                                        }
                                     }
                                 });
                                 builder.setNegativeButton("No", new DialogInterface.OnClickListener() {

@@ -7,6 +7,7 @@ import HttpAdapter.GameHttpServiceAdapter;
 import HttpAdapter.GameOptionHttpServiceAdapter;
 import HttpAdapter.GameQuestionHttpServiceAdapter;
 import HttpAdapter.GameUserAnswerHttpServiceAdapter;
+import HttpAdapter.UserGameEnrolmentHttpServiceAdapter;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -45,6 +46,8 @@ public class GamePanelActivity extends AppCompatActivity {
     GameOptionHttpServiceAdapter gameOptionHttpServiceAdapter = new GameOptionHttpServiceAdapter();
     GameUserAnswerHttpServiceAdapter gameUserAnswerHttpServiceAdapter;
 
+    UserGameEnrolmentHttpServiceAdapter userGameEnrolmentHttpServiceAdapter = new UserGameEnrolmentHttpServiceAdapter();
+
     //local db objects
     GameQuestionDB gameQuestionDB = new GameQuestionDB(this);
     GameOptionDB gameOptionDB = new GameOptionDB(this);
@@ -73,6 +76,7 @@ public class GamePanelActivity extends AppCompatActivity {
     String userId = "";
     String userName = "";
     String gameId = "";
+    String userEnrolledGameId = "";
 
     String numInsertedGameOptions = "";
     String numInserted = "";
@@ -81,6 +85,8 @@ public class GamePanelActivity extends AppCompatActivity {
 
     ArrayList<JSONObject> gameOptionJsonListObj = new ArrayList<>();
     ArrayList<JSONObject> gameQuestionJsonListObj = new ArrayList<>();
+
+    JSONObject userEnrolledGameJson = new JSONObject();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,6 +98,7 @@ public class GamePanelActivity extends AppCompatActivity {
         userId = intent.getStringExtra("userid");
         userName = intent.getStringExtra("username");
         gameId = intent.getStringExtra("gameid");
+        userEnrolledGameId = intent.getStringExtra("userenrolledgameid");
 
 
         gameUserAnswerHttpServiceAdapter = new GameUserAnswerHttpServiceAdapter();
@@ -110,6 +117,24 @@ public class GamePanelActivity extends AppCompatActivity {
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#006400")));
 
 
+
+        if(!isNetworkAvailable()) {
+
+            // Use the Builder class for convenient dialog construction
+            AlertDialog.Builder builder = new AlertDialog.Builder(GamePanelActivity.this);
+            builder.setTitle("PlayPaddy");
+            builder.setMessage("Your device is not connected to the internet. Please connect to internet.");
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    // You don't have to do anything here if you just
+                    // want it dismissed when clicked
+                }
+            });
+            builder.show();
+
+            return;
+
+        }
 
 
         pullDownGameQuestions();
@@ -346,6 +371,25 @@ public class GamePanelActivity extends AppCompatActivity {
 
                         try {
 
+
+                            //loading the user enrolled game json
+                            if(userGameEnrolmentHttpServiceAdapter != null){
+
+                                if(!userGameEnrolmentHttpServiceAdapter.GetUserGameEnrolmentByUserGameEnrolmentId(userEnrolledGameId).isNull("UserGameEnrolmentId")){
+
+                                    userEnrolledGameJson = userGameEnrolmentHttpServiceAdapter.GetUserGameEnrolmentByUserGameEnrolmentId(userEnrolledGameId);
+
+                                }
+
+                            }
+                            else {
+
+                                errorCode = 1;
+                                errorMessage = "No User Enrolment to load!";
+                            }
+
+
+
                             //pulling down game question for this game
                             if (gameQuestionHttpServiceAdapter != null) {
                                 if (gameQuestionHttpServiceAdapter.GetGameQuestionByGameId(gameId).size() > 0) {
@@ -388,14 +432,14 @@ public class GamePanelActivity extends AppCompatActivity {
 
 
                                     errorCode = 1;
-                                    errorMessage = "There are no Game Questions to load!";
+                                    errorMessage += " There are no Game Questions to load!";
                                     // Toast.makeText(HomeActivity.this, "Nothing to backup", Toast.LENGTH_LONG).show();
 
                                 }
                             } else {
 
                                 errorCode = 1;
-                                errorMessage = "No Game Questions to load!";
+                                errorMessage += " No Game Questions to load!";
                             }
 
 
@@ -403,7 +447,7 @@ public class GamePanelActivity extends AppCompatActivity {
 
 
                             errorCode = 1;
-                            errorMessage = ex.getMessage();
+                            errorMessage += ex.getMessage();
 
                         }
 
@@ -825,7 +869,7 @@ public class GamePanelActivity extends AppCompatActivity {
         }
 
 
-        String pattern = "MM/dd/yyyy";
+        String pattern = "MM/dd/yyyy HH:mm:ss";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, new Locale("fr", "FR"));
         String date = simpleDateFormat.format(new Date());
 
@@ -869,9 +913,6 @@ public class GamePanelActivity extends AppCompatActivity {
     int numServerSaved = 0;
 
     private void saveGameUserAnswerToServer(){
-
-
-
 
         //        //setting up the error dialog
         AlertDialog.Builder alert = new AlertDialog.Builder(GamePanelActivity.this, R.style.AppTheme);
@@ -936,6 +977,7 @@ public class GamePanelActivity extends AppCompatActivity {
                         }
 
 
+                        userGameEnrolmentHttpServiceAdapter.UpdateUserGameEnrolment(userEnrolledGameId, userEnrolledGameJson.getString("UserId"), userEnrolledGameJson.getString("GameId"), userEnrolledGameJson.getString("AmountPaid"), userEnrolledGameJson.getString("DateOfPayment"), "played");
 
 
 

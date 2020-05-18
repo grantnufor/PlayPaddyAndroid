@@ -6,4 +6,40 @@
     android:layout_height="match_parent"
     tools:context=".ViewEWalletTransactionsActivity">
 
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/Black"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/textViewEWalletTransactionsEWalletBalance"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:background="@color/Maroon"
+            android:gravity="center"
+            android:text="MY EWALLET BALANCE: N0.00"
+            android:textAlignment="center"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:textColor="@color/White"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            app:fontFamily="@font/montserrat" />
+
+
+        <ListView
+            android:id="@+id/listViewEWalletTransaction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:dividerHeight="10.0dp"/>
+
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

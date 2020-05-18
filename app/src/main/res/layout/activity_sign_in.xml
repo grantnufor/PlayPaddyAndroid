@@ -223,6 +223,20 @@ tools:layout_editor_absoluteX="8dp">
                 app:fontFamily="@font/montserrat"/>
 
 
+
+            <com.google.android.gms.ads.AdView
+                xmlns:ads="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/adViewSignIn"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                ads:adSize="BANNER"
+                ads:adUnitId="ca-app-pub-1422423899855082/3820125354" />
+
+
             <!--            <com.google.android.gms.ads.AdView-->
             <!--                xmlns:ads="http://schemas.android.com/apk/res-auto"-->
             <!--                android:id="@+id/adViewUserSignUp"-->
