@@ -26,7 +26,10 @@ import android.widget.Toast;
 
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class UserEnroledGamesActivity extends AppCompatActivity {
 
@@ -288,61 +291,95 @@ public class UserEnroledGamesActivity extends AppCompatActivity {
                         String amountToPlay = ""+ gameJsonList.get(position).get("PlayPrice");
 
 
-                        gameIdToPlay = Long.parseLong("" + gameJsonList.get(position).get("GameId"));
+
+
+                            gameIdToPlay = Long.parseLong("" + gameJsonList.get(position).get("GameId"));
 //                        gameAmountToPlay = Double.parseDouble( ""+ rewardGameJsonList.get(position).get("PlayPrice"));
 
 
-                        textViewUserEnrolledGameIdList.setText(gameId);
-                        textViewcGameLayoutDateAndTimeToPlay.setText(dateAndTimeToPlay);
-                        textViewUserEnrolledGameLayoutAmountToWin.setText("N"+String.format("%,.2f", Double.parseDouble(amountToWin)));
-                        textViewUserEnrolledGameLayoutAmountToPay.setText("N"+String.format("%,.2f", Double.parseDouble( amountToPlay)));
+                            textViewUserEnrolledGameIdList.setText(gameId);
+                            textViewcGameLayoutDateAndTimeToPlay.setText(dateAndTimeToPlay);
+                            textViewUserEnrolledGameLayoutAmountToWin.setText("N" + String.format("%,.2f", Double.parseDouble(amountToWin)));
+                            textViewUserEnrolledGameLayoutAmountToPay.setText("N" + String.format("%,.2f", Double.parseDouble(amountToPlay)));
 
-                        buttonUserEnrolledGamePlayGame.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                // Use the Builder class for convenient dialog construction
-                                AlertDialog.Builder builder = new AlertDialog.Builder(UserEnroledGamesActivity.this);
-                                builder.setTitle("PlayPaddy");
-                                builder.setMessage("Are you sure you want to Play this Game now?");
-                                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int id) {
+                            buttonUserEnrolledGamePlayGame.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    // Use the Builder class for convenient dialog construction
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(UserEnroledGamesActivity.this);
+                                    builder.setTitle("PlayPaddy");
+                                    builder.setMessage("Are you sure you want to Play this Game now?");
+                                    builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
 
-                                        String userGameEnrolmentId = "";
+                                            String userGameEnrolmentId = "";
 
-                                        try {
 
-                                            String userGameId = userEnroledGameJsonList.get(position).getString("GameId");
+                                            try {
 
-                                            if (userGameId.equals(gameId)) {
+                                                String dateToPlay = ""+ gameJsonList.get(position).get("DateToPlay");
+                                                String timeToPlay = ""+ gameJsonList.get(position).get("TimeToPlay");
 
-                                                userGameEnrolmentId = userEnroledGameJsonList.get(position).getString("UserGameEnrolmentId");
+                                                String patternDate = "dd/MM/yyyy";
+                                                SimpleDateFormat simpleDateFormat = new SimpleDateFormat(patternDate, new Locale("fr", "FR"));
+                                                String date = simpleDateFormat.format(new Date());
+                                                String todaysDate = date;
 
-                                                Intent intent = new Intent(UserEnroledGamesActivity.this, GamePanelActivity.class);
-                                                intent.putExtra("gameid", gameId);
-                                                intent.putExtra("userid", userId);
-                                                intent.putExtra("userenrolledgameid", userGameEnrolmentId);
-                                                startActivity(intent);
-                                                finish();
+                                                String patternTime = "HH:mm";
+                                                SimpleDateFormat simpleDateFormatTime = new SimpleDateFormat(patternTime, new Locale("fr", "FR"));
+                                                String time = simpleDateFormatTime.format(new Date());
+                                                String timeNow =  time;
+
+
+                                                if(Date.parse(dateToPlay) < Date.parse(date)){
+
+                                                    // Use the Builder class for convenient dialog construction
+                                                    AlertDialog.Builder builder = new AlertDialog.Builder(UserEnroledGamesActivity.this);
+                                                    builder.setTitle("PlayPaddy");
+                                                    builder.setMessage("You cannot play this game until the designated date and time");
+                                                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                                        public void onClick(DialogInterface dialog, int id) {
+                                                            // You don't have to do anything here if you just
+                                                            // want it dismissed when clicked
+                                                        }
+                                                    });
+                                                    builder.show();
+
+                                                }
+                                                else if(Date.parse(dateToPlay) == Date.parse(date)) {
+
+                                                    String userGameId = userEnroledGameJsonList.get(position).getString("GameId");
+
+                                                    if (userGameId.equals(gameId)) {
+
+                                                        userGameEnrolmentId = userEnroledGameJsonList.get(position).getString("UserGameEnrolmentId");
+
+                                                        Intent intent = new Intent(UserEnroledGamesActivity.this, GamePanelActivity.class);
+                                                        intent.putExtra("gameid", gameId);
+                                                        intent.putExtra("userid", userId);
+                                                        intent.putExtra("userenrolledgameid", userGameEnrolmentId);
+                                                        startActivity(intent);
+                                                        finish();
+                                                    }
+
+                                                }
+
+                                            } catch (Exception ex) {
+
                                             }
 
                                         }
-                                        catch(Exception ex){
+                                    });
+                                    builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
 
                                         }
+                                    });
+                                    builder.show();
+                                    return;
 
-                                    }
-                                });
-                                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int id) {
-
-                                    }
-                                });
-                                builder.show();
-                                return;
-
-                            }
-                        });
-
+                                }
+                            });
 
 
                     } else {
@@ -375,60 +412,98 @@ public class UserEnroledGamesActivity extends AppCompatActivity {
                         String amountToPlay = ""+ gameJsonList.get(position).get("PlayPrice");
 
 
-                        gameIdToPlay = Long.parseLong("" + gameJsonList.get(position).get("GameId"));
+
+
+
+                                gameIdToPlay = Long.parseLong("" + gameJsonList.get(position).get("GameId"));
 //                        gameAmountToPlay = Double.parseDouble( ""+ rewardGameJsonList.get(position).get("PlayPrice"));
 
 
-                        textViewUserEnrolledGameIdList.setText(gameId);
-                        textViewcGameLayoutDateAndTimeToPlay.setText(dateAndTimeToPlay);
-                        textViewUserEnrolledGameLayoutAmountToWin.setText("N"+String.format("%,.2f", Double.parseDouble(amountToWin)));
-                        textViewUserEnrolledGameLayoutAmountToPay.setText("N"+String.format("%,.2f", Double.parseDouble( amountToPlay)));
+                                textViewUserEnrolledGameIdList.setText(gameId);
+                                textViewcGameLayoutDateAndTimeToPlay.setText(dateAndTimeToPlay);
+                                textViewUserEnrolledGameLayoutAmountToWin.setText("N" + String.format("%,.2f", Double.parseDouble(amountToWin)));
+                                textViewUserEnrolledGameLayoutAmountToPay.setText("N" + String.format("%,.2f", Double.parseDouble(amountToPlay)));
 
 
-                        buttonUserEnrolledGamePlayGame.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                // Use the Builder class for convenient dialog construction
-                                AlertDialog.Builder builder = new AlertDialog.Builder(UserEnroledGamesActivity.this);
-                                builder.setTitle("PlayPaddy");
-                                builder.setMessage("Are you sure you want to Play this Game now?");
-                                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int id) {
+                                buttonUserEnrolledGamePlayGame.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        // Use the Builder class for convenient dialog construction
+                                        AlertDialog.Builder builder = new AlertDialog.Builder(UserEnroledGamesActivity.this);
+                                        builder.setTitle("PlayPaddy");
+                                        builder.setMessage("Are you sure you want to Play this Game now?");
+                                        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
 
-                                        String userGameEnrolmentId = "";
+                                                String userGameEnrolmentId = "";
 
-                                        try {
+                                                try {
 
-                                            String userGameId = userEnroledGameJsonList.get(position).getString("GameId");
 
-                                            if (userGameId.equals(gameId)) {
+                                                    String dateToPlay = ""+ gameJsonList.get(position).get("DateToPlay");
+                                                    String timeToPlay = ""+ gameJsonList.get(position).get("TimeToPlay");
 
-                                                userGameEnrolmentId = userEnroledGameJsonList.get(position).getString("UserGameEnrolmentId");
+                                                    String patternDate = "dd/MM/yyyy";
+                                                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat(patternDate, new Locale("fr", "FR"));
+                                                    String date = simpleDateFormat.format(new Date());
+                                                    String todaysDate = date;
 
-                                                Intent intent = new Intent(UserEnroledGamesActivity.this, GamePanelActivity.class);
-                                                intent.putExtra("gameid", gameId);
-                                                intent.putExtra("userid", userId);
-                                                intent.putExtra("userenrolledgameid", userGameEnrolmentId);
-                                                startActivity(intent);
-                                                finish();
+                                                    String patternTime = "HH:mm";
+                                                    SimpleDateFormat simpleDateFormatTime = new SimpleDateFormat(patternTime, new Locale("fr", "FR"));
+                                                    String time = simpleDateFormatTime.format(new Date());
+                                                    String timeNow =  time;
+
+
+                                                    if(Date.parse(dateToPlay) < Date.parse(date) || Date.parse(dateToPlay) > Date.parse(date) ){//date of play has passed.
+
+                                                        // Use the Builder class for convenient dialog construction
+                                                        AlertDialog.Builder builder = new AlertDialog.Builder(UserEnroledGamesActivity.this);
+                                                        builder.setTitle("PlayPaddy");
+                                                        builder.setMessage("You cannot play this game. Today is not the designated date");
+                                                        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                                            public void onClick(DialogInterface dialog, int id) {
+                                                                // You don't have to do anything here if you just
+                                                                // want it dismissed when clicked
+                                                            }
+                                                        });
+                                                        builder.show();
+
+                                                    }
+                                                    else if(Date.parse(dateToPlay) == Date.parse(date)) {
+
+                                                        String userGameId = userEnroledGameJsonList.get(position).getString("GameId");
+
+                                                        if (userGameId.equals(gameId)) {
+
+                                                            userGameEnrolmentId = userEnroledGameJsonList.get(position).getString("UserGameEnrolmentId");
+
+                                                            Intent intent = new Intent(UserEnroledGamesActivity.this, GamePanelActivity.class);
+                                                            intent.putExtra("gameid", gameId);
+                                                            intent.putExtra("userid", userId);
+                                                            intent.putExtra("userenrolledgameid", userGameEnrolmentId);
+                                                            startActivity(intent);
+                                                            finish();
+                                                        }
+
+                                                    }
+
+                                                } catch (Exception ex) {
+
+                                                }
                                             }
+                                        });
+                                        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
 
-                                        }
-                                        catch(Exception ex){
+                                            }
+                                        });
+                                        builder.show();
+                                        return;
 
-                                        }
                                     }
                                 });
-                                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int id) {
 
-                                    }
-                                });
-                                builder.show();
-                                return;
 
-                            }
-                        });
 
 
                     } else {

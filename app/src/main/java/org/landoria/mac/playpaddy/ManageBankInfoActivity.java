@@ -196,7 +196,7 @@ public class ManageBankInfoActivity extends AppCompatActivity {
 
                                 String userBankId = userBankJsonObj.getString("UserBankId");
 
-                                String pattern = "MM/dd/yyyy";
+                                String pattern = "dd/MM/yyyy";
                                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, new Locale("fr", "FR"));
                                 String date = simpleDateFormat.format(new Date());
 
@@ -275,7 +275,7 @@ public class ManageBankInfoActivity extends AppCompatActivity {
 
     JSONObject userBankJsonObjSave = new JSONObject();
 
-    String pattern = "MM/dd/yyyy HH:mm:ss";
+    String pattern = "dd/MM/yyyy HH:mm:ss";
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, new Locale("fr", "FR"));
     String dateSave = simpleDateFormat.format(new Date());
 

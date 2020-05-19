@@ -444,7 +444,7 @@ public class FundEWalletActivity extends AppCompatActivity {
                             //getting the balance and crediting the user with the new balance
                             String ewalletId = jsonEwalletObj.getString("EwalletId");
 
-                            String pattern = "MM/dd/yyyy HH:mm:ss";
+                            String pattern = "dd/MM/yyyy HH:mm:ss";
                             SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, new Locale("fr", "FR"));
                             String date = simpleDateFormat.format(new Date());
 
@@ -463,7 +463,7 @@ public class FundEWalletActivity extends AppCompatActivity {
 
                            //
 
-                            String pattern = "MM/dd/yyyy";
+                            String pattern = "dd/MM/yyyy";
                             SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, new Locale("fr", "FR"));
                             String date = simpleDateFormat.format(new Date());
 
@@ -494,7 +494,7 @@ public class FundEWalletActivity extends AppCompatActivity {
 
                        // if(!jsonCompanyObj.isNull("CompanyAccountId")){//if company account already exists
 
-                            String pattern = "MM/dd/yyyy";
+                            String pattern = "dd/MM/yyyy";
                             SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, new Locale("fr", "FR"));
                             String date = simpleDateFormat.format(new Date());
 

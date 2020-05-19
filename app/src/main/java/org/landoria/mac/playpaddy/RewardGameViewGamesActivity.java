@@ -503,7 +503,7 @@ public class RewardGameViewGamesActivity extends AppCompatActivity {
                                     //getting the balance and crediting the user with the new balance
                                     String ewalletId = jsonEwalletNewObj.getString("EwalletId");
 
-                                    String pattern = "MM/dd/yyyy HH:mm:ss";
+                                    String pattern = "dd/MM/yyyy HH:mm:ss";
                                     SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, new Locale("fr", "FR"));
                                     String date = simpleDateFormat.format(new Date());
 
@@ -542,6 +542,9 @@ public class RewardGameViewGamesActivity extends AppCompatActivity {
                                     } else {
                                         enoughFunds = "false";
                                     }
+                                }
+                                else{
+                                    enoughFunds = "false";
                                 }
 
 

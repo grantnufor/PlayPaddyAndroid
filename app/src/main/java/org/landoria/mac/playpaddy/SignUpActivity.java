@@ -159,7 +159,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     String returnVal = "";
 
-    String pattern = "MM/dd/yyyy HH:mm:ss";
+    String pattern = "dd/MM/yyyy HH:mm:ss";
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, new Locale("fr", "FR"));
     String date = simpleDateFormat.format(new Date());
 
@@ -171,7 +171,7 @@ public class SignUpActivity extends AppCompatActivity {
 
 
         //user name
-        if (!editTextSignUpUserName.getText().equals("")) {
+        if (!editTextSignUpUserName.getText().toString().isEmpty() && editTextSignUpUserName.getText().toString().length() > 0) {
 
             userName = editTextSignUpUserName.getText().toString();
 
@@ -193,7 +193,7 @@ public class SignUpActivity extends AppCompatActivity {
 
 
         //password
-        if (!editTextSignUpPassword.getText().equals("")) {
+        if (!editTextSignUpPassword.getText().toString().isEmpty() && editTextSignUpUserName.getText().toString().length() > 0) {
 
             password = editTextSignUpPassword.getText().toString();
         } else {

@@ -163,6 +163,7 @@ public class UserHomeFragment extends Fragment {
 //                return;
 
 
+
                 // Use the Builder class for convenient dialog construction
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setTitle("PlayPaddy");
