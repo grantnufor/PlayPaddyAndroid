@@ -12,6 +12,10 @@ import java.util.ArrayList;
 
 public class UserTopicResponseHttpServiceAdapter {
 
+
+
+    String SOAP_ADDRESS ="http://playpaddy.chisomanuforom.com/WebService/UserTopicResponseServices.asmx";
+
     public ArrayList<JSONObject> GetAllUserTopicResponses()
     {
         String SOAP_ACTION_GetJsonData ="http://tempuri.org/GetAllUserTopicResponses";
@@ -19,8 +23,6 @@ public class UserTopicResponseHttpServiceAdapter {
 
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
-
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/UserTopicResponseServices.asmx";
 
 
         SoapPrimitive response=null;
@@ -84,7 +86,8 @@ public class UserTopicResponseHttpServiceAdapter {
         String OPERATION_NAME_GetJsonData = "GetUserTopicResponseByUserTopicResponseId";
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/UserTopicResponseServices.asmx";
+
+
         SoapPrimitive response=null;
 
         JSONObject jsonObj = new JSONObject();
@@ -133,8 +136,6 @@ public class UserTopicResponseHttpServiceAdapter {
 
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
-
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/UserTopicResponseServices.asmx";
 
 
         SoapPrimitive response=null;
@@ -203,8 +204,6 @@ public class UserTopicResponseHttpServiceAdapter {
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
 
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/UserTopicResponseServices.asmx";
-
 
         SoapPrimitive response=null;
 
@@ -270,8 +269,6 @@ public class UserTopicResponseHttpServiceAdapter {
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
 
 
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/UserTopicResponseServices.asmx";
-
         SoapPrimitive responseData = null;
         try
         {
@@ -335,9 +332,6 @@ public class UserTopicResponseHttpServiceAdapter {
         String OPERATION_NAME_GetJsonData = "UpdateUserTopicResponse";
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
-
-
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/UserTopicResponseServices.asmx";
 
         SoapPrimitive responseData = null;
         try

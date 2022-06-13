@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class GameCategoryHttpServiceAdapter {
 
-    String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebServices/GameCategoryServices.asmx";
+    String SOAP_ADDRESS ="http://playpaddy.chisomanuforom.com/WebService/GameCategoryServices.asmx";
 
 
     public ArrayList<JSONObject> GetAllGameCategories()
@@ -22,8 +22,6 @@ public class GameCategoryHttpServiceAdapter {
 
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
-
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/GameCategoryServices.asmx";
 
 
         SoapPrimitive response=null;
@@ -90,8 +88,6 @@ public class GameCategoryHttpServiceAdapter {
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
 
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/GameCategoryServices.asmx";
-
         SoapPrimitive response=null;
 
         JSONObject jsonObj = new JSONObject();
@@ -132,8 +128,6 @@ public class GameCategoryHttpServiceAdapter {
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
 
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/GameCategoryServices.asmx";
-
         SoapPrimitive response=null;
 
         JSONObject jsonObj = new JSONObject();
@@ -173,10 +167,6 @@ public class GameCategoryHttpServiceAdapter {
         String OPERATION_NAME_GetJsonData = "AddGameCategory";
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
-
-
-
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/GameCategoryServices.asmx";
 
         SoapPrimitive response=null;
         try
@@ -242,9 +232,6 @@ public class GameCategoryHttpServiceAdapter {
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
 
-
-
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/GameCategoryServices.asmx";
 
         SoapPrimitive response = null;
 

@@ -13,6 +13,9 @@ import java.util.ArrayList;
 public class CompanyAccountHttpServiceAdapter {
 
 
+    String SOAP_ADDRESS ="http://playpaddy.chisomanuforom.com/WebService/CompanyAccountServices.asmx";
+
+
     public ArrayList<JSONObject> GetAllCompanyAccount()
     {
         String SOAP_ACTION_GetJsonData ="http://tempuri.org/GetAllCompanyAccount";
@@ -21,7 +24,6 @@ public class CompanyAccountHttpServiceAdapter {
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
 
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/CompanyAccountServices.asmx";
 
 
         SoapPrimitive response=null;
@@ -85,7 +87,7 @@ public class CompanyAccountHttpServiceAdapter {
         String OPERATION_NAME_GetJsonData = "GetCompanyAccountByCompanyAccountId";
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/CompanyAccountServices.asmx";
+
         SoapPrimitive response=null;
 
         JSONObject jsonObj = new JSONObject();
@@ -134,7 +136,6 @@ public class CompanyAccountHttpServiceAdapter {
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
 
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/CompanyAccountServices.asmx";
 
 
         SoapPrimitive response=null;
@@ -199,10 +200,6 @@ public class CompanyAccountHttpServiceAdapter {
         String OPERATION_NAME_GetJsonData = "AddCompanyAccount";
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
-
-
-
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/CompanyAccountServices.asmx";
 
         SoapPrimitive response=null;
         try
@@ -273,9 +270,6 @@ public class CompanyAccountHttpServiceAdapter {
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
 
-
-
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/CompanyAccountServices.asmx";
 
         SoapPrimitive response=null;
         try

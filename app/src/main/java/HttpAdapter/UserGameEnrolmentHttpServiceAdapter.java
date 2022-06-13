@@ -12,6 +12,11 @@ import java.util.ArrayList;
 
 public class UserGameEnrolmentHttpServiceAdapter {
 
+
+
+    String SOAP_ADDRESS ="http://playpaddy.chisomanuforom.com/WebService/UserGameEnrolmentServices.asmx";
+
+
     public ArrayList<JSONObject> GetAllUserGameEnrolments()
     {
         String SOAP_ACTION_GetJsonData ="http://tempuri.org/GetAllUserGameEnrolments";
@@ -19,8 +24,6 @@ public class UserGameEnrolmentHttpServiceAdapter {
 
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
-
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/UserGameEnrolmentServices.asmx";
 
 
         SoapPrimitive response=null;
@@ -87,8 +90,6 @@ public class UserGameEnrolmentHttpServiceAdapter {
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
 
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/UserGameEnrolmentServices.asmx";
-
         SoapPrimitive response=null;
 
         JSONObject jsonObj = new JSONObject();
@@ -129,8 +130,6 @@ public class UserGameEnrolmentHttpServiceAdapter {
 
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
-
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/UserGameEnrolmentServices.asmx";
 
 
         SoapPrimitive response=null;
@@ -196,8 +195,6 @@ public class UserGameEnrolmentHttpServiceAdapter {
 
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
-
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/UserGameEnrolmentServices.asmx";
 
 
         SoapPrimitive response=null;
@@ -265,7 +262,6 @@ public class UserGameEnrolmentHttpServiceAdapter {
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
 
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/UserGameEnrolmentServices.asmx";
 
 
         SoapPrimitive response=null;
@@ -331,7 +327,6 @@ public class UserGameEnrolmentHttpServiceAdapter {
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
 
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/UserGameEnrolmentServices.asmx";
 
         SoapPrimitive response=null;
 
@@ -375,9 +370,6 @@ public class UserGameEnrolmentHttpServiceAdapter {
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
 
-
-
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/UserGameEnrolmentServices.asmx";
 
         SoapPrimitive response=null;
         try
@@ -446,9 +438,6 @@ public class UserGameEnrolmentHttpServiceAdapter {
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
 
-
-
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/UserGameEnrolmentServices.asmx";
 
         SoapPrimitive response=null;
         try

@@ -13,6 +13,9 @@ import java.util.ArrayList;
 public class UserBankHttpServiceAdapter {
 
 
+    String SOAP_ADDRESS ="http://playpaddy.chisomanuforom.com/WebService/UserBankServices.asmx";
+
+
     public ArrayList<JSONObject> GetAllUserBanks()
     {
         String SOAP_ACTION_GetJsonData ="http://tempuri.org/GetAllUserBanks";
@@ -21,7 +24,6 @@ public class UserBankHttpServiceAdapter {
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
 
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/UserBankServices.asmx";
 
 
         SoapPrimitive response=null;
@@ -85,7 +87,7 @@ public class UserBankHttpServiceAdapter {
         String OPERATION_NAME_GetJsonData = "GetUserBankByUserBankId";
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/UserBankServices.asmx";
+
         SoapPrimitive response=null;
 
         JSONObject jsonObj = new JSONObject();
@@ -134,7 +136,7 @@ public class UserBankHttpServiceAdapter {
         String OPERATION_NAME_GetJsonData = "GetUserBankByUserId";
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/UserBankServices.asmx";
+
         SoapPrimitive response=null;
 
         JSONObject jsonObj = new JSONObject();
@@ -185,9 +187,6 @@ public class UserBankHttpServiceAdapter {
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
 
-
-
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/UserBankServices.asmx";
 
         SoapPrimitive response=null;
         try
@@ -258,9 +257,6 @@ public class UserBankHttpServiceAdapter {
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
 
-
-
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/UserBankServices.asmx";
 
         SoapPrimitive response=null;
         try

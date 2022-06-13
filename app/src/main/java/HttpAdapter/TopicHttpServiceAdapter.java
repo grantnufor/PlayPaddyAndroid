@@ -13,6 +13,8 @@ import java.util.ArrayList;
 public class TopicHttpServiceAdapter {
 
 
+    String SOAP_ADDRESS ="http://playpaddy.chisomanuforom.com/WebService/TopicServices.asmx";
+
 
     public ArrayList<JSONObject> GetAllTopics()
     {
@@ -21,8 +23,6 @@ public class TopicHttpServiceAdapter {
 
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
-
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/TopicServices.asmx";
 
 
         SoapPrimitive response=null;
@@ -86,7 +86,7 @@ public class TopicHttpServiceAdapter {
         String OPERATION_NAME_GetJsonData = "GetTopicByTopicId";
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/TopicServices.asmx";
+
         SoapPrimitive response=null;
 
         JSONObject jsonObj = new JSONObject();
@@ -140,10 +140,6 @@ public class TopicHttpServiceAdapter {
         String OPERATION_NAME_GetJsonData = "AddTopic";
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
-
-
-
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/TopicServices.asmx";
 
         SoapPrimitive response=null;
         try
@@ -209,9 +205,6 @@ public class TopicHttpServiceAdapter {
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
 
-
-
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/TopicServices.asmx";
 
         SoapPrimitive response=null;
         try

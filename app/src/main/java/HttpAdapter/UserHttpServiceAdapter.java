@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class UserHttpServiceAdapter {
 
 
-    String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebServices/UserServices.asmx";
+    String SOAP_ADDRESS ="http://playpaddy.chisomanuforom.com/WebService/UserServices.asmx";
 
     public JSONObject GetUserByEmailAndPassword(String email, String password)
     {
@@ -21,8 +21,6 @@ public class UserHttpServiceAdapter {
         String OPERATION_NAME_GetJsonData = "GetUserByEmailAndPassword";
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
-
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/UserServices.asmx";
 
         SoapPrimitive response=null;
 
@@ -64,8 +62,6 @@ public class UserHttpServiceAdapter {
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
 
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/UserServices.asmx";
-
         SoapPrimitive response=null;
 
         JSONObject jsonObj = new JSONObject();
@@ -105,8 +101,6 @@ public class UserHttpServiceAdapter {
         String OPERATION_NAME_GetJsonData = "GetUserByPhoneNumber";
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
-
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/UserServices.asmx";
 
         Object response=null;
 
@@ -172,8 +166,6 @@ public class UserHttpServiceAdapter {
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
 
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/UserServices.asmx";
-
         Object response=null;
 
         JSONObject jsonObj = new JSONObject();
@@ -237,8 +229,6 @@ public class UserHttpServiceAdapter {
         String OPERATION_NAME_GetJsonData = "GetUserByUserName";
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
-
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/UserServices.asmx";
 
         Object response=null;
 
@@ -305,8 +295,6 @@ public class UserHttpServiceAdapter {
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
 
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/UserServices.asmx";
-
         Object response=null;
 
         JSONObject jsonObj = new JSONObject();
@@ -371,8 +359,6 @@ public class UserHttpServiceAdapter {
         String OPERATION_NAME_GetJsonData = "GetUserByUserId";
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
-
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/UserServices.asmx";
 
         Object response=null;
 
@@ -440,8 +426,6 @@ public class UserHttpServiceAdapter {
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
 
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/UserServices.asmx";
-
         Object response=null;
 
         ArrayList<JSONObject> obj = new ArrayList<JSONObject>();//create arraylist of jsonobject to capture all returned objects
@@ -506,7 +490,6 @@ public class UserHttpServiceAdapter {
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
 
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/UserServices.asmx";
 
 
         SoapPrimitive response=null;
@@ -580,7 +563,6 @@ public class UserHttpServiceAdapter {
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
 
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/UserServices.asmx";
 
         SoapPrimitive response=null;
         try
@@ -651,8 +633,6 @@ public class UserHttpServiceAdapter {
         String OPERATION_NAME_GetJsonData = "UpdateUserVerified";
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
-
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/UserServices.asmx";
 
 
         SoapPrimitive response=null;

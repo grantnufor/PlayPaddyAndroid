@@ -13,6 +13,7 @@ import java.util.ArrayList;
 public class EWalletTransactionHttpServiceAdapter {
 
 
+    String SOAP_ADDRESS ="http://playpaddy.chisomanuforom.com/WebService/EwalletTransactionServices.asmx";
 
 
     public ArrayList<JSONObject> GetAllEwalletTransactions()
@@ -23,7 +24,6 @@ public class EWalletTransactionHttpServiceAdapter {
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
 
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/EwalletTransactionServices.asmx";
 
 
         SoapPrimitive response=null;
@@ -87,7 +87,7 @@ public class EWalletTransactionHttpServiceAdapter {
         String OPERATION_NAME_GetJsonData = "GetEwalletTransactionByEwalletTransactionId";
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/EwalletTransactionServices.asmx";
+
         SoapPrimitive response=null;
 
         JSONObject jsonObj = new JSONObject();
@@ -137,7 +137,6 @@ public class EWalletTransactionHttpServiceAdapter {
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
 
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/EwalletTransactionServices.asmx";
 
 
         SoapPrimitive response=null;
@@ -205,7 +204,6 @@ public class EWalletTransactionHttpServiceAdapter {
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
 
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/EwalletTransactionServices.asmx";
 
 
         SoapPrimitive response=null;
@@ -274,9 +272,6 @@ public class EWalletTransactionHttpServiceAdapter {
 
         String WSDL_TARGET_NAMESPACE ="http://tempuri.org/";
 
-
-
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/EwalletTransactionServices.asmx";
 
         SoapPrimitive response=null;
         try
@@ -355,7 +350,6 @@ public class EWalletTransactionHttpServiceAdapter {
 
 
 
-        String SOAP_ADDRESS ="http://playpaddy.studyair.com/WebService/EwalletTransactionServices.asmx";
 
         SoapPrimitive response=null;
         try

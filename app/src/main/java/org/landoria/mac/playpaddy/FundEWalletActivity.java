@@ -267,7 +267,7 @@ public class FundEWalletActivity extends AppCompatActivity {
 
             // Use the Builder class for convenient dialog construction
             AlertDialog.Builder builder = new AlertDialog.Builder(FundEWalletActivity.this);
-            builder.setTitle("EduJunior");
+            builder.setTitle("PlayPaddy");
             builder.setMessage("You need to select Card Expiration Year!");
             builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
